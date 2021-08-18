@@ -4,7 +4,7 @@ import PixelModelMaker 1.0
 import QtQuick.Controls.Material 2.12
 
 Rectangle {
-    property int gridSize: 16
+    property int gridSize: 4
     property alias canvas: canvas
     property alias backButton: backButton
 

@@ -37,10 +37,11 @@ Window {
 
         backButton.onClicked: stackView.pop(StackView.Immediate)
 
-        onGridSizeChanged: repaintCanvas()
+//        onGridSizeChanged: repaintCanvas()
 
-        function repaintCanvas() {
-            canvas.repaint()
-        }
+//        function repaintCanvas() {
+//            console.log("repaint", gridPaint.gridSize)
+//            canvas.repaint()
+//        }
     }
 }
