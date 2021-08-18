@@ -16,7 +16,9 @@ Rectangle {
         width: parent.width
         height: parent.height / 2
         anchors.top: parent.top
+        layer.effect: text1
         anchors.topMargin: 0
+
         Text {
             id: text1
             color: Constants.titleColor
@@ -25,6 +27,7 @@ Rectangle {
             font.pixelSize: 60
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
+            padding: 10
             font.styleName: "Thin"
             font.italic: false
             font.bold: false
@@ -50,13 +53,13 @@ Rectangle {
 
             Button {
                 id: button1
-                //                icon.source:
                 width: 100
                 height: 100
                 text: qsTr("16 X 16")
-                display: AbstractButton.TextBesideIcon
                 font.styleName: "Regular"
                 highlighted: true
+                icon.source: "images/ic_grid_on_48px.svg"
+                display: AbstractButton.TextUnderIcon
                 Material.accent: Material.Red
             }
 
@@ -67,6 +70,8 @@ Rectangle {
                 text: qsTr("32 X 32")
                 font.styleName: "Regular"
                 highlighted: true
+                icon.source: "images/ic_grid_on_48px.svg"
+                display: AbstractButton.TextUnderIcon
                 Material.accent: Material.Pink
             }
 
@@ -77,6 +82,8 @@ Rectangle {
                 text: qsTr("64  X 64")
                 font.styleName: "Regular"
                 highlighted: true
+                icon.source: "images/ic_grid_on_48px.svg"
+                display: AbstractButton.TextUnderIcon
                 Material.accent: Material.Purple
             }
         }
