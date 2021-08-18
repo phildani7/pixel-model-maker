@@ -10,13 +10,16 @@ Rectangle {
 
     color: Constants.backgroundColor
 
+    property alias buttonSize16: button_16
+    property alias buttonSize32: button_32
+    property alias buttonSize64: button_64
+
     Item {
         id: row1
         x: 0
         width: parent.width
         height: parent.height / 2
         anchors.top: parent.top
-        layer.effect: text1
         anchors.topMargin: 0
 
         Text {
@@ -52,7 +55,7 @@ Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
 
             Button {
-                id: button1
+                id: button_16
                 width: 100
                 height: 100
                 text: qsTr("16 X 16")
@@ -64,7 +67,7 @@ Rectangle {
             }
 
             Button {
-                id: button2
+                id: button_32
                 width: 100
                 height: 100
                 text: qsTr("32 X 32")
@@ -76,7 +79,7 @@ Rectangle {
             }
 
             Button {
-                id: button3
+                id: button_64
                 width: 100
                 height: 100
                 text: qsTr("64  X 64")
