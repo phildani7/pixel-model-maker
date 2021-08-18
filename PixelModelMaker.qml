@@ -21,11 +21,11 @@ Window {
         width: parent.width
         height: parent.height
         buttonSize16.onClicked: pushGridPaint(16)
+        buttonSize24.onClicked: pushGridPaint(24)
         buttonSize32.onClicked: pushGridPaint(32)
-        buttonSize64.onClicked: pushGridPaint(64)
 
         function pushGridPaint(size) {
-            stackView.push(gridPaint, {"gridSize": size})
+            stackView.push(gridPaint, {"gridSize": size}, StackView.Immediate)
         }
     }
 
@@ -34,7 +34,13 @@ Window {
         visible: false
         width: parent.width
         height: parent.height
+
+        backButton.onClicked: stackView.pop(StackView.Immediate)
+
+        onGridSizeChanged: repaintCanvas()
+
+        function repaintCanvas() {
+            canvas.repaint()
+        }
     }
-
-
 }

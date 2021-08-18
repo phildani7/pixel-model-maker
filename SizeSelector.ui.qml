@@ -11,8 +11,8 @@ Rectangle {
     color: Constants.backgroundColor
 
     property alias buttonSize16: button_16
+    property alias buttonSize24: button_24
     property alias buttonSize32: button_32
-    property alias buttonSize64: button_64
 
     Item {
         id: row1
@@ -32,8 +32,6 @@ Rectangle {
             verticalAlignment: Text.AlignVCenter
             padding: 10
             font.styleName: "Thin"
-            font.italic: false
-            font.bold: false
             anchors.bottomMargin: 0
             anchors.horizontalCenter: parent.horizontalCenter
             font.family: "Roboto"
@@ -67,10 +65,10 @@ Rectangle {
             }
 
             Button {
-                id: button_32
+                id: button_24
                 width: 100
                 height: 100
-                text: qsTr("32 X 32")
+                text: qsTr("24 X 24")
                 font.styleName: "Regular"
                 highlighted: true
                 icon.source: "images/ic_grid_on_48px.svg"
@@ -79,10 +77,10 @@ Rectangle {
             }
 
             Button {
-                id: button_64
+                id: button_32
                 width: 100
                 height: 100
-                text: qsTr("64  X 64")
+                text: qsTr("32  X 32")
                 font.styleName: "Regular"
                 highlighted: true
                 icon.source: "images/ic_grid_on_48px.svg"
