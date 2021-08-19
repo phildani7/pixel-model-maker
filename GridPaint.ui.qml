@@ -4,11 +4,12 @@ import PixelModelMaker 1.0
 import QtQuick.Controls.Material 2.12
 import QtGraphicalEffects 1.12
 
-Rectangle {
+Item {
     property int gridSize: 4
     property alias canvas: canvas
     property alias backButton: backButton
     property int viewMode: 0
+    property variant viewNames: ["Edit Mode", "Depth Mode", "View Mode", "Export"]
 
     width: 1000
     height: 600
@@ -21,7 +22,6 @@ Rectangle {
         rightPadding: 20
         font.styleName: "Medium"
         anchors.horizontalCenter: parent.horizontalCenter
-        //        anchors.topMargin: 0
         Material.primary: Constants.toolbarColor
 
         Row {
@@ -37,7 +37,7 @@ Rectangle {
             font.family: "Roboto"
             font.styleName: "Medium"
             font.pixelSize: 18
-            text: qsTr("Draw Mode")
+            text: qsTr(viewNames[viewMode])
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
         }
@@ -56,6 +56,7 @@ Rectangle {
     Rectangle {
         x: 0
         y: toolBar.height
+        z: -1
         width: parent.width
         height: parent.height - toolBar.height - viewBar.height
         color: Constants.backgroundColor
