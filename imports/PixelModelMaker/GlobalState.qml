@@ -1,10 +1,13 @@
 pragma Singleton
 import QtQuick 2.15
+import PixelModelMaker 1.0
 
 QtObject {
     property variant pixelMap: null
     property int gridWidth: 0
     property int gridHeight: 0
+
+    property color selectedColor: Constants.defaultColorPalette[0]
 
     function createPixelMap(width, height) {
         gridWidth = width

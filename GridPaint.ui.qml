@@ -5,7 +5,6 @@ import QtQuick.Controls.Material 2.12
 import QtGraphicalEffects 1.12
 
 Item {
-    property int gridSize: 4
     property alias canvas: canvas
     property alias backButton: backButton
     property int viewMode: 0
@@ -54,20 +53,46 @@ Item {
     }
 
     Rectangle {
-        x: 0
+        id: rectangle
         y: toolBar.height
         z: -1
         width: parent.width
         height: parent.height - toolBar.height - viewBar.height
         color: Constants.backgroundColor
-        GridCanvas {
-            id: canvas
-            x: 0
-            y: 0
-            gridHeight: gridSize
-            gridWidth: gridSize
+        Item {
+            width: Constants.canvasSize
+            height: Constants.canvasSize
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
+            layer.enabled: true
+            layer.effect: OpacityMask {
+                maskSource: Rectangle {
+                    width: Constants.canvasSize
+                    height: Constants.canvasSize
+                    radius: 5
+                }
+            }
+
+            GridCanvas {
+                id: canvas
+                width: parent.width
+                height: parent.height
+            }
+        }
+
+        Rectangle {
+            color: Constants.toolbarColor
+            width: 150
+            height: 150
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.right: parent.right
+            anchors.rightMargin: 10
+
+            ColorPalette {
+                width: parent.width
+                height: parent.height
+            }
+
         }
     }
 

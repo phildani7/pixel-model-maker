@@ -25,7 +25,10 @@ Window {
         buttonSize32.onClicked: pushGridPaint(32)
 
         function pushGridPaint(size) {
+            GlobalState.createPixelMap(size, size)
             stackView.push(gridPaint, {"gridSize": size}, StackView.Immediate)
+            gridPaint.canvas.repaint()
+            console.log(GlobalState.colorPalette)
         }
     }
 
@@ -34,14 +37,6 @@ Window {
         visible: false
         width: parent.width
         height: parent.height
-
         backButton.onClicked: stackView.pop(StackView.Immediate)
-
-//        onGridSizeChanged: repaintCanvas()
-
-//        function repaintCanvas() {
-//            console.log("repaint", gridPaint.gridSize)
-//            canvas.repaint()
-//        }
     }
 }
