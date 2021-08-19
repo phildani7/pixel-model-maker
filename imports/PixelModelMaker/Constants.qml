@@ -20,6 +20,7 @@ QtObject {
                                                   pixelSize: Qt.application.font.pixelSize * 1.6
                                               })
     readonly property color backgroundColor: "#333333"
+    readonly property color toolbarColor: "#222222"
     readonly property color titleColor: "#eeeeee"
 
     property DirectoryFontLoader directoryFontLoader: DirectoryFontLoader {
