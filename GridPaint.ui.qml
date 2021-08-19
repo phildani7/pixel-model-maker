@@ -60,16 +60,52 @@ Item {
         height: parent.height - toolBar.height - viewBar.height
         color: Constants.backgroundColor
 
-        GridCanvas {
-            id: canvas
+        Item {
+            id: drawComponents
+            visible: viewMode == 0
+            anchors.fill: parent
+
+            DrawCanvas {
+                id: canvas
+            }
+
+            ColorPalette {
+                width: 170
+                height: 300
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.right: parent.right
+                anchors.rightMargin: 20
+            }
         }
 
-        ColorPalette {
-            width: 170
-            height: 300
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.right: parent.right
-            anchors.rightMargin: 20
+        Item {
+            id: depthComponents
+            visible: viewMode == 1
+            anchors.fill: parent
+
+            DepthCanvas {
+                anchors.fill: parent
+            }
+        }
+
+        Item {
+            id: viewComponents
+            visible: viewMode == 2
+            anchors.fill: parent
+
+            ViewModel {
+                anchors.fill: parent
+            }
+        }
+
+        Item {
+            id: exportComponents
+            visible: viewMode == 3
+            anchors.fill: parent
+
+            ExportModel {
+                anchors.fill: parent
+            }
         }
     }
 
