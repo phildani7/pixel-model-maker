@@ -28,7 +28,6 @@ Window {
             GlobalState.createPixelMap(size, size)
             stackView.push(gridPaint, {"gridSize": size}, StackView.Immediate)
             gridPaint.canvas.repaint()
-            console.log(GlobalState.colorPalette)
         }
     }
 

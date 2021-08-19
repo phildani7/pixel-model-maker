@@ -59,40 +59,17 @@ Item {
         width: parent.width
         height: parent.height - toolBar.height - viewBar.height
         color: Constants.backgroundColor
-        Item {
-            width: Constants.canvasSize
-            height: Constants.canvasSize
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.horizontalCenter: parent.horizontalCenter
-            layer.enabled: true
-            layer.effect: OpacityMask {
-                maskSource: Rectangle {
-                    width: Constants.canvasSize
-                    height: Constants.canvasSize
-                    radius: 5
-                }
-            }
 
-            GridCanvas {
-                id: canvas
-                width: parent.width
-                height: parent.height
-            }
+        GridCanvas {
+            id: canvas
         }
 
-        Rectangle {
-            color: Constants.toolbarColor
-            width: 150
-            height: 150
+        ColorPalette {
+            width: 170
+            height: 300
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
-            anchors.rightMargin: 10
-
-            ColorPalette {
-                width: parent.width
-                height: parent.height
-            }
-
+            anchors.rightMargin: 20
         }
     }
 
