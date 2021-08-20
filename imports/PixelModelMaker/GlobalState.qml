@@ -35,7 +35,7 @@ QtObject {
             for (var j = 0; j < gridWidth; ++j) {
                 pixelRow.push({
                                   "color": null,
-                                  "depth": 1,
+                                  "depth": 0,
                                   "shape": null
                               })
             }

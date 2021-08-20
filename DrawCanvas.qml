@@ -40,12 +40,12 @@ Pane {
                 const cellSize = width / GlobalState.gridWidth
                 for (var i = 0; i < GlobalState.gridHeight; ++i) {
                     for (var j = 0; j < GlobalState.gridWidth; ++j) {
+                        let fillColor = (i + j) % 2 ? black : white
                         if (GlobalState.pixelMap && GlobalState.pixelMap[j][i]
                                 && GlobalState.pixelMap[j][i].color) {
-                            ctx.fillStyle = GlobalState.pixelMap[j][i].color
-                        } else {
-                            ctx.fillStyle = (i + j) % 2 ? black : white
+                            fillColor = GlobalState.pixelMap[j][i].color
                         }
+                        ctx.fillStyle = fillColor
                         ctx.fillRect(i * cellSize, j * cellSize,
                                      cellSize, cellSize)
                     }
@@ -67,13 +67,18 @@ Pane {
             const cellSize = width / GlobalState.gridWidth
             const col = parseInt(mouse.x / cellSize)
             const row = parseInt(mouse.y / cellSize)
+            if (col >= GlobalState.gridWidth || col < 0
+                    || row >= GlobalState.gridHeight || row < 0)
+                return
+            let pixel = GlobalState.pixelMap[row][col]
             if (mouse.button === Qt.LeftButton) {
                 let color = GlobalState.selectedColor
-                GlobalState.pixelMap[row][col].color = Qt.rgba(color.r,
-                                                               color.g,
-                                                               color.b, color.a)
+                pixel.color = Qt.rgba(color.r, color.g, color.b, color.a)
+                if (pixel.depth === 0)
+                    pixel.depth = 1
             } else {
-                GlobalState.pixelMap[row][col].color = null
+                pixel.color = null
+                pixel.depth = 0
             }
             canvas.requestPaint()
         }
@@ -85,15 +90,17 @@ Pane {
             if (col >= GlobalState.gridWidth || col < 0
                     || row >= GlobalState.gridHeight || row < 0)
                 return
+            let pixel = GlobalState.pixelMap[row][col]
             if (mouse.buttons === Qt.LeftButton
-                    && GlobalState.pixelMap[row][col].color !== GlobalState.selectedColor) {
+                    && pixel.color !== GlobalState.selectedColor) {
                 let color = GlobalState.selectedColor
-                GlobalState.pixelMap[row][col].color = Qt.rgba(color.r,
-                                                               color.g,
-                                                               color.b, color.a)
+                pixel.color = Qt.rgba(color.r, color.g, color.b, color.a)
+                if (pixel.depth === 0)
+                    pixel.depth = 1
                 canvas.requestPaint()
             } else if (mouse.buttons === Qt.RightButton) {
-                GlobalState.pixelMap[row][col].color = null
+                pixel.color = null
+                pixel.depth = 0
                 canvas.requestPaint()
             }
         }

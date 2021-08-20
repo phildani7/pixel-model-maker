@@ -55,13 +55,14 @@ Item {
                     const yOffset = GlobalState.gridHeight / 2 * scale
                     for (var i = 0; i < GlobalState.gridWidth; ++i) {
                         for (var j = 0; j < GlobalState.gridHeight; ++j) {
-                            if (GlobalState.pixelMap[i][j].color !== null) {
+                            let pixel = GlobalState.pixelMap[i][j]
+                            if (pixel.color !== null) {
 
-                                let color = GlobalState.pixelMap[i][j].color
+                                let color = pixel.color
                                 let colorVector = Qt.vector3d(color.r,
                                                               color.g, color.b)
 
-                                if (GlobalState.pixelMap[i][j].shape === null) {
+                                if (pixel.shape === null) {
                                     var cubeComponent = Qt.createComponent(
                                                 "shapes/PixelCube.qml")
 
@@ -70,16 +71,21 @@ Item {
                                                 "x": -xOffset + j * scale,
                                                 "y": yOffset - i * scale,
                                                 "z": 0,
-                                                "shapeColor": colorVector
+                                                "shapeColor": colorVector,
+                                                "depth": pixel.depth
                                             })
-                                    GlobalState.pixelMap[i][j].shape = instance
-                                } else if (GlobalState.pixelMap[i][j].shape.shapeColor
-                                           !== colorVector) {
-                                    GlobalState.pixelMap[i][j].shape.shapeColor = colorVector
+                                    pixel.shape = instance
+                                } else {
+                                    if (pixel.shape.shapeColor !== colorVector) {
+                                        pixel.shape.shapeColor = colorVector
+                                    }
+                                    if (pixel.depth !== pixel.shape.depth) {
+                                        pixel.shape.depth = pixel.depth
+                                    }
                                 }
                             } else if (GlobalState.pixelMap[i][j].shape !== null) {
-                                GlobalState.pixelMap[i][j].shape.destroy()
-                                GlobalState.pixelMap[i][j].shape = null
+                                pixel.shape.destroy()
+                                pixel.shape = null
                             }
                         }
                     }
@@ -129,8 +135,8 @@ Item {
             if (event.buttons === Qt.LeftButton) {
                 const diffX = lastX - event.x
                 const diffY = lastY - event.y
-                gridModelContainer.eulerRotation.y = gridModelContainer.eulerRotation.y + diffX
-                gridModelContainer.eulerRotation.x = gridModelContainer.eulerRotation.x + diffY
+                gridModelContainer.eulerRotation.y = gridModelContainer.eulerRotation.y - diffX
+                gridModelContainer.eulerRotation.x = gridModelContainer.eulerRotation.x - diffY
                 lastX = event.x
                 lastY = event.y
             }

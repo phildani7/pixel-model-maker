@@ -6,13 +6,15 @@ Node {
     id: cubeNode
 
     property vector3d shapeColor: Qt.vector3d(0.8, 0, 0)
+    property int depth: 1
+
     property real rotX: 0
     property real rotY: 0
     property real rotZ: 0
     Model {
         id: cubeModel
         source: "#Cube"
-        scale: Qt.vector3d(0.5, 0.5, 0.5)
+        scale: Qt.vector3d(0.5, 0.5, 0.5 * depth)
         eulerRotation.z: rotX
         eulerRotation.y: rotY
         eulerRotation.x: rotZ

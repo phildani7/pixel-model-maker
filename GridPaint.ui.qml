@@ -7,6 +7,7 @@ import QtGraphicalEffects 1.12
 Item {
     property alias canvas: canvas
     property alias view: view
+    property alias depth: depth
     property alias backButton: backButton
     property int viewMode: 0
     property variant viewNames: ["Edit Mode", "Depth Mode", "View Mode", "Export"]
@@ -85,7 +86,7 @@ Item {
             anchors.fill: parent
 
             DepthCanvas {
-                anchors.fill: parent
+                id: depth
             }
         }
 

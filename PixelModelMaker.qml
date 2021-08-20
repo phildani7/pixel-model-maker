@@ -33,6 +33,7 @@ Window {
                            }, StackView.Immediate)
             gridPaint.view.resetRotation()
             gridPaint.canvas.repaint()
+            gridPaint.depth.repaint()
         }
     }
 
@@ -42,5 +43,9 @@ Window {
         width: parent.width
         height: parent.height
         backButton.onClicked: stackView.pop(StackView.Immediate)
+        onViewModeChanged: () => {
+                               gridPaint.canvas.repaint()
+                               gridPaint.depth.repaint()
+                           }
     }
 }
