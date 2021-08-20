@@ -11,11 +11,7 @@ Item {
 
     View3D {
         anchors.fill: parent
-        camera: orthoCamera
-        anchors.rightMargin: 0
-        anchors.bottomMargin: -8
-        anchors.leftMargin: 0
-        anchors.topMargin: 8
+        camera: perspCamera
         environment: environment
 
         SceneEnvironment {
@@ -26,21 +22,18 @@ Item {
         }
         Node {
             id: scene
-            PerspectiveCamera {
-                id: perspCamera
-                x: 0
-                y: 201.958
-                z: 521.69043
-                eulerRotation.z: -0
-                eulerRotation.y: 0
-                eulerRotation.x: -16.1518
-            }
-
             OrthographicCamera {
                 id: orthoCamera
                 x: 0
                 y: 0
-                z: 500
+                z: 1600
+            }
+
+            PerspectiveCamera {
+                id: perspCamera
+                x: 0
+                y: 0
+                z: 1600
             }
 
             Node {
@@ -100,8 +93,53 @@ Item {
                 width: 3200
                 height: 3200
                 brightness: 150
-                z: 500
+                z: 1600
+            }
+
+            PointLight {
+                id: fillLight
+                x: 0
+                y: 1600
+                brightness: 150
+                z: 0
             }
         }
+    }
+
+    MouseArea {
+        id: mouseArea
+        property real lastX: null
+        property real lastY: null
+
+        anchors.fill: parent
+        acceptedButtons: Qt.AllButtons
+        hoverEnabled: true
+
+        onPositionChanged: handleDrag(mouse)
+        onPressedChanged: handlePressed()
+
+        function handlePressed() {
+            if (pressedButtons === Qt.LeftButton) {
+                lastX = mouseX
+                lastY = mouseY
+            }
+        }
+
+        function handleDrag(event) {
+            if (event.buttons === Qt.LeftButton) {
+                const diffX = lastX - event.x
+                const diffY = lastY - event.y
+                gridModelContainer.eulerRotation.y = gridModelContainer.eulerRotation.y + diffX
+                gridModelContainer.eulerRotation.x = gridModelContainer.eulerRotation.x + diffY
+                lastX = event.x
+                lastY = event.y
+            }
+        }
+    }
+
+    function resetRotation() {
+        gridModelContainer.eulerRotation.x = 0
+        gridModelContainer.eulerRotation.y = 0
+        gridModelContainer.eulerRotation.z = 0
     }
 }

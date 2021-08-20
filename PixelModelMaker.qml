@@ -31,6 +31,7 @@ Window {
             stackView.push(gridPaint, {
                                "gridSize": size
                            }, StackView.Immediate)
+            gridPaint.view.resetRotation()
             gridPaint.canvas.repaint()
         }
     }

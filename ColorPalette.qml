@@ -4,7 +4,7 @@ import PixelModelMaker 1.0
 import QtQuick.Controls.Material 2.12
 
 Pane {
-    id: column
+    id: palettePane
     padding: 10
     Material.background: Constants.toolbarColor
     Material.elevation: 10
@@ -70,13 +70,13 @@ Pane {
                 }
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: (event) => {
-                        colorGrid.currentIndex = index
-                        GlobalState.selectedColor = colorGrid.currentItem.children[0].color
-                    }
+                    onClicked: event => {
+                                   colorGrid.currentIndex = index
+                                   GlobalState.selectedColor
+                                   = colorGrid.currentItem.children[0].color
+                               }
                 }
             }
         }
     }
 }
-

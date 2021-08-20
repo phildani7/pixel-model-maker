@@ -6,6 +6,7 @@ import QtGraphicalEffects 1.12
 
 Item {
     property alias canvas: canvas
+    property alias view: view
     property alias backButton: backButton
     property int viewMode: 0
     property variant viewNames: ["Edit Mode", "Depth Mode", "View Mode", "Export"]
@@ -94,6 +95,7 @@ Item {
             anchors.fill: parent
 
             ViewModel {
+                id: view
                 anchors.fill: parent
             }
         }
