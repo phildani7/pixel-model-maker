@@ -25,8 +25,12 @@ Window {
         buttonSize32.onClicked: pushGridPaint(32)
 
         function pushGridPaint(size) {
+            GlobalState.destroyPixelMap()
             GlobalState.createPixelMap(size, size)
-            stackView.push(gridPaint, {"gridSize": size}, StackView.Immediate)
+            gridPaint.viewMode = 0
+            stackView.push(gridPaint, {
+                               "gridSize": size
+                           }, StackView.Immediate)
             gridPaint.canvas.repaint()
         }
     }
