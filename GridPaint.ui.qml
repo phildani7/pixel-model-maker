@@ -89,16 +89,6 @@ Item {
             DepthCanvas {
                 id: depth
             }
-
-            MiniViewModel {
-                id: miniView
-                width: 250
-                height: 250
-                anchors.left: parent.left
-                anchors.leftMargin: 20
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 20
-            }
         }
 
         Item {
@@ -119,6 +109,21 @@ Item {
 
             ExportModel {
                 anchors.fill: parent
+            }
+        }
+
+        Item {
+            id: miniViewCompoent
+            visible: viewMode < 2 || viewMode == 3
+            anchors.fill: parent
+            MiniViewModel {
+                id: miniView
+                width: 250
+                height: 250
+                anchors.left: parent.left
+                anchors.leftMargin: 20
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 20
             }
         }
     }
