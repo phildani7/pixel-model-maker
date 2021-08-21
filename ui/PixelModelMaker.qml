@@ -1,13 +1,13 @@
 import QtQuick 2.15
-import QtQuick.Window 2.12
 import PixelModelMaker 1.0
-import QtQuick.Controls.Material 2.12
+import QtQuick.Controls.Material 2.15
 import QtQuick.Controls 2.15
 
-Window {
+
+Pane {
+    padding: 0
     width: Constants.width
     height: Constants.height
-    title: "Pixel Model Maker"
     Material.theme: Material.Dark
 
     StackView {
@@ -28,9 +28,7 @@ Window {
             GlobalState.destroyPixelMap()
             GlobalState.createPixelMap(size, size)
             gridPaint.viewMode = 0
-            stackView.push(gridPaint, {
-                               "gridSize": size
-                           }, StackView.Immediate)
+            stackView.push(gridPaint, StackView.Immediate)
             gridPaint.view.resetRotation()
             gridPaint.canvas.repaint()
             gridPaint.depth.repaint()

@@ -2,8 +2,8 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import PixelModelMaker 1.0
 import QtQuick3D 1.15
-import QtQuick.Controls.Material 2.12
-import QtGraphicalEffects 1.12
+import QtQuick.Controls.Material 2.15
+
 
 Item {
     property alias canvas: canvas
@@ -30,7 +30,7 @@ Item {
             ToolButton {
                 id: backButton
                 text: qsTr("Discard")
-                icon.source: "images/ic_arrow_back_48px.svg"
+                icon.source: "qrc:/ui/images/ic_arrow_back_48px.svg"
             }
         }
 
@@ -49,7 +49,7 @@ Item {
                 id: saveButton
                 text: qsTr("")
                 display: AbstractButton.IconOnly
-                icon.source: "images/ic_save_48px.svg"
+                icon.source: "qrc:/ui/images/ic_save_48px.svg"
             }
             anchors.right: parent.right
         }
@@ -145,13 +145,13 @@ Item {
 
             Button {
                 id: drawButton
+                text: qsTr("Draw")
                 width: viewBar.buttonSize
                 height: viewBar.buttonSize
-                text: qsTr("Draw")
                 flat: viewMode != 0
                 font.styleName: "Regular"
                 highlighted: viewMode == 0
-                icon.source: "images/ic_mode_edit_48px.svg"
+                icon.source: "qrc:/ui/images/ic_mode_edit_48px.svg"
                 display: AbstractButton.TextUnderIcon
                 Material.accent: Material.Cyan
 
@@ -169,7 +169,7 @@ Item {
                 flat: viewMode != 1
                 font.styleName: "Regular"
                 highlighted: viewMode == 1
-                icon.source: "images/layers_black_48dp.svg"
+                icon.source: "qrc:/ui/images/layers_black_48dp.svg"
                 display: AbstractButton.TextUnderIcon
                 Material.accent: Material.Cyan
 
@@ -187,7 +187,7 @@ Item {
                 flat: viewMode != 2
                 font.styleName: "Regular"
                 highlighted: viewMode == 2
-                icon.source: "images/view_in_ar_black_48dp.svg"
+                icon.source: "qrc:/ui/images/view_in_ar_black_48dp.svg"
                 display: AbstractButton.TextUnderIcon
                 Material.accent: Material.Cyan
 
@@ -205,7 +205,7 @@ Item {
                 flat: viewMode != 3
                 font.styleName: "Regular"
                 highlighted: viewMode == 3
-                icon.source: "images/ic_file_download_48px.svg"
+                icon.source: "qrc:/ui/images/ic_file_download_48px.svg"
                 display: AbstractButton.TextUnderIcon
                 Material.accent: Material.Cyan
                 Connections {
@@ -216,3 +216,10 @@ Item {
         }
     }
 }
+
+
+/*##^##
+Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+##^##*/

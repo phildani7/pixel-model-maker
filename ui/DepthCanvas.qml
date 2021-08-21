@@ -1,8 +1,7 @@
 import QtQuick 2.15
 import PixelModelMaker 1.0
-import QtGraphicalEffects 1.12
-import QtQuick.Controls 2.12
-import QtQuick.Controls.Material 2.12
+import QtQuick.Controls 2.15
+import QtQuick.Controls.Material 2.15
 
 Pane {
     padding: 10
@@ -11,25 +10,13 @@ Pane {
     height: Constants.canvasSize + padding * 2
     anchors.verticalCenter: parent.verticalCenter
     anchors.horizontalCenter: parent.horizontalCenter
-    layer.enabled: true
-    layer.effect: OpacityMask {
-        maskSource: Rectangle {
-            width: Constants.canvasSize
-            height: Constants.canvasSize
-            radius: 7
-        }
+    background: Rectangle {
+            radius: 5
+            color: Constants.toolbarColor
     }
 
     Item {
         anchors.fill: parent
-        layer.enabled: true
-        layer.effect: OpacityMask {
-            maskSource: Rectangle {
-                width: Constants.canvasSize
-                height: Constants.canvasSize
-                radius: 5
-            }
-        }
         Canvas {
             id: depthCanvas
             anchors.fill: parent

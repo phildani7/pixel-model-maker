@@ -1,8 +1,6 @@
 import QtQuick 2.15
 import QtQuick3D 1.15
-import QtQuick3D.Helpers 1.14
-import QtQuick3D.Effects 1.15
-import QtQuick3D.Materials 1.14
+import QtQuick3D.Helpers 1.15
 import PixelModelMaker 1.0
 
 Item {
@@ -62,7 +60,7 @@ Item {
                     let color = pixel.color
                     let colorVector = Qt.vector3d(color.r, color.g, color.b)
 
-                    var cubeComponent = Qt.createComponent("shapes/Cube.qml")
+                    var cubeComponent = Qt.createComponent("qrc:/ui/shapes/Cube.qml")
 
                     let instance = cubeComponent.createObject(parent, {
                                                                   "x": -xOffset + col * scale,
@@ -102,12 +100,10 @@ Item {
                 }
             }
 
-            AreaLight {
+            PointLight {
                 id: mainLight
                 x: 0
                 y: 0
-                width: 3200
-                height: 3200
                 brightness: 150
                 z: 1600
             }

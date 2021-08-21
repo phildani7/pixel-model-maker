@@ -1,13 +1,20 @@
 import QtQuick 2.15
-import QtQuick.Controls 2.12
+import QtQuick.Controls 2.15
 import PixelModelMaker 1.0
-import QtQuick.Controls.Material 2.12
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Material.impl 2.15
 
 Pane {
     id: palettePane
     padding: 10
-    Material.background: Constants.toolbarColor
-    Material.elevation: 10
+    background: Rectangle {
+            radius: 5
+            color: Constants.toolbarColor
+            layer.enabled: true
+            layer.effect: ElevationEffect {
+                elevation: 10
+            }
+    }
     Item {
         id: header
         height: 30

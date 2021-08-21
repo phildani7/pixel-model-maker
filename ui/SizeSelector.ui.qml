@@ -1,7 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import PixelModelMaker 1.0
-import QtQuick.Controls.Material 2.12
+import QtQuick.Controls.Material 2.15
 
 Rectangle {
     id: rectangle
@@ -59,7 +59,7 @@ Rectangle {
                 text: qsTr("16 X 16")
                 font.styleName: "Regular"
                 highlighted: true
-                icon.source: "images/ic_grid_on_48px.svg"
+                icon.source: "qrc:/ui/images/ic_grid_on_48px.svg"
                 display: AbstractButton.TextUnderIcon
                 Material.accent: Material.Red
             }
@@ -71,7 +71,7 @@ Rectangle {
                 text: qsTr("24 X 24")
                 font.styleName: "Regular"
                 highlighted: true
-                icon.source: "images/ic_grid_on_48px.svg"
+                icon.source: "qrc:/ui/images/ic_grid_on_48px.svg"
                 display: AbstractButton.TextUnderIcon
                 Material.accent: Material.Pink
             }
@@ -83,7 +83,7 @@ Rectangle {
                 text: qsTr("32  X 32")
                 font.styleName: "Regular"
                 highlighted: true
-                icon.source: "images/ic_grid_on_48px.svg"
+                icon.source: "qrc:/ui/images/ic_grid_on_48px.svg"
                 display: AbstractButton.TextUnderIcon
                 Material.accent: Material.Purple
             }

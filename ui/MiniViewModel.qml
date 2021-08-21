@@ -2,9 +2,8 @@ import QtQuick 2.15
 
 import QtQuick3D 1.15
 import QtQuick3D.Helpers 1.14
-import QtQuick3D.Effects 1.15
-import QtQuick3D.Materials 1.14
-import QtQuick.Controls.Material 2.12
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Material.impl 2.15
 import PixelModelMaker 1.0
 import QtQuick.Controls 2.15
 
@@ -12,8 +11,14 @@ Pane {
     id: palettePane
     z: 1
     padding: 10
-    Material.background: Constants.toolbarColor
-    Material.elevation: 10
+    background: Rectangle {
+            radius: 5
+            color: Constants.toolbarColor
+            layer.enabled: true
+            layer.effect: ElevationEffect {
+                elevation: 10
+            }
+    }
 
     Item {
         id: root
@@ -52,7 +57,6 @@ Pane {
                         loops: Animation.Infinite
                         NumberAnimation {
                             target: gridModelContainer
-                            running: true
                             property: "eulerRotation.y"
                             duration: 5000
                             from: 45
@@ -60,7 +64,6 @@ Pane {
                         }
                         NumberAnimation {
                             target: gridModelContainer
-                            running: true
                             property: "eulerRotation.y"
                             duration: 5000
                             from: -45
@@ -88,7 +91,7 @@ Pane {
                         let colorVector = Qt.vector3d(color.r, color.g, color.b)
 
                         var cubeComponent = Qt.createComponent(
-                                    "shapes/Cube.qml")
+                                    "qrc:/ui/shapes/Cube.qml")
 
                         let instance = cubeComponent.createObject(parent, {
                                                                       "x": -xOffset + col * scale,
@@ -129,12 +132,10 @@ Pane {
                     }
                 }
 
-                AreaLight {
+                PointLight {
                     id: mainLight
                     x: 0
                     y: 0
-                    width: 3200
-                    height: 3200
                     brightness: 150
                     z: 1600
                 }

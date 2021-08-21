@@ -6,20 +6,21 @@ QtObject {
     readonly property int width: 1280
     readonly property int height: 720
 
-    readonly property FontLoader mySystemFont: FontLoader {
-        name: "Arial"
-    }
+    readonly property string mySystemFontName: "Arial"
+//    readonly property FontLoader mySystemFont: FontLoader {
+//        name: mySystemFontName
+//    }
 
     property alias fontDirectory: directoryFontLoader.fontDirectory
     property alias relativeFontDirectory: directoryFontLoader.relativeFontDirectory
 
     /* Edit this comment to add your custom font */
     readonly property font font: Qt.font({
-                                             "family": mySystemFont.name,
+                                             "family": mySystemFontName,
                                              "pixelSize": Qt.application.font.pixelSize
                                          })
     readonly property font largeFont: Qt.font({
-                                                  "family": mySystemFont.name,
+                                                  "family": mySystemFontName,
                                                   "pixelSize": Qt.application.font.pixelSize * 1.6
                                               })
     readonly property color backgroundColor: "#333333"

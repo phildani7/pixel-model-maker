@@ -1,0 +1,43 @@
+<RCC>
+    <qresource prefix="/">
+        <file>ui/fonts/Roboto/LICENSE.txt</file>
+        <file>ui/fonts/Roboto/Roboto-Black.ttf</file>
+        <file>ui/fonts/Roboto/Roboto-BlackItalic.ttf</file>
+        <file>ui/fonts/Roboto/Roboto-Bold.ttf</file>
+        <file>ui/fonts/Roboto/Roboto-BoldItalic.ttf</file>
+        <file>ui/fonts/Roboto/Roboto-Italic.ttf</file>
+        <file>ui/fonts/Roboto/Roboto-Light.ttf</file>
+        <file>ui/fonts/Roboto/Roboto-LightItalic.ttf</file>
+        <file>ui/fonts/Roboto/Roboto-Medium.ttf</file>
+        <file>ui/fonts/Roboto/Roboto-MediumItalic.ttf</file>
+        <file>ui/fonts/Roboto/Roboto-Regular.ttf</file>
+        <file>ui/fonts/Roboto/Roboto-Thin.ttf</file>
+        <file>ui/fonts/Roboto/Roboto-ThinItalic.ttf</file>
+        <file>ui/fonts/fonts.txt</file>
+        <file>ui/images/ic_arrow_back_48px.svg</file>
+        <file>ui/images/ic_file_download_48px.svg</file>
+        <file>ui/images/ic_grid_on_48px.svg</file>
+        <file>ui/images/ic_mode_edit_48px.svg</file>
+        <file>ui/images/ic_save_48px.svg</file>
+        <file>ui/images/layers_black_48dp.svg</file>
+        <file>ui/images/view_in_ar_black_48dp.svg</file>
+        <file>ui/imports/PixelModelMaker/Constants.qml</file>
+        <file>ui/imports/PixelModelMaker/DirectoryFontLoader.qml</file>
+        <file>ui/imports/PixelModelMaker/GlobalState.qml</file>
+        <file>ui/imports/PixelModelMaker/qmldir</file>
+        <file>ui/shapes/meshes/cube.mesh</file>
+        <file>ui/shapes/Cube.qml</file>
+        <file>ui/ColorPalette.qml</file>
+        <file>ui/DepthCanvas.qml</file>
+        <file>ui/DrawCanvas.qml</file>
+        <file>ui/ExportModel.qml</file>
+        <file>ui/GridPaint.ui.qml</file>
+        <file>ui/MiniViewModel.qml</file>
+        <file>ui/PixelModelMaker.qml</file>
+        <file>ui/PixelModelMaker.qmlproject</file>
+        <file>ui/PixelModelMaker.qmlproject.qtds</file>
+        <file>ui/qtquickcontrols2.conf</file>
+        <file>ui/SizeSelector.ui.qml</file>
+        <file>ui/ViewModel.qml</file>
+    </qresource>
+</RCC>
