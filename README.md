@@ -1,5 +1,5 @@
 # Pixel Model Maker
-Lately I saw [KenShape](https://tools.kenney.nl/kenshape/) from [Kenny](https://kenney.nl/) and decided to create an opensource clone with Qt and QML.
+PixelModelMaker is an opensource clone of [KenShape](https://tools.kenney.nl/kenshape/) from [Kenny](https://kenney.nl/).
 
 # Features
 
