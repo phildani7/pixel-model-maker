@@ -64,7 +64,7 @@ Item {
 
                                 if (pixel.shape === null) {
                                     var cubeComponent = Qt.createComponent(
-                                                "shapes/PixelCube.qml")
+                                                "shapes/Cube.qml")
 
                                     let instance = cubeComponent.createObject(
                                             gridModelContainer, {
@@ -114,8 +114,8 @@ Item {
 
     MouseArea {
         id: mouseArea
-        property real lastX: null
-        property real lastY: null
+        property real lastX: 0
+        property real lastY: 0
 
         anchors.fill: parent
         acceptedButtons: Qt.AllButtons
