@@ -19,6 +19,11 @@ QtObject {
                 for (var j = 0; j < gridWidth; ++j) {
                     if (pixelMap[i][j].shape !== null) {
                         pixelMap[i][j].shape.destroy()
+                        pixelMap[i][j].shape = null
+                    }
+                    if (pixelMap[i][j].miniShape !== null) {
+                        pixelMap[i][j].miniShape.destroy()
+                        pixelMap[i][j].miniShape = null
                     }
                 }
             }
@@ -26,7 +31,6 @@ QtObject {
     }
 
     function createPixelMap(width, height) {
-
         gridWidth = width
         gridHeight = height
         pixelMap = []
@@ -36,7 +40,8 @@ QtObject {
                 pixelRow.push({
                                   "color": null,
                                   "depth": 0,
-                                  "shape": null
+                                  "shape": null,
+                                  "miniShape": null
                               })
             }
             pixelMap.push(pixelRow)

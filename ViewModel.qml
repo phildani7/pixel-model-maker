@@ -6,10 +6,14 @@ import QtQuick3D.Materials 1.14
 import PixelModelMaker 1.0
 
 Item {
-    width: 1920
-    height: 1080
+    id: root
+    property alias sceneView: sceneView
+    property alias gridModelContainer: gridModelContainer
+    width: 300
+    height: 300
 
     View3D {
+        id: sceneView
         anchors.fill: parent
         camera: perspCamera
         environment: environment
@@ -49,43 +53,49 @@ Item {
                         gridModelContainer.updateShapes()
                     }
                 }
-                function updateShapes() {
+
+                function createShape(row, col, parent) {
                     const scale = 50
                     const xOffset = GlobalState.gridWidth / 2 * scale
                     const yOffset = GlobalState.gridHeight / 2 * scale
+                    let pixel = GlobalState.pixelMap[row][col]
+                    let color = pixel.color
+                    let colorVector = Qt.vector3d(color.r, color.g, color.b)
+
+                    var cubeComponent = Qt.createComponent("shapes/Cube.qml")
+
+                    let instance = cubeComponent.createObject(parent, {
+                                                                  "x": -xOffset + col * scale,
+                                                                  "y": yOffset - row * scale,
+                                                                  "z": 0,
+                                                                  "shapeColor": colorVector,
+                                                                  "depth": pixel.depth
+                                                              })
+                    return instance
+                }
+
+                function updateShape(row, col) {
+                    let pixel = GlobalState.pixelMap[row][col]
+                    let color = pixel.color
+                    let colorVector = Qt.vector3d(color.r, color.g, color.b)
+
+                    if (pixel.shape === null) {
+                        pixel.shape = createShape(row, col, gridModelContainer)
+                    } else {
+                        if (pixel.shape.shapeColor !== colorVector) {
+                            pixel.shape.shapeColor = colorVector
+                        }
+                        if (pixel.depth !== pixel.shape.depth) {
+                            pixel.shape.depth = pixel.depth
+                        }
+                    }
+                }
+
+                function updateShapes() {
                     for (var i = 0; i < GlobalState.gridWidth; ++i) {
                         for (var j = 0; j < GlobalState.gridHeight; ++j) {
-                            let pixel = GlobalState.pixelMap[i][j]
-                            if (pixel.color !== null) {
-
-                                let color = pixel.color
-                                let colorVector = Qt.vector3d(color.r,
-                                                              color.g, color.b)
-
-                                if (pixel.shape === null) {
-                                    var cubeComponent = Qt.createComponent(
-                                                "shapes/Cube.qml")
-
-                                    let instance = cubeComponent.createObject(
-                                            gridModelContainer, {
-                                                "x": -xOffset + j * scale,
-                                                "y": yOffset - i * scale,
-                                                "z": 0,
-                                                "shapeColor": colorVector,
-                                                "depth": pixel.depth
-                                            })
-                                    pixel.shape = instance
-                                } else {
-                                    if (pixel.shape.shapeColor !== colorVector) {
-                                        pixel.shape.shapeColor = colorVector
-                                    }
-                                    if (pixel.depth !== pixel.shape.depth) {
-                                        pixel.shape.depth = pixel.depth
-                                    }
-                                }
-                            } else if (GlobalState.pixelMap[i][j].shape !== null) {
-                                pixel.shape.destroy()
-                                pixel.shape = null
+                            if (GlobalState.pixelMap[i][j].color) {
+                                updateShape(i, j)
                             }
                         }
                     }

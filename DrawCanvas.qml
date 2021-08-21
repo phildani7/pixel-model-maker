@@ -63,6 +63,19 @@ Pane {
             onPositionChanged: parent.handleDrag(mouse)
         }
 
+        function destroyPixel(pixel) {
+            pixel.color = null
+            pixel.depth = 0
+            if (pixel.shape) {
+                pixel.shape.destroy()
+                pixel.shape = null
+            }
+            if (pixel.miniShape) {
+                pixel.miniShape.destroy()
+                pixel.miniShape = null
+            }
+        }
+
         function handleClick(mouse) {
             const cellSize = width / GlobalState.gridWidth
             const col = parseInt(mouse.x / cellSize)
@@ -77,8 +90,7 @@ Pane {
                 if (pixel.depth === 0)
                     pixel.depth = 1
             } else {
-                pixel.color = null
-                pixel.depth = 0
+                destroyPixel(pixel)
             }
             canvas.requestPaint()
         }
@@ -99,8 +111,7 @@ Pane {
                     pixel.depth = 1
                 canvas.requestPaint()
             } else if (mouse.buttons === Qt.RightButton) {
-                pixel.color = null
-                pixel.depth = 0
+                destroyPixel(pixel)
                 canvas.requestPaint()
             }
         }

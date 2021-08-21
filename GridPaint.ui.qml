@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import PixelModelMaker 1.0
+import QtQuick3D 1.15
 import QtQuick.Controls.Material 2.12
 import QtGraphicalEffects 1.12
 
@@ -87,6 +88,16 @@ Item {
 
             DepthCanvas {
                 id: depth
+            }
+
+            MiniViewModel {
+                id: miniView
+                width: 250
+                height: 250
+                anchors.left: parent.left
+                anchors.leftMargin: 20
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 20
             }
         }
 
