@@ -114,7 +114,7 @@ Item {
 
         Item {
             id: miniViewCompoent
-            visible: viewMode < 2 || viewMode == 3
+            visible: viewMode != 2
             anchors.fill: parent
             MiniViewModel {
                 id: miniView
