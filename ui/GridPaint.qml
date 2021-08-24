@@ -1,9 +1,11 @@
+import Qt.labs.platform 1.1
+
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import PixelModelMaker 1.0
 import QtQuick3D 1.15
 import QtQuick.Controls.Material 2.15
-import Qt.labs.platform 1.1
+
 
 import com.github.zaghaghi.pixelmodelmaker 1.0
 
@@ -54,7 +56,6 @@ Item {
                 icon.source: "qrc:/ui/images/ic_save_48px.svg"
 
                 onClicked: {
-                    console.log(GlobalState.fileName)
                     if (GlobalState.fileName === "") {
                         saveFileDialog.open()
                     }
@@ -66,6 +67,18 @@ Item {
                         }
                     }
 
+                }
+            }
+            ToolButton {
+                id: exportImage
+
+                text: qsTr("")
+                display: AbstractButton.IconOnly
+                icon.source: "qrc:/ui/images/camera_black_48dp.svg"
+                visible: viewMode == 2
+                onClicked: {
+                    exportImageDialog.file = ""
+                    exportImageDialog.open()
                 }
             }
             anchors.right: parent.right
@@ -248,6 +261,46 @@ Item {
         defaultSuffix: "json"
         nameFilters: ["JSON Files (*.json)"]
 
+    }
+
+    FileDialog {
+        id: exportImageDialog
+        folder: StandardPaths.writableLocation(StandardPaths.PicturesLocation)
+        fileMode: FileDialog.SaveFile
+        defaultSuffix: "png"
+        nameFilters:["PNG Image Files (*.png)"]
+
+        onFileChanged: {
+            let exportFileName = exportImageDialog.file.toString()
+
+            if (exportFileName === "") return
+            viewComponents.grabToImage(function(result) {
+                try {
+                    if (exportFileName.startsWith("file://")) {
+                        exportFileName = exportFileName.substr(7)
+                    }
+
+                    if (!result.saveToFile(exportFileName)) {
+                        errorDialog.open()
+                    }
+                } catch (exception) {
+                    errorDialog.open()
+                }
+            });
+
+        }
+    }
+
+    Dialog {
+        id: errorDialog
+        modal: true
+        standardButtons: Dialog.Ok
+        title: qsTr("Error Exporting Image")
+        Label {
+                text: "Can't save image right now!"
+        }
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
     }
 }
 
