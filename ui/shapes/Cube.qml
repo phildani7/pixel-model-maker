@@ -5,6 +5,7 @@ import Qt3D.Render 2.12
 Node {
     id: cubeNode
 
+    readonly property string name: "cube"
     property vector3d shapeColor: Qt.vector3d(0.8, 0, 0)
     property int depth: 1
 

@@ -3,7 +3,9 @@ import QtQuick.Controls 2.15
 import PixelModelMaker 1.0
 import QtQuick3D 1.15
 import QtQuick.Controls.Material 2.15
+import Qt.labs.platform 1.1
 
+import com.github.zaghaghi.pixelmodelmaker 1.0
 
 Item {
     property alias canvas: canvas
@@ -50,6 +52,21 @@ Item {
                 text: qsTr("")
                 display: AbstractButton.IconOnly
                 icon.source: "qrc:/ui/images/ic_save_48px.svg"
+
+                onClicked: {
+                    console.log(GlobalState.fileName)
+                    if (GlobalState.fileName === "") {
+                        saveFileDialog.open()
+                    }
+                    else {
+                        if (io.source !== GlobalState.fileName) {
+                            io.source = GlobalState.fileName
+                        } else {
+                            io.text = GlobalState.getSaveString()
+                        }
+                    }
+
+                }
             }
             anchors.right: parent.right
         }
@@ -154,10 +171,8 @@ Item {
                 icon.source: "qrc:/ui/images/ic_mode_edit_48px.svg"
                 display: AbstractButton.TextUnderIcon
                 Material.accent: Material.Cyan
-
-                Connections {
-                    target: drawButton
-                    onClicked: viewMode = 0
+                onClicked: {
+                   viewMode = 0
                 }
             }
 
@@ -172,10 +187,8 @@ Item {
                 icon.source: "qrc:/ui/images/layers_black_48dp.svg"
                 display: AbstractButton.TextUnderIcon
                 Material.accent: Material.Cyan
-
-                Connections {
-                    target: depthButton
-                    onClicked: viewMode = 1
+                onClicked: {
+                   viewMode = 1
                 }
             }
 
@@ -190,10 +203,8 @@ Item {
                 icon.source: "qrc:/ui/images/view_in_ar_black_48dp.svg"
                 display: AbstractButton.TextUnderIcon
                 Material.accent: Material.Cyan
-
-                Connections {
-                    target: viewButton
-                    onClicked: viewMode = 2
+                onClicked: {
+                   viewMode = 2
                 }
             }
 
@@ -208,12 +219,35 @@ Item {
                 icon.source: "qrc:/ui/images/ic_file_download_48px.svg"
                 display: AbstractButton.TextUnderIcon
                 Material.accent: Material.Cyan
-                Connections {
-                    target: exportButton
-                    onClicked: viewMode = 3
+                onClicked: {
+                   viewMode = 3
                 }
             }
         }
+    }
+
+    FileIO {
+        id: io
+        source: saveFileDialog.file
+
+        onSourceChanged: {
+             if (`${io.source}` === `.${saveFileDialog.defaultSuffix}`) return
+             GlobalState.fileName = io.source
+             io.text = GlobalState.getSaveString()
+        }
+
+        onTextChanged: {
+           io.write()
+       }
+    }
+
+    FileDialog {
+        id: saveFileDialog
+        folder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
+        fileMode: FileDialog.SaveFile
+        defaultSuffix: "json"
+        nameFilters: ["JSON Files (*.json)"]
+
     }
 }
 

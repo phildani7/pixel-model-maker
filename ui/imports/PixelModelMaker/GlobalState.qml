@@ -10,6 +10,53 @@ QtObject {
 
     property color selectedColor: Constants.defaultColorPalette[0]
 
+    property string fileName: ''
+
+    function getSaveString() {
+        return JSON.stringify({
+                    version: "1.0",
+                    palette: Constants.defaultColorPalette,
+                    width: gridWidth,
+                    height: gridHeight,
+                    pixels: pixelMap.map((row) => row.map((item) => {
+                        return {
+                            "color": item.color?item.color.toString():null,
+                            "depth": item.depth,
+                            "shape": item.shape?item.shape.name:null
+                        }
+                    }))
+        }, null, 2)
+    }
+
+    function setOpenString(jsonData, fileName) {
+        try {
+            let data = JSON.parse(jsonData)
+            if (data.version !== "1.0") {
+                console.log("invalid version")
+                return false
+            }
+            destroyPixelMap()
+            gridWidth = data.width
+            gridHeight = data.height
+            Constants.defaultColorPalette = data.palette
+            selectedColor = Constants.defaultColorPalette[0]
+            pixelMap = data.pixels.map((row) => row.map((item) => {
+                return {
+                    "color": item.color?Qt.color(item.color):null,
+                    "depth": item.depth,
+                    "shape": null, // find and create shape based on item.shape which is shape name
+                    "miniShape": null,
+
+                }
+            }))
+            GlobalState.fileName = fileName
+        } catch (exception) {
+            console.log(exception)
+            return false
+        }
+        return true
+    }
+
     function destroyPixelMap() {
         if (pixelMap === null || gridHeight === 0 || gridWidth === 0) {
             return
@@ -41,7 +88,7 @@ QtObject {
                                   "color": null,
                                   "depth": 0,
                                   "shape": null,
-                                  "miniShape": null
+                                  "miniShape": null,
                               })
             }
             pixelMap.push(pixelRow)

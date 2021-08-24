@@ -20,18 +20,27 @@ Pane {
         id: sizeSelector
         width: parent.width
         height: parent.height
-        buttonSize16.onClicked: pushGridPaint(16)
-        buttonSize24.onClicked: pushGridPaint(24)
-        buttonSize32.onClicked: pushGridPaint(32)
+        buttonSize16.onClicked: createGridPaint(16)
+        buttonSize24.onClicked: createGridPaint(24)
+        buttonSize32.onClicked: createGridPaint(32)
 
-        function pushGridPaint(size) {
-            GlobalState.destroyPixelMap()
-            GlobalState.createPixelMap(size, size)
-            gridPaint.viewMode = 0
+        function pushGridPaint() {
             stackView.push(gridPaint, StackView.Immediate)
+            gridPaint.viewMode = 0
             gridPaint.view.resetRotation()
             gridPaint.canvas.repaint()
             gridPaint.depth.repaint()
+        }
+
+        function createGridPaint(size) {
+            GlobalState.destroyPixelMap()
+            GlobalState.createPixelMap(size, size)
+            pushGridPaint()
+        }
+
+        onFileOpnedWithSuccessChanged: {
+            if (!sizeSelector.fileOpnedWithSuccess) return
+            pushGridPaint()
         }
     }
 
@@ -40,7 +49,10 @@ Pane {
         visible: false
         width: parent.width
         height: parent.height
-        backButton.onClicked: stackView.pop(StackView.Immediate)
+        backButton.onClicked: {
+            GlobalState.fileName = ""
+            stackView.pop(StackView.Immediate)
+        }
         onViewModeChanged: () => {
                                gridPaint.canvas.repaint()
                                gridPaint.depth.repaint()
