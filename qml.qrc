@@ -22,6 +22,7 @@
         <file>ui/images/layers_black_48dp.svg</file>
         <file>ui/images/view_in_ar_black_48dp.svg</file>
         <file>ui/images/open_in_browser_black_48dp.svg</file>
+        <file>ui/images/camera_black_48dp.svg</file>
         <file>ui/imports/PixelModelMaker/Constants.qml</file>
         <file>ui/imports/PixelModelMaker/DirectoryFontLoader.qml</file>
         <file>ui/imports/PixelModelMaker/GlobalState.qml</file>
