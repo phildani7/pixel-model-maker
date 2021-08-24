@@ -3,7 +3,9 @@ import QtQuick.Controls 2.15
 import PixelModelMaker 1.0
 import QtQuick3D 1.15
 import QtQuick.Controls.Material 2.15
+import Qt.labs.platform 1.1
 
+import com.github.zaghaghi.pixelmodelmaker 1.0
 
 Item {
     property alias canvas: canvas
@@ -50,6 +52,16 @@ Item {
                 text: qsTr("")
                 display: AbstractButton.IconOnly
                 icon.source: "qrc:/ui/images/ic_save_48px.svg"
+
+                onClicked: () => {
+                    if (GlobalState.fileName === "") {
+                        saveFileDialog.open()
+                    }
+                    else {
+                        io.text = GlobalState.getSaveString()
+                    }
+
+                }
             }
             anchors.right: parent.right
         }
@@ -214,6 +226,30 @@ Item {
                 }
             }
         }
+    }
+
+    FileIO {
+        id: io
+        source: saveFileDialog.file
+
+        onSourceChanged: () => {
+             if (`${io.source}` === `.${saveFileDialog.defaultSuffix}`) return
+             GlobalState.fileName = io.source
+             io.text = GlobalState.getSaveString()
+        }
+
+        onTextChanged: () => {
+           io.write()
+       }
+    }
+
+    FileDialog {
+        id: saveFileDialog
+        folder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
+        fileMode: FileDialog.SaveFile
+        defaultSuffix: "json"
+        nameFilters: ["JSON Files (*.json)"]
+
     }
 }
 

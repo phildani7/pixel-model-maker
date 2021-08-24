@@ -10,6 +10,23 @@ QtObject {
 
     property color selectedColor: Constants.defaultColorPalette[0]
 
+    property string fileName: ''
+
+    function getSaveString() {
+        return JSON.stringify({
+                    palette: Constants.defaultColorPalette,
+                    width: gridWidth,
+                    height: gridHeight,
+                    pixels: pixelMap.map((row) => row.map((item) => {
+                        return {
+                            "color": item.color?item.color.toString():null,
+                            "depth": item.depth,
+                            "shape": item.shape?item.shape.name:null
+                        }
+                    }))
+        }, null, 2)
+    }
+
     function destroyPixelMap() {
         if (pixelMap === null || gridHeight === 0 || gridWidth === 0) {
             return
@@ -41,7 +58,7 @@ QtObject {
                                   "color": null,
                                   "depth": 0,
                                   "shape": null,
-                                  "miniShape": null
+                                  "miniShape": null,
                               })
             }
             pixelMap.push(pixelRow)

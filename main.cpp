@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QtQuick>
+#include "fileio.h"
 
 int main(int argc, char *argv[])
 {
@@ -10,6 +11,8 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
+
+    qmlRegisterType<FileIO>("com.github.zaghaghi.pixelmodelmaker", 1, 0, "FileIO");
     QQuickView view;
     view.setTitle("Pixel Model Maker");
     view.engine()->addImportPath("qrc:/ui/imports");
