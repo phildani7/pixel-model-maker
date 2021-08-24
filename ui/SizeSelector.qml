@@ -1,8 +1,10 @@
+import Qt.labs.platform 1.1
+
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import PixelModelMaker 1.0
 import QtQuick.Controls.Material 2.15
-import Qt.labs.platform 1.1
+
 
 import com.github.zaghaghi.pixelmodelmaker 1.0
 
@@ -124,6 +126,7 @@ Rectangle {
         onTextChanged: {
            if (!GlobalState.setOpenString(io.text, io.source)) {
                // TODO: show a dialog to inform the user file is not supported
+               errorDialog.open()
                return
            }
            fileOpnedWithSuccess = true
@@ -138,7 +141,17 @@ Rectangle {
         nameFilters: ["JSON Files (*.json)"]
 
     }
-
+    Dialog {
+        id: errorDialog
+        modal: true
+        standardButtons: Dialog.Ok
+        title: qsTr("Error Loading File")
+        Label {
+                text: "The selected file is invalid or have incompatible version"
+        }
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
+    }
 }
 
 /*##^##
