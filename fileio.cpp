@@ -32,6 +32,12 @@ void FileIO::write() {
   }
 }
 
+void FileIO::reset()
+{
+    m_source = "";
+    m_text = "";
+}
+
 QUrl FileIO::source() const
 {
     return m_source;

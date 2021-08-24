@@ -21,6 +21,7 @@
         <file>ui/images/ic_save_48px.svg</file>
         <file>ui/images/layers_black_48dp.svg</file>
         <file>ui/images/view_in_ar_black_48dp.svg</file>
+        <file>ui/images/open_in_browser_black_48dp.svg</file>
         <file>ui/imports/PixelModelMaker/Constants.qml</file>
         <file>ui/imports/PixelModelMaker/DirectoryFontLoader.qml</file>
         <file>ui/imports/PixelModelMaker/GlobalState.qml</file>
@@ -36,7 +37,7 @@
         <file>ui/PixelModelMaker.qmlproject</file>
         <file>ui/PixelModelMaker.qmlproject.qtds</file>
         <file>ui/qtquickcontrols2.conf</file>
-        <file>ui/SizeSelector.ui.qml</file>
+        <file>ui/SizeSelector.qml</file>
         <file>ui/ViewModel.qml</file>
         <file>ui/GridPaint.qml</file>
     </qresource>

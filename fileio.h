@@ -14,6 +14,7 @@ public:
 
   Q_INVOKABLE void read();
   Q_INVOKABLE void write();
+  Q_INVOKABLE void reset();
 
   QUrl source() const;
   QString text() const;
