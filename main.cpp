@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QtQuick>
 #include "fileio.h"
+#include "gltfexport.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,6 +14,7 @@ int main(int argc, char *argv[])
 
 
     qmlRegisterType<FileIO>("com.github.zaghaghi.pixelmodelmaker", 1, 0, "FileIO");
+    qmlRegisterType<GLTFExport>("com.github.zaghaghi.pixelmodelmaker", 1, 0, "GltfExport");
     QQuickView view;
     view.setTitle("Pixel Model Maker");
     view.engine()->addImportPath("qrc:/ui/imports");

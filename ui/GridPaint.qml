@@ -81,6 +81,17 @@ Item {
                     exportImageDialog.open()
                 }
             }
+            ToolButton {
+                id: export3d
+
+                text: qsTr("")
+                display: AbstractButton.IconOnly
+                icon.source: "qrc:/ui/images/ic_file_download_48px.svg"
+                visible: viewMode == 2
+                onClicked: {
+                    exporter.write("/tmp/export.gltf", GlobalState.getSaveObject())
+                }
+            }
             anchors.right: parent.right
         }
     }
@@ -301,6 +312,18 @@ Item {
         }
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
+    }
+
+    GltfExport {
+        id: exporter
+
+        onExported: {
+            console.log("file exported successfully!")
+        }
+
+        onError: {
+
+        }
     }
 }
 
