@@ -17,6 +17,9 @@ PixelModelMaker is an opensource clone of [KenShape](https://tools.kenney.nl/ken
 * Model Optimization
 * Automatic Depth
 
+# Dependencies
+* Qt6
+
 # Screenshots
 
 Screen | Image
