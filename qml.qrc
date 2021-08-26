@@ -41,5 +41,6 @@
         <file>ui/SizeSelector.qml</file>
         <file>ui/ViewModel.qml</file>
         <file>ui/GridPaint.qml</file>
+        <file>ui/exports/cube.gltf</file>
     </qresource>
 </RCC>

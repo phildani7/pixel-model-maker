@@ -12,8 +12,9 @@ QtObject {
 
     property string fileName: ''
 
-    function getSaveString() {
-        return JSON.stringify({
+
+    function getSaveObject() {
+        return {
                     version: "1.0",
                     palette: Constants.defaultColorPalette,
                     width: gridWidth,
@@ -25,7 +26,11 @@ QtObject {
                             "shape": item.shape?item.shape.name:null
                         }
                     }))
-        }, null, 2)
+        }
+    }
+
+    function getSaveString() {
+        return JSON.stringify(getSaveObject(), null, 2)
     }
 
     function setOpenString(jsonData, fileName) {

@@ -81,6 +81,18 @@ Item {
                     exportImageDialog.open()
                 }
             }
+            ToolButton {
+                id: export3d
+
+                text: qsTr("")
+                display: AbstractButton.IconOnly
+                icon.source: "qrc:/ui/images/ic_file_download_48px.svg"
+                visible: viewMode == 2
+                onClicked: {
+                    exportModelDialog.file = ""
+                    exportModelDialog.open()
+                }
+            }
             anchors.right: parent.right
         }
     }
@@ -281,10 +293,10 @@ Item {
                     }
 
                     if (!result.saveToFile(exportFileName)) {
-                        errorDialog.open()
+                        exportImageErrorDialog.open()
                     }
                 } catch (exception) {
-                    errorDialog.open()
+                    exportImageErrorDialog.open()
                 }
             });
 
@@ -292,12 +304,63 @@ Item {
     }
 
     Dialog {
-        id: errorDialog
+        id: exportImageErrorDialog
         modal: true
         standardButtons: Dialog.Ok
         title: qsTr("Error Exporting Image")
         Label {
                 text: "Can't save image right now!"
+        }
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
+    }
+
+    GltfExport {
+        id: exporter
+
+        onExported: {
+            exportModelInfoDialog.open()
+        }
+
+        onError: (fileName, errorMsg) => {
+            exportModelErrorDialog.open()
+        }
+    }
+
+    FileDialog {
+        id: exportModelDialog
+        folder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
+        fileMode: FileDialog.SaveFile
+        defaultSuffix: "gltf"
+        nameFilters:["glTF 2.0 (*.gltf)"]
+
+        onFileChanged: {
+            let exportFileName = exportModelDialog.file.toString()
+
+            if (exportFileName === "") return
+            exporter.write(exportFileName, GlobalState.getSaveObject())
+        }
+    }
+
+    Dialog {
+        id: exportModelErrorDialog
+        modal: true
+        standardButtons: Dialog.Ok
+        title: qsTr("Error Exporting 3D Model")
+        Label {
+                text: "Can't export 3d model right now!"
+        }
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
+    }
+
+    Dialog {
+        id: exportModelInfoDialog
+        modal: true
+        standardButtons: Dialog.Ok
+        title: qsTr("Model Exported")
+        Label {
+                text: "Model exported successfully"
         }
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
