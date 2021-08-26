@@ -28,7 +28,9 @@
         <file>ui/imports/PixelModelMaker/GlobalState.qml</file>
         <file>ui/imports/PixelModelMaker/qmldir</file>
         <file>ui/shapes/meshes/cube.mesh</file>
+        <file>ui/shapes/meshes/tricube.mesh</file>
         <file>ui/shapes/Cube.qml</file>
+        <file>ui/shapes/Tricube.qml</file>
         <file>ui/ColorPalette.qml</file>
         <file>ui/DepthCanvas.qml</file>
         <file>ui/DrawCanvas.qml</file>
@@ -42,5 +44,6 @@
         <file>ui/ViewModel.qml</file>
         <file>ui/GridPaint.qml</file>
         <file>ui/exports/cube.gltf</file>
+        <file>ui/exports/tricube.gltf</file>
     </qresource>
 </RCC>
