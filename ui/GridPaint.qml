@@ -89,7 +89,8 @@ Item {
                 icon.source: "qrc:/ui/images/ic_file_download_48px.svg"
                 visible: viewMode == 2
                 onClicked: {
-                    exporter.write("/tmp/export.gltf", GlobalState.getSaveObject())
+                    exportModelDialog.file = ""
+                    exportModelDialog.open()
                 }
             }
             anchors.right: parent.right
@@ -292,10 +293,10 @@ Item {
                     }
 
                     if (!result.saveToFile(exportFileName)) {
-                        errorDialog.open()
+                        exportImageErrorDialog.open()
                     }
                 } catch (exception) {
-                    errorDialog.open()
+                    exportImageErrorDialog.open()
                 }
             });
 
@@ -303,7 +304,7 @@ Item {
     }
 
     Dialog {
-        id: errorDialog
+        id: exportImageErrorDialog
         modal: true
         standardButtons: Dialog.Ok
         title: qsTr("Error Exporting Image")
@@ -318,12 +319,51 @@ Item {
         id: exporter
 
         onExported: {
-            console.log("file exported successfully!")
+            exportModelInfoDialog.open()
         }
 
-        onError: {
-
+        onError: (fileName, errorMsg) => {
+            exportModelErrorDialog.open()
         }
+    }
+
+    FileDialog {
+        id: exportModelDialog
+        folder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
+        fileMode: FileDialog.SaveFile
+        defaultSuffix: "gltf"
+        nameFilters:["glTF 2.0 (*.gltf)"]
+
+        onFileChanged: {
+            let exportFileName = exportModelDialog.file.toString()
+
+            if (exportFileName === "") return
+            exporter.write(exportFileName, GlobalState.getSaveObject())
+        }
+    }
+
+    Dialog {
+        id: exportModelErrorDialog
+        modal: true
+        standardButtons: Dialog.Ok
+        title: qsTr("Error Exporting 3D Model")
+        Label {
+                text: "Can't export 3d model right now!"
+        }
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
+    }
+
+    Dialog {
+        id: exportModelInfoDialog
+        modal: true
+        standardButtons: Dialog.Ok
+        title: qsTr("Model Exported")
+        Label {
+                text: "Model exported successfully"
+        }
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
     }
 }
 
