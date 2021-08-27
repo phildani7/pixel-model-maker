@@ -50,5 +50,11 @@
         <file>ui/exports/tricube90.gltf</file>
         <file>ui/shapes/meshes/tricube90.mesh</file>
         <file>ui/shapes/Tricube90.qml</file>
+        <file>ui/exports/tricube180.gltf</file>
+        <file>ui/exports/tricube270.gltf</file>
+        <file>ui/shapes/meshes/tricube180.mesh</file>
+        <file>ui/shapes/meshes/tricube270.mesh</file>
+        <file>ui/shapes/Tricube180.qml</file>
+        <file>ui/shapes/Tricube270.qml</file>
     </qresource>
 </RCC>
