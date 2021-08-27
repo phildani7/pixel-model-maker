@@ -6,7 +6,6 @@ import PixelModelMaker 1.0
 import QtQuick3D 1.15
 import QtQuick.Controls.Material 2.15
 
-
 import com.github.zaghaghi.pixelmodelmaker 1.0
 
 Item {
@@ -58,15 +57,13 @@ Item {
                 onClicked: {
                     if (GlobalState.fileName === "") {
                         saveFileDialog.open()
-                    }
-                    else {
+                    } else {
                         if (io.source !== GlobalState.fileName) {
                             io.source = GlobalState.fileName
                         } else {
                             io.text = GlobalState.getSaveString()
                         }
                     }
-
                 }
             }
             ToolButton {
@@ -115,9 +112,20 @@ Item {
             }
 
             ColorPalette {
+                id: colorPalette
                 width: 170
                 height: 300
-                anchors.verticalCenter: parent.verticalCenter
+                anchors.top: parent.top
+                anchors.topMargin: 20
+                anchors.right: parent.right
+                anchors.rightMargin: 20
+            }
+
+            ShapePalette {
+                width: 170
+                height: 170
+                anchors.top: colorPalette.bottom
+                anchors.topMargin: 20
                 anchors.right: parent.right
                 anchors.rightMargin: 20
             }
@@ -155,7 +163,7 @@ Item {
         }
 
         Item {
-            id: miniViewCompoent
+            id: miniViewComponent
             visible: viewMode != 2
             anchors.fill: parent
             MiniViewModel {
@@ -197,7 +205,7 @@ Item {
                 display: AbstractButton.TextUnderIcon
                 Material.accent: Material.Cyan
                 onClicked: {
-                   viewMode = 0
+                    viewMode = 0
                 }
             }
 
@@ -213,7 +221,7 @@ Item {
                 display: AbstractButton.TextUnderIcon
                 Material.accent: Material.Cyan
                 onClicked: {
-                   viewMode = 1
+                    viewMode = 1
                 }
             }
 
@@ -229,7 +237,7 @@ Item {
                 display: AbstractButton.TextUnderIcon
                 Material.accent: Material.Cyan
                 onClicked: {
-                   viewMode = 2
+                    viewMode = 2
                 }
             }
 
@@ -245,7 +253,7 @@ Item {
                 display: AbstractButton.TextUnderIcon
                 Material.accent: Material.Cyan
                 onClicked: {
-                   viewMode = 3
+                    viewMode = 3
                 }
             }
         }
@@ -256,14 +264,15 @@ Item {
         source: saveFileDialog.file
 
         onSourceChanged: {
-             if (`${io.source}` === `.${saveFileDialog.defaultSuffix}`) return
-             GlobalState.fileName = io.source
-             io.text = GlobalState.getSaveString()
+            if (`${io.source}` === `.${saveFileDialog.defaultSuffix}`)
+                return
+            GlobalState.fileName = io.source
+            io.text = GlobalState.getSaveString()
         }
 
         onTextChanged: {
-           io.write()
-       }
+            io.write()
+        }
     }
 
     FileDialog {
@@ -272,7 +281,6 @@ Item {
         fileMode: FileDialog.SaveFile
         defaultSuffix: "json"
         nameFilters: ["JSON Files (*.json)"]
-
     }
 
     FileDialog {
@@ -280,13 +288,14 @@ Item {
         folder: StandardPaths.writableLocation(StandardPaths.PicturesLocation)
         fileMode: FileDialog.SaveFile
         defaultSuffix: "png"
-        nameFilters:["PNG Image Files (*.png)"]
+        nameFilters: ["PNG Image Files (*.png)"]
 
         onFileChanged: {
             let exportFileName = exportImageDialog.file.toString()
 
-            if (exportFileName === "") return
-            viewComponents.grabToImage(function(result) {
+            if (exportFileName === "")
+                return
+            viewComponents.grabToImage(function (result) {
                 try {
                     if (exportFileName.startsWith("file://")) {
                         exportFileName = exportFileName.substr(7)
@@ -298,8 +307,7 @@ Item {
                 } catch (exception) {
                     exportImageErrorDialog.open()
                 }
-            });
-
+            })
         }
     }
 
@@ -309,7 +317,7 @@ Item {
         standardButtons: Dialog.Ok
         title: qsTr("Error Exporting Image")
         Label {
-                text: "Can't save image right now!"
+            text: "Can't save image right now!"
         }
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
@@ -323,8 +331,8 @@ Item {
         }
 
         onError: (fileName, errorMsg) => {
-            exportModelErrorDialog.open()
-        }
+                     exportModelErrorDialog.open()
+                 }
     }
 
     FileDialog {
@@ -332,12 +340,13 @@ Item {
         folder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
         fileMode: FileDialog.SaveFile
         defaultSuffix: "gltf"
-        nameFilters:["glTF 2.0 (*.gltf)"]
+        nameFilters: ["glTF 2.0 (*.gltf)"]
 
         onFileChanged: {
             let exportFileName = exportModelDialog.file.toString()
 
-            if (exportFileName === "") return
+            if (exportFileName === "")
+                return
             exporter.write(exportFileName, GlobalState.getSaveObject())
         }
     }
@@ -348,7 +357,7 @@ Item {
         standardButtons: Dialog.Ok
         title: qsTr("Error Exporting 3D Model")
         Label {
-                text: "Can't export 3d model right now!"
+            text: "Can't export 3d model right now!"
         }
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
@@ -360,16 +369,16 @@ Item {
         standardButtons: Dialog.Ok
         title: qsTr("Model Exported")
         Label {
-                text: "Model exported successfully"
+            text: "Model exported successfully"
         }
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
     }
 }
 
-
 /*##^##
 Designer {
     D{i:0;autoSize:true;height:480;width:640}
 }
 ##^##*/
+

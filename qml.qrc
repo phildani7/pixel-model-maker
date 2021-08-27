@@ -45,6 +45,10 @@
         <file>ui/GridPaint.qml</file>
         <file>ui/exports/cube.gltf</file>
         <file>ui/exports/tricube.gltf</file>
+        <file>ui/ShapePalette.qml</file>
         <file>ui/imports/PixelModelMaker/ShapeCollection.qml</file>
+        <file>ui/exports/tricube90.gltf</file>
+        <file>ui/shapes/meshes/tricube90.mesh</file>
+        <file>ui/shapes/Tricube90.qml</file>
     </qresource>
 </RCC>

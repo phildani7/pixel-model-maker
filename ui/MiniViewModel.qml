@@ -111,6 +111,11 @@ Pane {
                             if (pixel.depth !== pixel.miniShape.depth) {
                                 pixel.miniShape.depth = pixel.depth
                             }
+                            if (pixel.shapeName !== pixel.miniShape.name) {
+                                pixel.miniShape.destroy()
+                                pixel.miniShape = createShape(
+                                            row, col, gridModelContainer)
+                            }
                         }
                     }
 

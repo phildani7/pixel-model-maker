@@ -79,6 +79,11 @@ Item {
                         if (pixel.depth !== pixel.shape.depth) {
                             pixel.shape.depth = pixel.depth
                         }
+                        if (pixel.shapeName !== pixel.shape.name) {
+                            pixel.shape.destroy()
+                            pixel.shape = createShape(row, col,
+                                                      gridModelContainer)
+                        }
                     }
                 }
 

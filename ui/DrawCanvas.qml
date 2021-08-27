@@ -28,15 +28,14 @@ Pane {
                 const cellSize = width / GlobalState.gridWidth
                 for (var i = 0; i < GlobalState.gridHeight; ++i) {
                     for (var j = 0; j < GlobalState.gridWidth; ++j) {
+                        ctx.fillStyle = (i + j) % 2 ? black : white
+                        ctx.fillRect(i * cellSize, j * cellSize,
+                                     cellSize, cellSize)
                         if (GlobalState.pixelMap[j][i].color) {
                             ctx.fillStyle = GlobalState.pixelMap[j][i].color
                             ShapeCollection.shapes[GlobalState.pixelMap[j][i].shapeName].draw(
                                         ctx, i * cellSize, j * cellSize,
                                         cellSize, cellSize)
-                        } else {
-                            ctx.fillStyle = (i + j) % 2 ? black : white
-                            ctx.fillRect(i * cellSize, j * cellSize,
-                                         cellSize, cellSize)
                         }
                     }
                 }
