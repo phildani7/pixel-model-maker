@@ -3,11 +3,8 @@ import PixelModelMaker 1.0
 import QtQuick.Controls.Material 2.15
 import QtQuick.Controls 2.15
 
-
 Pane {
     padding: 0
-    width: Constants.width
-    height: Constants.height
     Material.theme: Material.Dark
 
     StackView {
@@ -39,7 +36,8 @@ Pane {
         }
 
         onFileOpnedWithSuccessChanged: {
-            if (!sizeSelector.fileOpnedWithSuccess) return
+            if (!sizeSelector.fileOpnedWithSuccess)
+                return
             pushGridPaint()
         }
     }
