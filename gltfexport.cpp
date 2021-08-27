@@ -2,6 +2,7 @@
 
 #include <QColor>
 #include <QJsonObject>
+#include <algorithm>
 
 GLTFExport::GLTFExport(QObject *) {}
 
@@ -163,17 +164,19 @@ void GLTFExport::insertNodes(QJsonObject &exportModel,
   // insert all the nodes with ids related to other part of the gltf
   QJsonArray nodesDef;
   for (int i = 0; i < nodes.size(); ++i) {
-    QJsonObject nodeDef{{"mesh", nodes[i].mesh},
-                        {"translation", QJsonArray{nodes[i].row * 2 + 1,
-                                                   nodes[i].col * 2 + 1, 0}},
-                        {"scale", QJsonArray{1, 1, 2 * nodes[i].depth - 1}}};
+    QJsonObject nodeDef{
+        {"mesh", nodes[i].mesh},
+        {"translation",
+         QJsonArray{nodes[i].row * 2 + 1, nodes[i].col * 2 + 1, 0}},
+        {"rotation", QJsonArray{0, 0, 0.7071068286895752, 0.7071068286895752}},
+        {"scale", QJsonArray{1, 1, 2 * nodes[i].depth - 1}}};
     nodesDef.append(nodeDef);
   }
 
   /*
    * insert one additional node for final adjustments like translation and
-   * rotations all other nodes added to the children of this node, and this node
-   * is the only node in the scene
+   * rotations all other nodes added to the children of this node, and this
+   * node is the only node in the scene
    */
 
   QJsonArray scenesNodes;
@@ -188,7 +191,7 @@ void GLTFExport::insertNodes(QJsonObject &exportModel,
 void GLTFExport::insertMeshes(QJsonObject &exportModel,
                               const QVector<QPair<int, int>> meshes) {
   /* INFO: the only assumption is that every shape should have exactly
-   *       1 buffer, 3 bufferviews and 3 accessors
+   *       3 accessors
    */
 
   /* WARNING: for now its only working with one shape wich is cube
@@ -222,19 +225,46 @@ bool GLTFExport::insertShapeData(QJsonObject &exportModel,
    * adjust all the refrences in accessors and buffer views
    * for now it only support one shape so we only use shape[0]
    */
-  QFile shapeFile(":/ui/exports/" + shapes[0] + ".gltf");
-  if (!shapeFile.exists()) {
-    return false;
-  }
-  if (!shapeFile.open(QIODevice::ReadOnly)) {
-    return false;
-  }
+  QJsonArray modelBuffers;
+  QJsonArray modelBufferViews;
+  QJsonArray modelAccessors;
+  for (int i = 0; i < shapes.size(); ++i) {
+    int bufferOffset = modelBuffers.size();
+    int bufferViewOffset = modelBufferViews.size();
 
-  QJsonObject shapeDef = QJsonDocument::fromJson(shapeFile.readAll()).object();
-  exportModel.insert("buffers", shapeDef.take("buffers"));
-  exportModel.insert("bufferViews", shapeDef.take("bufferViews"));
-  exportModel.insert("accessors", shapeDef.take("accessors"));
-  shapeFile.close();
+    QFile shapeFile(":/ui/exports/" + shapes[i] + ".gltf");
+    if (!shapeFile.exists()) {
+      return false;
+    }
+    if (!shapeFile.open(QIODevice::ReadOnly)) {
+      return false;
+    }
+
+    QJsonObject shapeDef =
+        QJsonDocument::fromJson(shapeFile.readAll()).object();
+    QJsonArray buffers = shapeDef.take("buffers").toArray();
+    std::copy(buffers.begin(), buffers.end(), std::back_inserter(modelBuffers));
+
+    QJsonArray bufferViews = shapeDef.take("bufferViews").toArray();
+    for (auto it = bufferViews.begin(); it != bufferViews.end(); ++it) {
+      QJsonObject view = it->toObject();
+      view["buffer"] = view["buffer"].toInt() + bufferOffset;
+      modelBufferViews.append(view);
+    }
+
+    QJsonArray accessors = shapeDef.take("accessors").toArray();
+    for (auto it = accessors.begin(); it != accessors.end(); ++it) {
+      QJsonObject acc = it->toObject();
+      acc["bufferView"] = acc["bufferView"].toInt() + bufferViewOffset;
+      modelAccessors.append(acc);
+    }
+
+    shapeFile.close();
+  }
+  exportModel.insert("buffers", modelBuffers);
+  exportModel.insert("bufferViews", modelBufferViews);
+  exportModel.insert("accessors", modelAccessors);
+
   return true;
 }
 
