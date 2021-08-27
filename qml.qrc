@@ -68,5 +68,17 @@
         <file>ui/shapes/Cutcube180.qml</file>
         <file>ui/shapes/Cutcube270.qml</file>
         <file>ui/shapes/Cutcube90.qml</file>
+        <file>ui/exports/half.gltf</file>
+        <file>ui/exports/half180.gltf</file>
+        <file>ui/exports/half270.gltf</file>
+        <file>ui/exports/half90.gltf</file>
+        <file>ui/shapes/meshes/half.mesh</file>
+        <file>ui/shapes/meshes/half180.mesh</file>
+        <file>ui/shapes/meshes/half270.mesh</file>
+        <file>ui/shapes/meshes/half90.mesh</file>
+        <file>ui/shapes/Half.qml</file>
+        <file>ui/shapes/Half180.qml</file>
+        <file>ui/shapes/Half270.qml</file>
+        <file>ui/shapes/Half90.qml</file>
     </qresource>
 </RCC>

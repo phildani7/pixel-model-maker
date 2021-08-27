@@ -221,6 +221,106 @@ QtObject {
                 ctx.fill()
             },
             "next": "cutcube"
+        },
+        "half": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Half.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.moveTo(x, y)
+                ctx.lineTo(x + w / 2, y)
+                ctx.lineTo(x + w / 2, y + h)
+                ctx.lineTo(x, y + h)
+                ctx.lineTo(x, y)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "half90"
+        },
+        "half90": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Half90.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.moveTo(x, y)
+                ctx.lineTo(x + w, y)
+                ctx.lineTo(x + w, y + h / 2)
+                ctx.lineTo(x, y + h / 2)
+                ctx.lineTo(x, y)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "half180"
+        },
+        "half180": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Half180.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.moveTo(x + w / 2, y)
+                ctx.lineTo(x + w, y)
+                ctx.lineTo(x + w, y + h)
+                ctx.lineTo(x + w / 2, y + h)
+                ctx.lineTo(x + w / 2, y)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "half270"
+        },
+        "half270": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Half270.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.moveTo(x, y + h / 2)
+                ctx.lineTo(x + w, y + h / 2)
+                ctx.lineTo(x + w, y + h)
+                ctx.lineTo(x, y + h)
+                ctx.lineTo(x, y + h / 2)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "half"
         }
     }
 }
