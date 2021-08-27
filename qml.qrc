@@ -56,5 +56,17 @@
         <file>ui/shapes/meshes/tricube270.mesh</file>
         <file>ui/shapes/Tricube180.qml</file>
         <file>ui/shapes/Tricube270.qml</file>
+        <file>ui/exports/cutcube.gltf</file>
+        <file>ui/exports/cutcube180.gltf</file>
+        <file>ui/exports/cutcube270.gltf</file>
+        <file>ui/exports/cutcube90.gltf</file>
+        <file>ui/shapes/meshes/cutcube.mesh</file>
+        <file>ui/shapes/meshes/cutcube180.mesh</file>
+        <file>ui/shapes/meshes/cutcube270.mesh</file>
+        <file>ui/shapes/meshes/cutcube90.mesh</file>
+        <file>ui/shapes/Cutcube.qml</file>
+        <file>ui/shapes/Cutcube180.qml</file>
+        <file>ui/shapes/Cutcube270.qml</file>
+        <file>ui/shapes/Cutcube90.qml</file>
     </qresource>
 </RCC>
