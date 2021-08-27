@@ -12,7 +12,7 @@ Node {
     Model {
         id: cube
         source: "qrc:/ui/shapes/meshes/cube.mesh"
-        scale: Qt.vector3d(25, 25, 25 * depth)
+        scale: Qt.vector3d(25, 25, 25 * (2 * depth - 1))
         materials: [
             DefaultMaterial {
                 diffuseColor: Qt.rgba(shapeColor.x, shapeColor.y,

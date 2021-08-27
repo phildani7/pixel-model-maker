@@ -1,3 +1,4 @@
 singleton Constants 1.0 Constants.qml
 EventListSimulator 1.0 EventListSimulator.qml
 singleton GlobalState 1.0 GlobalState.qml
+singleton ShapeCollection 1.0 ShapeCollection.qml
