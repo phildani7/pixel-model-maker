@@ -5,31 +5,44 @@ import PixelModelMaker 1.0
 
 QtObject {
     readonly property var shapes: {
-        "cube":{
-            create: (parent, x, y, color, depth) => {
+        "cube": {
+            "create": (parent, x, y, color, depth) => {
                 var cubeComponent = Qt.createComponent(
-                            "qrc:/ui/shapes/Cube.qml")
+                    "qrc:/ui/shapes/Cube.qml")
 
                 return cubeComponent.createObject(parent, {
-                                                              "x": x,
-                                                              "y": y,
-                                                              "z": 0,
-                                                              "shapeColor": color,
-                                                              "depth": depth
-                                                          })
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
             },
-            draw: (ctx, x, y, w, h) => {
+            "draw": (ctx, x, y, w, h) => {
                 ctx.fillRect(x, y, w, h)
             }
         },
-        "tricube":{
-            create: () => {
+        "tricube": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Tricube.qml")
 
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
             },
-            draw: () => {
-
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.moveTo(x, y)
+                ctx.lineTo(x, y + h)
+                ctx.lineTo(x + w, y + h)
+                ctx.lineTo(x, y)
+                ctx.fill()
             }
         }
     }
-
 }
