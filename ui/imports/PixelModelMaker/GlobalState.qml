@@ -10,6 +10,7 @@ QtObject {
 
     property color selectedColor: Constants.defaultColorPalette[0]
     property string selectedShape: "cube"
+    property double depthScaleFactor: 1.0
 
     property string fileName: ''
 

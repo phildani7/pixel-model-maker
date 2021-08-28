@@ -34,7 +34,6 @@
         <file>ui/ColorPalette.qml</file>
         <file>ui/DepthCanvas.qml</file>
         <file>ui/DrawCanvas.qml</file>
-        <file>ui/ExportModel.qml</file>
         <file>ui/MiniViewModel.qml</file>
         <file>ui/PixelModelMaker.qml</file>
         <file>ui/PixelModelMaker.qmlproject</file>
