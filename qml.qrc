@@ -116,5 +116,17 @@
         <file>ui/shapes/Roundcube180.qml</file>
         <file>ui/shapes/Roundcube270.qml</file>
         <file>ui/shapes/Roundcube90.qml</file>
+        <file>ui/exports/roundpoint.gltf</file>
+        <file>ui/exports/roundpoint180.gltf</file>
+        <file>ui/exports/roundpoint270.gltf</file>
+        <file>ui/exports/roundpoint90.gltf</file>
+        <file>ui/shapes/meshes/roundpoint.mesh</file>
+        <file>ui/shapes/meshes/roundpoint180.mesh</file>
+        <file>ui/shapes/meshes/roundpoint270.mesh</file>
+        <file>ui/shapes/meshes/roundpoint90.mesh</file>
+        <file>ui/shapes/Roundpoint.qml</file>
+        <file>ui/shapes/Roundpoint180.qml</file>
+        <file>ui/shapes/Roundpoint270.qml</file>
+        <file>ui/shapes/Roundpoint90.qml</file>
     </qresource>
 </RCC>

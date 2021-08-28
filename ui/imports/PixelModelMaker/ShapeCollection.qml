@@ -612,6 +612,105 @@ QtObject {
                 ctx.fill()
             },
             "next": "roundcube"
+        },
+        "roundpoint": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Roundpoint.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.moveTo(x, y)
+                ctx.lineTo(x + w / 2, y)
+                ctx.arc(x + w / 2, y + h / 2, w / 2,
+                        3 * Math.PI / 2, Math.PI / 2)
+                ctx.lineTo(x, y + h)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "roundpoint90"
+        },
+        "roundpoint90": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Roundpoint90.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.moveTo(x, y)
+                ctx.lineTo(x + w, y)
+                ctx.lineTo(x + w, y + h / 2)
+                ctx.arc(x + w / 2, y + h / 2, w / 2, 0, Math.PI)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "roundpoint180"
+        },
+        "roundpoint180": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Roundpoint180.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.moveTo(x + w / 2, y)
+                ctx.lineTo(x + w, y)
+                ctx.lineTo(x + w, y + h)
+                ctx.lineTo(x + w / 2, y + h)
+                ctx.arc(x + w / 2, y + h / 2, w / 2, Math.PI / 2,
+                        3 * Math.PI / 2)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "roundpoint270"
+        },
+        "roundpoint270": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Roundpoint270.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.moveTo(x + w, y + h / 2)
+                ctx.lineTo(x + w, y + h)
+                ctx.lineTo(x, y + h)
+                ctx.arc(x + w / 2, y + h / 2, w / 2, Math.PI, 0)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "roundpoint"
         }
     }
 }
