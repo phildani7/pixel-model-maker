@@ -104,5 +104,17 @@
         <file>ui/shapes/Point180.qml</file>
         <file>ui/shapes/Point270.qml</file>
         <file>ui/shapes/Point90.qml</file>
+        <file>ui/exports/roundcube.gltf</file>
+        <file>ui/exports/roundcube180.gltf</file>
+        <file>ui/exports/roundcube270.gltf</file>
+        <file>ui/exports/roundcube90.gltf</file>
+        <file>ui/shapes/meshes/roundcube.mesh</file>
+        <file>ui/shapes/meshes/roundcube180.mesh</file>
+        <file>ui/shapes/meshes/roundcube270.mesh</file>
+        <file>ui/shapes/meshes/roundcube90.mesh</file>
+        <file>ui/shapes/Roundcube.qml</file>
+        <file>ui/shapes/Roundcube180.qml</file>
+        <file>ui/shapes/Roundcube270.qml</file>
+        <file>ui/shapes/Roundcube90.qml</file>
     </qresource>
 </RCC>
