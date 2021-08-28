@@ -321,6 +321,93 @@ QtObject {
                 ctx.fill()
             },
             "next": "half"
+        },
+        "pie": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent("qrc:/ui/shapes/Pie.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.arc(x, y + h, w, 3 * Math.PI / 2, 0)
+                ctx.lineTo(x, y + h)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "pie90"
+        },
+        "pie90": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Pie90.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.arc(x, y, w, 0, Math.PI / 2)
+                ctx.lineTo(x, y)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "pie180"
+        },
+        "pie180": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Pie180.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.arc(x + w, y, w, Math.PI / 2, Math.PI)
+                ctx.lineTo(x + w, y)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "pie270"
+        },
+        "pie270": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Pie270.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.arc(x + w, y + h, w, Math.PI, 3 * Math.PI / 2)
+                ctx.lineTo(x + w, y + h)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "pie"
         }
     }
 }

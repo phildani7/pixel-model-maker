@@ -80,5 +80,17 @@
         <file>ui/shapes/Half180.qml</file>
         <file>ui/shapes/Half270.qml</file>
         <file>ui/shapes/Half90.qml</file>
+        <file>ui/exports/pie.gltf</file>
+        <file>ui/exports/pie180.gltf</file>
+        <file>ui/exports/pie270.gltf</file>
+        <file>ui/exports/pie90.gltf</file>
+        <file>ui/shapes/meshes/pie.mesh</file>
+        <file>ui/shapes/meshes/pie180.mesh</file>
+        <file>ui/shapes/meshes/pie270.mesh</file>
+        <file>ui/shapes/meshes/pie90.mesh</file>
+        <file>ui/shapes/Pie.qml</file>
+        <file>ui/shapes/Pie180.qml</file>
+        <file>ui/shapes/Pie270.qml</file>
+        <file>ui/shapes/Pie90.qml</file>
     </qresource>
 </RCC>

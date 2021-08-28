@@ -6,7 +6,83 @@
     "scene" : 0,
     "scenes" : [
         {
-            "name" : "Scene"
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Cube"
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cube",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1
+                    },
+                    "indices" : 2
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 83,
+            "max" : [
+                1.0000004768371582,
+                0.9999997615814209,
+                1
+            ],
+            "min" : [
+                -1.0000004768371582,
+                -1.0000004768371582,
+                -1
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 83,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5123,
+            "count" : 168,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 996,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 996,
+            "byteOffset" : 996
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 336,
+            "byteOffset" : 1992
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 2328,
+            "uri" : "data:application/octet-stream;base64,BACAP/z/f78AAIC/BACAP/z/f78AAIC/BACAP/z/f78AAIC/BACAv/z/fz///3+/BACAv/z/fz///3+/BACAv/z/fz///3+/BACAv/r/fz8AAIA/BACAv/r/fz8AAIA/BACAv/r/fz8AAIA/Ix0cv3opdj///3+/Ix0cv3opdj///3+/Ix0cv3opdj///3+/Ix0cv3Ypdj8AAIA/Ix0cv3Ypdj8AAIA/Ix0cv3Ypdj8AAIA/uENwvr4GWT///3+/uENwvr4GWT///3+/uENwvr4GWT///3+/uENwvroGWT8AAIA/uENwvroGWT8AAIA/uENwvroGWT8AAIA/hJ3jPWS2KT///3+/hJ3jPWS2KT///3+/hJ3jPWS2KT///3+/hJ3jPWC2KT8AAIA/hJ3jPWC2KT8AAIA/hJ3jPWC2KT8AAIA/yBPUPtQT1D7//3+/yBPUPtQT1D7//3+/yBPUPtQT1D7//3+/yBPUPswT1D4AAIA/yBPUPswT1D4AAIA/yBPUPswT1D4AAIA/YrYpP8yd4z0AAIC/YrYpP8yd4z0AAIC/YrYpP8yd4z0AAIC/YrYpP6yd4z0AAIA/YrYpP6yd4z0AAIA/YrYpP6yd4z0AAIA/vAZZP5hDcL4AAIC/vAZZP5hDcL4AAIC/vAZZP5hDcL4AAIC/vAZZP5hDcL4AAIC/vAZZP6BDcL4AAIA/vAZZP6BDcL4AAIA/vAZZP6BDcL4AAIA/gCl2PxgdHL8AAIC/gCl2PxgdHL8AAIC/gCl2PxgdHL8AAIC/gCl2PxwdHL8AAIA/gCl2PxwdHL8AAIA/gCl2PxwdHL8AAIA/AACAv03zrr4AAIA/AACAv03zrr4AAIA/BACAv57cVz8AAIA/BACAv57cVz8AAIA//P9/vwQAgL8AAIA//P9/vwQAgL8AAIA//P9/vwQAgL8AAIA//P9/vwQAgL8AAIC//P9/vwQAgL8AAIC//P9/vwQAgL8AAIC/U72oPQAAgL8AAIC/U72oPQAAgL8AAIC/U72oPQAAgL8AAIC/BACAP/z/f78AAIA/BACAP/z/f78AAIA/BACAP/z/f78AAIA/gCl2P/z/f78AAIA/gCl2P/z/f78AAIA/gCl2P/z/f78AAIA/9CZtPgAAgL8AAIA/9CZtPgAAgL8AAIA/lWszP/z/f78AAIA/lWszP/z/f78AAIA/lWszP/z/f78AAIA/AgCAv/r/fz8AAIA/AgCAv/r/fz8AAIA/LzRhvyc0YT8AAIA/tLXJPay1yb0AAIA/tLXJPay1yb0AAIA/gCl2P3gpdr8AAIA/gCl2P3gpdr8AAIA/AAAAAAAAAAAAAIC//v+/NAAAgL8XB5ixbcR+P5m9yD25GuKyAACAv/7/v7QAAACAQD/DsQAAAAAAAIC/Lb3IPWzEfj/yP7IzAACAv/7/v7QAAACAAAAAAAAAAAAAAIA/Lb3IPWzEfj/yP7IzQD/DsQAAAAAAAIC/Lb3IPWzEfj/yP7IzHqCUPg76dD+9r/QzAAAAAAAAAAAAAIA/Lb3IPWzEfj/yP7IzHqCUPg76dD+9r/QzQD/DsQAAAAAAAIC/HqCUPg76dD+9r/Qz6VrxPpjFYT9rmuEzAAAAAAAAAAAAAIA/HqCUPg76dD+9r/Qz6VrxPpjFYT9rmuEzQD/DsQAAAAAAAIC/6VrxPpjFYT9rmuEzlmciPwbkRT9R17wzAAAAAAAAAAAAAIA/6VrxPpjFYT9rmuEzlmciPwbkRT9R17wzQD/DsQAAAAAAAIC/lmciPwbkRT9R17wz/+NFP59nIj8qM5MzAAAAAAAAAAAAAIA/lmciPwbkRT9R17wz/+NFP59nIj8qM5MzQD/DsQAAAAAAAIC//+NFP59nIj8qM5MzmMVhP+ha8T52EWMzAAAAAAAAAAAAAIA//+NFP59nIj8qM5MzmMVhP+ha8T52EWMzQD/DsQAAAAAAAIC/AAAAAAAAAAAAAIC/mMVhP+ha8T52EWMzB/p0P0aglD68GuIyAAAAAAAAAAAAAIA/mMVhP+ha8T52EWMzB/p0P0aglD68GuIyAAAAAAAAAAAAAIC/B/p0P0aglD68GuIybcR+P5m9yD25GuKyAAAAAAAAAAAAAIA/B/p0P0aglD68GuIybcR+P5m9yD25GuKyAACAv/7/v7QAAACAAAAAAAAAAAAAAIA/AACAv/7/v7QAAACAAAAAAAAAAAAAAIA/AACAv/7/v7QAAACAAAAAAAAAAAAAAIA//v+/NAAAgL8XB5ixAACAv/7/v7QAAACAQD/DsQAAAAAAAIC//v+/NAAAgL8XB5ixQD/DsQAAAAAAAIC/AAAAAAAAAAAAAIC//v+/NAAAgL8XB5ixAAAAAAAAAAAAAIA//v+/NAAAgL8XB5ixbcR+P5m9yD25GuKyAAAAAKqg7rQAAIA/AAAAAAAAAAAAAIA//v+/NAAAgL8XB5ixAAAAAAAAAAAAAIA//v+/NAAAgL8XB5ixAAAAAKqg7rQAAIA/AAAAAAAAAAAAAIA//v+/NAAAgL8XB5ixAAAAAAAAAAAAAIA/Lb3IPWzEfj/yP7IzAAAAAAAAAAAAAIA/AAAAAKqg7rQAAIA/AAAAAAAAAAAAAIA/AAAAAKqg7rQAAIA/AAAAAAAAAAAAAIA/BwA3AE4ABwBOAEwAUgBFAEEAQQAxACsAKwAkAB4AHgAYABIAEgAMAEwATgA3ADUAEgBMAE4AKwAeABIAUgBBACsARwBKAFAAUABSACsAKwASAE4ATgA1AEcAUAArAE4ATgBHAFAAUQBPAEkAUQBJAEQAOAA0ADYANgAGAAMAAwA7ADgANgADADgAAQBCAEYASwBIADoAAQBGAEsAOgA9AEAAQAABAEsASwA6AEAAPwAoAC4APwAuAAAACgAFAAgACABNAA0ACAANAAoACwAOABMACwATABAAEQAUABkAEQAZABYAFwAaAB8AFwAfABwAHQAgACUAHQAlACIAIwAmACwAIwAsACkAKgAtADIAKgAyAC8AQwACADAAQwAwADMANQA5AEcAPAAEAAkACQAPABUAFQAbACEAIQAnAD4APgA8AAkACQAVACEACQAhAD4A"
         }
     ]
 }
