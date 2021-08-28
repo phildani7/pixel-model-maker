@@ -711,6 +711,98 @@ QtObject {
                 ctx.fill()
             },
             "next": "roundpoint"
+        },
+        "curve": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Curve.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.moveTo(x, y)
+                ctx.lineTo(x, y + h)
+                ctx.lineTo(x + 1, y + h)
+                ctx.arc(x + w, y, w, Math.PI / 2, Math.PI)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "curve90"
+        },
+        "curve90": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Curve90.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.moveTo(x, y)
+                ctx.lineTo(x, y + h)
+                ctx.arc(x + w, y + h, w, Math.PI, 3 * Math.PI / 2)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "curve180"
+        },
+        "curve180": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Curve180.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.moveTo(x, y)
+                ctx.arc(x, y + h, w, 3 * Math.PI / 2, 0)
+                ctx.lineTo(x + w, y)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "curve270"
+        },
+        "curve270": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Curve270.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.arc(x, y, w, 0, Math.PI / 2)
+                ctx.lineTo(x + w, y + h)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "curve"
         }
     }
 }

@@ -128,5 +128,17 @@
         <file>ui/shapes/Roundpoint180.qml</file>
         <file>ui/shapes/Roundpoint270.qml</file>
         <file>ui/shapes/Roundpoint90.qml</file>
+        <file>ui/exports/curve.gltf</file>
+        <file>ui/exports/curve180.gltf</file>
+        <file>ui/exports/curve270.gltf</file>
+        <file>ui/exports/curve90.gltf</file>
+        <file>ui/shapes/meshes/curve.mesh</file>
+        <file>ui/shapes/meshes/curve180.mesh</file>
+        <file>ui/shapes/meshes/curve270.mesh</file>
+        <file>ui/shapes/meshes/curve90.mesh</file>
+        <file>ui/shapes/Curve.qml</file>
+        <file>ui/shapes/Curve180.qml</file>
+        <file>ui/shapes/Curve270.qml</file>
+        <file>ui/shapes/Curve90.qml</file>
     </qresource>
 </RCC>
