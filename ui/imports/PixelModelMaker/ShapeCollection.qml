@@ -73,7 +73,7 @@ QtObject {
         },
         "tricube270": {
             "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Tricube170.qml", parent, x, y,
+                          "qrc:/ui/shapes/Tricube270.qml", parent, x, y,
                           color, depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()

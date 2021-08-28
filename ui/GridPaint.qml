@@ -123,7 +123,7 @@ Item {
 
             ShapePalette {
                 width: 170
-                height: 230
+                height: 260
                 anchors.top: colorPalette.bottom
                 anchors.topMargin: 20
                 anchors.right: parent.right
@@ -238,22 +238,6 @@ Item {
                 Material.accent: Material.Cyan
                 onClicked: {
                     viewMode = 2
-                }
-            }
-
-            Button {
-                id: exportButton
-                width: viewBar.buttonSize
-                height: viewBar.buttonSize
-                text: qsTr("Export")
-                flat: viewMode != 3
-                font.styleName: "Regular"
-                highlighted: viewMode == 3
-                icon.source: "qrc:/ui/images/ic_file_download_48px.svg"
-                display: AbstractButton.TextUnderIcon
-                Material.accent: Material.Cyan
-                onClicked: {
-                    viewMode = 3
                 }
             }
         }

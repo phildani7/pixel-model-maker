@@ -24,7 +24,7 @@ QtObject {
                                                           "color": item.color ? item.color.toString(
                                                                                     ) : null,
                                                           "depth": item.depth,
-                                                          "shape": item.shape ? item.shape.name : null
+                                                          "shape": item.shapeName
                                                       }
                                                   }))
         }
