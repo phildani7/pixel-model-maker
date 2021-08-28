@@ -27,3 +27,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     fileio.h \
     gltfexport.h
+
+ICON = ui/images/icon.icns

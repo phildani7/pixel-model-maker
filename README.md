@@ -24,6 +24,11 @@ PixelModelMaker is an opensource clone of [KenShape](https://tools.kenney.nl/ken
 # Dependencies
 * Qt6
 
+# Deployment Packaging
+## MacOS
+```bash
+macdeployqt PixelModelMaker.app -qmldir=$PROJECT_DIR/ui/ -qmlimport=$PROJECT_DIR/ui/imports/
+```
 # Screenshots
 
 Screen | Image
