@@ -93,7 +93,7 @@ Pane {
                         return ShapeCollection.shapes[pixel.shapeName].create(
                                     parent, -xOffset + col * scale,
                                     yOffset - row * scale, colorVector,
-                                    pixel.depth)
+                                    GlobalState.depthScaleFactor * pixel.depth)
                     }
 
                     function updateShape(row, col) {
@@ -108,8 +108,9 @@ Pane {
                             if (pixel.miniShape.shapeColor !== colorVector) {
                                 pixel.miniShape.shapeColor = colorVector
                             }
-                            if (pixel.depth !== pixel.miniShape.depth) {
-                                pixel.miniShape.depth = pixel.depth
+                            if (pixel.depth * GlobalState.depthScaleFactor
+                                    !== pixel.miniShape.depth) {
+                                pixel.miniShape.depth = pixel.depth * GlobalState.depthScaleFactor
                             }
                             if (pixel.shapeName !== pixel.miniShape.name) {
                                 pixel.miniShape.destroy()

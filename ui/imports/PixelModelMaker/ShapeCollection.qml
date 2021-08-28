@@ -3,33 +3,36 @@ pragma Singleton
 import QtQuick 2.15
 
 QtObject {
+    readonly property var shapeLoader: Qt.createComponent(
+                                           "qrc:/ui/shapes/Shape.qml")
 
-    function createInstance(qml, parent, x, y, color, depth) {
-        let cubeComponent = Qt.createComponent(qml)
-
-        return cubeComponent.createObject(parent, {
-                                              "x": x,
-                                              "y": y,
-                                              "z": 0,
-                                              "shapeColor": color,
-                                              "depth": depth
-                                          })
+    function createInstance(name, parent, x, y, color, depth) {
+        return shapeLoader.createObject(parent, {
+                                            "name": name,
+                                            "x": x,
+                                            "y": y,
+                                            "z": 0,
+                                            "shapeColor": color,
+                                            "depth": depth
+                                        })
     }
 
     readonly property var shapes: {
         "cube": {
-            "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Cube.qml", parent, x, y,
-                          color, depth),
+            "create": (parent, x, y, color, depth) => createInstance("cube",
+                                                                     parent, x,
+                                                                     y, color,
+                                                                     depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.fillRect(x, y, w, h)
             },
             "next": "cube"
         },
         "tricube": {
-            "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Tricube.qml", parent, x, y,
-                          color, depth),
+            "create": (parent, x, y, color, depth) => createInstance("tricube",
+                                                                     parent, x,
+                                                                     y, color,
+                                                                     depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x, y)
@@ -43,8 +46,7 @@ QtObject {
         },
         "tricube90": {
             "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Tricube90.qml", parent, x, y,
-                          color, depth),
+                          "tricube90", parent, x, y, color, depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x, y)
@@ -58,8 +60,7 @@ QtObject {
         },
         "tricube180": {
             "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Tricube180.qml", parent, x, y,
-                          color, depth),
+                          "tricube180", parent, x, y, color, depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x, y)
@@ -73,8 +74,7 @@ QtObject {
         },
         "tricube270": {
             "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Tricube270.qml", parent, x, y,
-                          color, depth),
+                          "tricube270", parent, x, y, color, depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x + w, y)
@@ -87,9 +87,10 @@ QtObject {
             "next": "tricube"
         },
         "cutcube": {
-            "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Cutcube.qml", parent, x, y,
-                          color, depth),
+            "create": (parent, x, y, color, depth) => createInstance("cutcube",
+                                                                     parent, x,
+                                                                     y, color,
+                                                                     depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x, y)
@@ -105,8 +106,7 @@ QtObject {
         },
         "cutcube90": {
             "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Cutcube90.qml", parent, x, y,
-                          color, depth),
+                          "cutcube90", parent, x, y, color, depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x, y)
@@ -122,8 +122,7 @@ QtObject {
         },
         "cutcube180": {
             "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Cutcube180.qml", parent, x, y,
-                          color, depth),
+                          "cutcube180", parent, x, y, color, depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x, y)
@@ -139,8 +138,7 @@ QtObject {
         },
         "cutcube270": {
             "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Cutcube270.qml", parent, x, y,
-                          color, depth),
+                          "cutcube270", parent, x, y, color, depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x + w / 2, y)
@@ -155,9 +153,10 @@ QtObject {
             "next": "cutcube"
         },
         "half": {
-            "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Half.qml", parent, x, y,
-                          color, depth),
+            "create": (parent, x, y, color, depth) => createInstance("half",
+                                                                     parent, x,
+                                                                     y, color,
+                                                                     depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x, y)
@@ -171,9 +170,10 @@ QtObject {
             "next": "half90"
         },
         "half90": {
-            "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Half90.qml", parent, x, y,
-                          color, depth),
+            "create": (parent, x, y, color, depth) => createInstance("half90",
+                                                                     parent, x,
+                                                                     y, color,
+                                                                     depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x, y)
@@ -187,9 +187,10 @@ QtObject {
             "next": "half180"
         },
         "half180": {
-            "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Half180.qml", parent, x, y,
-                          color, depth),
+            "create": (parent, x, y, color, depth) => createInstance("half180",
+                                                                     parent, x,
+                                                                     y, color,
+                                                                     depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x + w / 2, y)
@@ -203,9 +204,10 @@ QtObject {
             "next": "half270"
         },
         "half270": {
-            "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Half270.qml", parent, x, y,
-                          color, depth),
+            "create": (parent, x, y, color, depth) => createInstance("half270",
+                                                                     parent, x,
+                                                                     y, color,
+                                                                     depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x, y + h / 2)
@@ -219,8 +221,10 @@ QtObject {
             "next": "half"
         },
         "pie": {
-            "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Pie.qml", parent, x, y, color, depth),
+            "create": (parent, x, y, color, depth) => createInstance("pie",
+                                                                     parent, x,
+                                                                     y, color,
+                                                                     depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.arc(x, y + h, w, 3 * Math.PI / 2, 0)
@@ -231,9 +235,10 @@ QtObject {
             "next": "pie90"
         },
         "pie90": {
-            "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Pie90.qml", parent, x, y,
-                          color, depth),
+            "create": (parent, x, y, color, depth) => createInstance("pie90",
+                                                                     parent, x,
+                                                                     y, color,
+                                                                     depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.arc(x, y, w, 0, Math.PI / 2)
@@ -244,9 +249,10 @@ QtObject {
             "next": "pie180"
         },
         "pie180": {
-            "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Pie180.qml", parent, x, y,
-                          color, depth),
+            "create": (parent, x, y, color, depth) => createInstance("pie180",
+                                                                     parent, x,
+                                                                     y, color,
+                                                                     depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.arc(x + w, y, w, Math.PI / 2, Math.PI)
@@ -257,9 +263,10 @@ QtObject {
             "next": "pie270"
         },
         "pie270": {
-            "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Pie270.qml", parent, x, y,
-                          color, depth),
+            "create": (parent, x, y, color, depth) => createInstance("pie270",
+                                                                     parent, x,
+                                                                     y, color,
+                                                                     depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.arc(x + w, y + h, w, Math.PI, 3 * Math.PI / 2)
@@ -270,9 +277,10 @@ QtObject {
             "next": "pie"
         },
         "point": {
-            "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Point.qml", parent, x, y,
-                          color, depth),
+            "create": (parent, x, y, color, depth) => createInstance("point",
+                                                                     parent, x,
+                                                                     y, color,
+                                                                     depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x, y)
@@ -286,9 +294,10 @@ QtObject {
             "next": "point90"
         },
         "point90": {
-            "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Point90.qml", parent, x, y,
-                          color, depth),
+            "create": (parent, x, y, color, depth) => createInstance("point90",
+                                                                     parent, x,
+                                                                     y, color,
+                                                                     depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x, y)
@@ -303,8 +312,7 @@ QtObject {
         },
         "point180": {
             "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Point180.qml", parent, x, y,
-                          color, depth),
+                          "point180", parent, x, y, color, depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x + w / 2, y)
@@ -319,8 +327,7 @@ QtObject {
         },
         "point270": {
             "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Point270.qml", parent, x, y,
-                          color, depth),
+                          "point270", parent, x, y, color, depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x + w / 2, y)
@@ -335,8 +342,7 @@ QtObject {
         },
         "roundcube": {
             "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Roundcube.qml", parent, x, y,
-                          color, depth),
+                          "roundcube", parent, x, y, color, depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x, y)
@@ -352,8 +358,7 @@ QtObject {
         },
         "roundcube90": {
             "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Roundcube90.qml", parent, x, y,
-                          color, depth),
+                          "roundcube90", parent, x, y, color, depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x, y)
@@ -369,8 +374,7 @@ QtObject {
         },
         "roundcube180": {
             "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Roundcube180.qml", parent, x, y,
-                          color, depth),
+                          "roundcube180", parent, x, y, color, depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x, y)
@@ -386,8 +390,7 @@ QtObject {
         },
         "roundcube270": {
             "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Roundcube270.qml", parent, x, y,
-                          color, depth),
+                          "roundcube270", parent, x, y, color, depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x + w / 2, y)
@@ -403,8 +406,7 @@ QtObject {
         },
         "roundpoint": {
             "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Roundpoint.qml", parent, x, y,
-                          color, depth),
+                          "roundpoint", parent, x, y, color, depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x, y)
@@ -419,8 +421,7 @@ QtObject {
         },
         "roundpoint90": {
             "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Roundpoint90.qml", parent, x, y,
-                          color, depth),
+                          "roundpoint90", parent, x, y, color, depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x, y)
@@ -434,8 +435,7 @@ QtObject {
         },
         "roundpoint180": {
             "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Roundpoint180.qml", parent, x, y,
-                          color, depth),
+                          "roundpoint180", parent, x, y, color, depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x + w / 2, y)
@@ -451,8 +451,7 @@ QtObject {
         },
         "roundpoint270": {
             "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Roundpoint270.qml", parent, x, y,
-                          color, depth),
+                          "roundpoint270", parent, x, y, color, depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x + w, y + h / 2)
@@ -465,9 +464,10 @@ QtObject {
             "next": "roundpoint"
         },
         "curve": {
-            "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Curve.qml", parent, x, y,
-                          color, depth),
+            "create": (parent, x, y, color, depth) => createInstance("curve",
+                                                                     parent, x,
+                                                                     y, color,
+                                                                     depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x, y)
@@ -480,9 +480,10 @@ QtObject {
             "next": "curve90"
         },
         "curve90": {
-            "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Curve90.qml", parent, x, y,
-                          color, depth),
+            "create": (parent, x, y, color, depth) => createInstance("curve90",
+                                                                     parent, x,
+                                                                     y, color,
+                                                                     depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x, y)
@@ -495,8 +496,7 @@ QtObject {
         },
         "curve180": {
             "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Curve180.qml", parent, x, y,
-                          color, depth),
+                          "curve180", parent, x, y, color, depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.moveTo(x, y)
@@ -509,8 +509,7 @@ QtObject {
         },
         "curve270": {
             "create": (parent, x, y, color, depth) => createInstance(
-                          "qrc:/ui/shapes/Curve270.qml", parent, x, y,
-                          color, depth),
+                          "curve270", parent, x, y, color, depth),
             "draw": (ctx, x, y, w, h) => {
                 ctx.beginPath()
                 ctx.arc(x, y, w, 0, Math.PI / 2)

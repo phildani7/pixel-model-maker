@@ -5,6 +5,7 @@ import QtQuick.Controls 2.15
 import PixelModelMaker 1.0
 import QtQuick3D 1.15
 import QtQuick.Controls.Material 2.15
+import QtQuick.Controls.Material.impl 2.15
 
 import com.github.zaghaghi.pixelmodelmaker 1.0
 
@@ -150,15 +151,32 @@ Item {
                 id: view
                 anchors.fill: parent
             }
-        }
 
-        Item {
-            id: exportComponents
-            visible: viewMode == 3
-            anchors.fill: parent
-
-            ExportModel {
-                anchors.fill: parent
+            Pane {
+                width: 200
+                height: 40
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: parent.top
+                anchors.topMargin: 20
+                background: Rectangle {
+                    radius: 5
+                    color: Constants.toolbarColor
+                    layer.enabled: true
+                    layer.effect: ElevationEffect {
+                        elevation: 10
+                    }
+                }
+                Slider {
+                    anchors.fill: parent
+                    from: 1
+                    to: 10
+                    stepSize: 0.5
+                    snapMode: Slider.SnapAlways
+                    value: GlobalState.depthScaleFactor
+                    onValueChanged: {
+                        GlobalState.depthScaleFactor = value
+                    }
+                }
             }
         }
 

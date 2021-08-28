@@ -62,7 +62,8 @@ Item {
 
                     return ShapeCollection.shapes[pixel.shapeName].create(
                                 parent, -xOffset + col * scale,
-                                yOffset - row * scale, colorVector, pixel.depth)
+                                yOffset - row * scale, colorVector,
+                                GlobalState.depthScaleFactor * pixel.depth)
                 }
 
                 function updateShape(row, col) {
@@ -76,8 +77,8 @@ Item {
                         if (pixel.shape.shapeColor !== colorVector) {
                             pixel.shape.shapeColor = colorVector
                         }
-                        if (pixel.depth !== pixel.shape.depth) {
-                            pixel.shape.depth = pixel.depth
+                        if (GlobalState.depthScaleFactor * pixel.depth !== pixel.shape.depth) {
+                            pixel.shape.depth = GlobalState.depthScaleFactor * pixel.depth
                         }
                         if (pixel.shapeName !== pixel.shape.name) {
                             pixel.shape.destroy()
