@@ -123,7 +123,7 @@ Item {
 
             ShapePalette {
                 width: 170
-                height: 170
+                height: 230
                 anchors.top: colorPalette.bottom
                 anchors.topMargin: 20
                 anchors.right: parent.right

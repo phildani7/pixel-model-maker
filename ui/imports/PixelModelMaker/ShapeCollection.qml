@@ -408,6 +408,106 @@ QtObject {
                 ctx.fill()
             },
             "next": "pie"
+        },
+        "point": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Point.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.moveTo(x, y)
+                ctx.lineTo(x + w / 2, y)
+                ctx.lineTo(x + w, y + h / 2)
+                ctx.lineTo(x + w / 2, y + h)
+                ctx.lineTo(x, y + h)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "point90"
+        },
+        "point90": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Point90.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.moveTo(x, y)
+                ctx.lineTo(x + w, y)
+                ctx.lineTo(x + w, y + h / 2)
+                ctx.lineTo(x + w / 2, y + h)
+                ctx.lineTo(x, y + h / 2)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "point180"
+        },
+        "point180": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Point180.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.moveTo(x + w / 2, y)
+                ctx.lineTo(x + w, y)
+                ctx.lineTo(x + w, y + h)
+                ctx.lineTo(x + w / 2, y + h)
+                ctx.lineTo(x, y + h / 2)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "point270"
+        },
+        "point270": {
+            "create": (parent, x, y, color, depth) => {
+                var cubeComponent = Qt.createComponent(
+                    "qrc:/ui/shapes/Point270.qml")
+
+                return cubeComponent.createObject(parent, {
+                                                      "x": x,
+                                                      "y": y,
+                                                      "z": 0,
+                                                      "shapeColor": color,
+                                                      "depth": depth
+                                                  })
+            },
+            "draw": (ctx, x, y, w, h) => {
+                ctx.beginPath()
+                ctx.moveTo(x + w / 2, y)
+                ctx.lineTo(x + w, y + h / 2)
+                ctx.lineTo(x + w, y + h)
+                ctx.lineTo(x, y + h)
+                ctx.lineTo(x, y + h / 2)
+                ctx.closePath()
+                ctx.fill()
+            },
+            "next": "point"
         }
     }
 }

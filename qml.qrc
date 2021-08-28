@@ -92,5 +92,17 @@
         <file>ui/shapes/Pie180.qml</file>
         <file>ui/shapes/Pie270.qml</file>
         <file>ui/shapes/Pie90.qml</file>
+        <file>ui/exports/point.gltf</file>
+        <file>ui/exports/point180.gltf</file>
+        <file>ui/exports/point270.gltf</file>
+        <file>ui/exports/point90.gltf</file>
+        <file>ui/shapes/meshes/point.mesh</file>
+        <file>ui/shapes/meshes/point180.mesh</file>
+        <file>ui/shapes/meshes/point270.mesh</file>
+        <file>ui/shapes/meshes/point90.mesh</file>
+        <file>ui/shapes/Point.qml</file>
+        <file>ui/shapes/Point180.qml</file>
+        <file>ui/shapes/Point270.qml</file>
+        <file>ui/shapes/Point90.qml</file>
     </qresource>
 </RCC>
