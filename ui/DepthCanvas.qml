@@ -11,8 +11,8 @@ Pane {
     anchors.verticalCenter: parent.verticalCenter
     anchors.horizontalCenter: parent.horizontalCenter
     background: Rectangle {
-            radius: 5
-            color: Constants.toolbarColor
+        radius: 5
+        color: Constants.toolbarColor
     }
 
     Item {
@@ -36,8 +36,9 @@ Pane {
                             const fillColor = pixel.color
                             ctx.fillStyle = Qt.rgba(fillColor.r, fillColor.g,
                                                     fillColor.b, 0.6)
-                            ctx.fillRect(i * cellSize, j * cellSize,
-                                         cellSize, cellSize)
+                            ShapeCollection.shapes[GlobalState.pixelMap[j][i].shapeName].draw(
+                                        ctx, i * cellSize, j * cellSize,
+                                        cellSize, cellSize)
                         }
                         if (pixel.depth) {
                             ctx.fillStyle = Qt.rgba(0, 0, 0, 1)
@@ -49,6 +50,16 @@ Pane {
                         }
                     }
                 }
+                ctx.strokeStyle = Qt.rgba(0.3, 0.3, 0.3, 0.2)
+                ctx.beginPath()
+                ctx.moveTo(GlobalState.gridWidth * cellSize / 2, 0)
+                ctx.lineTo(GlobalState.gridWidth * cellSize / 2,
+                           GlobalState.gridHeight * cellSize)
+                ctx.moveTo(0, GlobalState.gridHeight * cellSize / 2)
+                ctx.lineTo(GlobalState.gridWidth * cellSize,
+                           GlobalState.gridHeight * cellSize / 2)
+                ctx.stroke()
+                ctx.strokeStyle = Qt.rgba(0, 0, 0, 0)
             }
         }
 

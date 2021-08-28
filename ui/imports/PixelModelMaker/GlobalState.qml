@@ -9,23 +9,24 @@ QtObject {
     property int gridHeight: 0
 
     property color selectedColor: Constants.defaultColorPalette[0]
+    property string selectedShape: "cube"
 
     property string fileName: ''
 
-
     function getSaveObject() {
         return {
-                    version: "1.0",
-                    palette: Constants.defaultColorPalette,
-                    width: gridWidth,
-                    height: gridHeight,
-                    pixels: pixelMap.map((row) => row.map((item) => {
-                        return {
-                            "color": item.color?item.color.toString():null,
-                            "depth": item.depth,
-                            "shape": item.shape?item.shape.name:null
-                        }
-                    }))
+            "version": "1.0",
+            "palette": Constants.defaultColorPalette,
+            "width": gridWidth,
+            "height": gridHeight,
+            "pixels": pixelMap.map(row => row.map(item => {
+                                                      return {
+                                                          "color": item.color ? item.color.toString(
+                                                                                    ) : null,
+                                                          "depth": item.depth,
+                                                          "shape": item.shapeName
+                                                      }
+                                                  }))
         }
     }
 
@@ -45,15 +46,16 @@ QtObject {
             gridHeight = data.height
             Constants.defaultColorPalette = data.palette
             selectedColor = Constants.defaultColorPalette[0]
-            pixelMap = data.pixels.map((row) => row.map((item) => {
-                return {
-                    "color": item.color?Qt.color(item.color):null,
-                    "depth": item.depth,
-                    "shape": null, // find and create shape based on item.shape which is shape name
-                    "miniShape": null,
-
-                }
-            }))
+            pixelMap = data.pixels.map(row => row.map(item => {
+                                                          return {
+                                                              "color": item.color ? Qt.color(item.color) : null,
+                                                              "depth": item.depth,
+                                                              "shape": null,
+                                                              "miniShape"// find and create shape based on item.shape which is shape name
+                                                              : null,
+                                                              "shapeName": item.shape
+                                                          }
+                                                      }))
             GlobalState.fileName = fileName
         } catch (exception) {
             console.log(exception)
@@ -94,6 +96,7 @@ QtObject {
                                   "depth": 0,
                                   "shape": null,
                                   "miniShape": null,
+                                  "shapeName": null
                               })
             }
             pixelMap.push(pixelRow)

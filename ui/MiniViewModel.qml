@@ -12,12 +12,12 @@ Pane {
     z: 1
     padding: 10
     background: Rectangle {
-            radius: 5
-            color: Constants.toolbarColor
-            layer.enabled: true
-            layer.effect: ElevationEffect {
-                elevation: 10
-            }
+        radius: 5
+        color: Constants.toolbarColor
+        layer.enabled: true
+        layer.effect: ElevationEffect {
+            elevation: 10
+        }
     }
 
     Item {
@@ -90,17 +90,10 @@ Pane {
                         let color = pixel.color
                         let colorVector = Qt.vector3d(color.r, color.g, color.b)
 
-                        var cubeComponent = Qt.createComponent(
-                                    "qrc:/ui/shapes/Cube.qml")
-
-                        let instance = cubeComponent.createObject(parent, {
-                                                                      "x": -xOffset + col * scale,
-                                                                      "y": yOffset - row * scale,
-                                                                      "z": 0,
-                                                                      "shapeColor": colorVector,
-                                                                      "depth": pixel.depth
-                                                                  })
-                        return instance
+                        return ShapeCollection.shapes[pixel.shapeName].create(
+                                    parent, -xOffset + col * scale,
+                                    yOffset - row * scale, colorVector,
+                                    pixel.depth)
                     }
 
                     function updateShape(row, col) {
@@ -117,6 +110,11 @@ Pane {
                             }
                             if (pixel.depth !== pixel.miniShape.depth) {
                                 pixel.miniShape.depth = pixel.depth
+                            }
+                            if (pixel.shapeName !== pixel.miniShape.name) {
+                                pixel.miniShape.destroy()
+                                pixel.miniShape = createShape(
+                                            row, col, gridModelContainer)
                             }
                         }
                     }

@@ -10,9 +10,13 @@ PixelModelMaker is an opensource clone of [KenShape](https://tools.kenney.nl/ken
 * ✅ Open & Save
 * ✅ Export Image
 * ✅ Export 3D
+* ✅ More Shapes
 
 ## Todo
-* More Shapes
+* Scale Slider
+* Depth Palette
+* Shape & Color Picker
+* Rotate Shapes
 * Custom Color Palette
 * Model Optimization
 * Automatic Depth

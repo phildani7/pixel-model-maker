@@ -12,8 +12,8 @@ Pane {
     anchors.verticalCenter: parent.verticalCenter
     anchors.horizontalCenter: parent.horizontalCenter
     background: Rectangle {
-            radius: 5
-            color: Constants.toolbarColor
+        radius: 5
+        color: Constants.toolbarColor
     }
 
     Item {
@@ -28,16 +28,27 @@ Pane {
                 const cellSize = width / GlobalState.gridWidth
                 for (var i = 0; i < GlobalState.gridHeight; ++i) {
                     for (var j = 0; j < GlobalState.gridWidth; ++j) {
-                        let fillColor = (i + j) % 2 ? black : white
-                        if (GlobalState.pixelMap && GlobalState.pixelMap[j][i]
-                                && GlobalState.pixelMap[j][i].color) {
-                            fillColor = GlobalState.pixelMap[j][i].color
-                        }
-                        ctx.fillStyle = fillColor
+                        ctx.fillStyle = (i + j) % 2 ? black : white
                         ctx.fillRect(i * cellSize, j * cellSize,
                                      cellSize, cellSize)
+                        if (GlobalState.pixelMap[j][i].color) {
+                            ctx.fillStyle = GlobalState.pixelMap[j][i].color
+                            ShapeCollection.shapes[GlobalState.pixelMap[j][i].shapeName].draw(
+                                        ctx, i * cellSize, j * cellSize,
+                                        cellSize, cellSize)
+                        }
                     }
                 }
+                ctx.strokeStyle = Qt.rgba(0.3, 0.3, 0.3, 0.2)
+                ctx.beginPath()
+                ctx.moveTo(GlobalState.gridWidth * cellSize / 2, 0)
+                ctx.lineTo(GlobalState.gridWidth * cellSize / 2,
+                           GlobalState.gridHeight * cellSize)
+                ctx.moveTo(0, GlobalState.gridHeight * cellSize / 2)
+                ctx.lineTo(GlobalState.gridWidth * cellSize,
+                           GlobalState.gridHeight * cellSize / 2)
+                ctx.stroke()
+                ctx.strokeStyle = Qt.rgba(0, 0, 0, 0)
             }
         }
 
@@ -77,6 +88,7 @@ Pane {
                 pixel.color = Qt.rgba(color.r, color.g, color.b, color.a)
                 if (pixel.depth === 0)
                     pixel.depth = 1
+                pixel.shapeName = GlobalState.selectedShape
             } else {
                 destroyPixel(pixel)
             }
@@ -97,6 +109,7 @@ Pane {
                 pixel.color = Qt.rgba(color.r, color.g, color.b, color.a)
                 if (pixel.depth === 0)
                     pixel.depth = 1
+                pixel.shapeName = GlobalState.selectedShape
                 canvas.requestPaint()
             } else if (mouse.buttons === Qt.RightButton) {
                 destroyPixel(pixel)

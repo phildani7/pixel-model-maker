@@ -1,0 +1,88 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.6.16",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Cube"
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cube",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1
+                    },
+                    "indices" : 2
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 24,
+            "max" : [
+                1.0000003576278687,
+                2.2649371089755732e-07,
+                1
+            ],
+            "min" : [
+                -1,
+                -1.0000003576278687,
+                -1
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 24,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5123,
+            "count" : 36,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 288,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 288,
+            "byteOffset" : 288
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 72,
+            "byteOffset" : 576
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 648,
+            "uri" : "data:application/octet-stream;base64,/f9/vwMAgL8AAIC//f9/vwMAgL8AAIC//f9/vwMAgL8AAIC/AwCAP/3/f78AAIC/AwCAP/3/f78AAIC/AwCAP/3/f78AAIC//f9/vwMAgL8AAIA//f9/vwMAgL8AAIA//f9/vwMAgL8AAIA/AwCAP/3/f78AAIA/AwCAP/3/f78AAIA/AwCAP/3/f78AAIA/AACAPx4yczQAAIA/AACAPx4yczQAAIA/AACAPx4yczQAAIA/AACAPx4yczQAAIC/AACAPx4yczQAAIC/AACAPx4yczQAAIC/AACAvx4yc7QAAIC/AACAvx4yc7QAAIC/AACAvx4yc7QAAIC/AACAvx4yc7QAAIA/AACAvx4yc7QAAIA/AACAvx4yc7QAAIA/AACAv/7/P7QAAACAAAAAAAAAAAAAAIC///+PNAAAgL8AAACAAAAAAAAAAAAAAIC///+PNAAAgL8AAACAAACAPwAAwDQAAACAAACAv/7/P7QAAACAAAAAAAAAAAAAAIA///+PNAAAgL8AAACAAAAAAAAAAAAAAIA///+PNAAAgL8AAACAAACAPwAAwDQAAACAHjJztAAAgD8AAACAAAAAAAAAAAAAAIA/AACAPwAAwDQAAACAHjJztAAAgD8AAACAAAAAAAAAAAAAAIC/AACAPwAAwDQAAACAAACAv/7/P7QAAACAHjJztAAAgD8AAACAAAAAAAAAAAAAAIC/AACAv/7/P7QAAACAHjJztAAAgD8AAACAAAAAAAAAAAAAAIA/CgAIAAIACgACAAQABQARAA4ABQAOAAsAAwABABQAAwAUABAAFQASAAAAFQAAAAYADQAXAAcADQAHAAkADwATABYADwAWAAwA"
+        }
+    ]
+}

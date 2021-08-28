@@ -28,7 +28,9 @@
         <file>ui/imports/PixelModelMaker/GlobalState.qml</file>
         <file>ui/imports/PixelModelMaker/qmldir</file>
         <file>ui/shapes/meshes/cube.mesh</file>
+        <file>ui/shapes/meshes/tricube.mesh</file>
         <file>ui/shapes/Cube.qml</file>
+        <file>ui/shapes/Tricube.qml</file>
         <file>ui/ColorPalette.qml</file>
         <file>ui/DepthCanvas.qml</file>
         <file>ui/DrawCanvas.qml</file>
@@ -42,5 +44,101 @@
         <file>ui/ViewModel.qml</file>
         <file>ui/GridPaint.qml</file>
         <file>ui/exports/cube.gltf</file>
+        <file>ui/exports/tricube.gltf</file>
+        <file>ui/ShapePalette.qml</file>
+        <file>ui/imports/PixelModelMaker/ShapeCollection.qml</file>
+        <file>ui/exports/tricube90.gltf</file>
+        <file>ui/shapes/meshes/tricube90.mesh</file>
+        <file>ui/shapes/Tricube90.qml</file>
+        <file>ui/exports/tricube180.gltf</file>
+        <file>ui/exports/tricube270.gltf</file>
+        <file>ui/shapes/meshes/tricube180.mesh</file>
+        <file>ui/shapes/meshes/tricube270.mesh</file>
+        <file>ui/shapes/Tricube180.qml</file>
+        <file>ui/shapes/Tricube270.qml</file>
+        <file>ui/exports/cutcube.gltf</file>
+        <file>ui/exports/cutcube180.gltf</file>
+        <file>ui/exports/cutcube270.gltf</file>
+        <file>ui/exports/cutcube90.gltf</file>
+        <file>ui/shapes/meshes/cutcube.mesh</file>
+        <file>ui/shapes/meshes/cutcube180.mesh</file>
+        <file>ui/shapes/meshes/cutcube270.mesh</file>
+        <file>ui/shapes/meshes/cutcube90.mesh</file>
+        <file>ui/shapes/Cutcube.qml</file>
+        <file>ui/shapes/Cutcube180.qml</file>
+        <file>ui/shapes/Cutcube270.qml</file>
+        <file>ui/shapes/Cutcube90.qml</file>
+        <file>ui/exports/half.gltf</file>
+        <file>ui/exports/half180.gltf</file>
+        <file>ui/exports/half270.gltf</file>
+        <file>ui/exports/half90.gltf</file>
+        <file>ui/shapes/meshes/half.mesh</file>
+        <file>ui/shapes/meshes/half180.mesh</file>
+        <file>ui/shapes/meshes/half270.mesh</file>
+        <file>ui/shapes/meshes/half90.mesh</file>
+        <file>ui/shapes/Half.qml</file>
+        <file>ui/shapes/Half180.qml</file>
+        <file>ui/shapes/Half270.qml</file>
+        <file>ui/shapes/Half90.qml</file>
+        <file>ui/exports/pie.gltf</file>
+        <file>ui/exports/pie180.gltf</file>
+        <file>ui/exports/pie270.gltf</file>
+        <file>ui/exports/pie90.gltf</file>
+        <file>ui/shapes/meshes/pie.mesh</file>
+        <file>ui/shapes/meshes/pie180.mesh</file>
+        <file>ui/shapes/meshes/pie270.mesh</file>
+        <file>ui/shapes/meshes/pie90.mesh</file>
+        <file>ui/shapes/Pie.qml</file>
+        <file>ui/shapes/Pie180.qml</file>
+        <file>ui/shapes/Pie270.qml</file>
+        <file>ui/shapes/Pie90.qml</file>
+        <file>ui/exports/point.gltf</file>
+        <file>ui/exports/point180.gltf</file>
+        <file>ui/exports/point270.gltf</file>
+        <file>ui/exports/point90.gltf</file>
+        <file>ui/shapes/meshes/point.mesh</file>
+        <file>ui/shapes/meshes/point180.mesh</file>
+        <file>ui/shapes/meshes/point270.mesh</file>
+        <file>ui/shapes/meshes/point90.mesh</file>
+        <file>ui/shapes/Point.qml</file>
+        <file>ui/shapes/Point180.qml</file>
+        <file>ui/shapes/Point270.qml</file>
+        <file>ui/shapes/Point90.qml</file>
+        <file>ui/exports/roundcube.gltf</file>
+        <file>ui/exports/roundcube180.gltf</file>
+        <file>ui/exports/roundcube270.gltf</file>
+        <file>ui/exports/roundcube90.gltf</file>
+        <file>ui/shapes/meshes/roundcube.mesh</file>
+        <file>ui/shapes/meshes/roundcube180.mesh</file>
+        <file>ui/shapes/meshes/roundcube270.mesh</file>
+        <file>ui/shapes/meshes/roundcube90.mesh</file>
+        <file>ui/shapes/Roundcube.qml</file>
+        <file>ui/shapes/Roundcube180.qml</file>
+        <file>ui/shapes/Roundcube270.qml</file>
+        <file>ui/shapes/Roundcube90.qml</file>
+        <file>ui/exports/roundpoint.gltf</file>
+        <file>ui/exports/roundpoint180.gltf</file>
+        <file>ui/exports/roundpoint270.gltf</file>
+        <file>ui/exports/roundpoint90.gltf</file>
+        <file>ui/shapes/meshes/roundpoint.mesh</file>
+        <file>ui/shapes/meshes/roundpoint180.mesh</file>
+        <file>ui/shapes/meshes/roundpoint270.mesh</file>
+        <file>ui/shapes/meshes/roundpoint90.mesh</file>
+        <file>ui/shapes/Roundpoint.qml</file>
+        <file>ui/shapes/Roundpoint180.qml</file>
+        <file>ui/shapes/Roundpoint270.qml</file>
+        <file>ui/shapes/Roundpoint90.qml</file>
+        <file>ui/exports/curve.gltf</file>
+        <file>ui/exports/curve180.gltf</file>
+        <file>ui/exports/curve270.gltf</file>
+        <file>ui/exports/curve90.gltf</file>
+        <file>ui/shapes/meshes/curve.mesh</file>
+        <file>ui/shapes/meshes/curve180.mesh</file>
+        <file>ui/shapes/meshes/curve270.mesh</file>
+        <file>ui/shapes/meshes/curve90.mesh</file>
+        <file>ui/shapes/Curve.qml</file>
+        <file>ui/shapes/Curve180.qml</file>
+        <file>ui/shapes/Curve270.qml</file>
+        <file>ui/shapes/Curve90.qml</file>
     </qresource>
 </RCC>
