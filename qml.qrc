@@ -108,5 +108,6 @@
         <file>ui/shapes/meshes/curve90.mesh</file>
         <file>ui/shapes/Shape.qml</file>
         <file>ui/DepthPane.qml</file>
+        <file>ui/DepthPalette.qml</file>
     </qresource>
 </RCC>

@@ -140,6 +140,15 @@ Item {
             DepthCanvas {
                 id: depth
             }
+
+            DepthPalette {
+                width: 170
+                height: 120
+                anchors.top: parent.top
+                anchors.topMargin: 20
+                anchors.right: parent.right
+                anchors.rightMargin: 20
+            }
         }
 
         Item {
