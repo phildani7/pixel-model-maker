@@ -34,6 +34,7 @@ Pane {
         }
         Canvas {
             id: selectedCanvas
+            property string selectedShape: GlobalState.selectedShape
             width: 20
             height: 20
             anchors.verticalCenter: parent.verticalCenter
@@ -52,6 +53,7 @@ Pane {
                                                                        2, 16,
                                                                        16)
             }
+            onSelectedShapeChanged: requestPaint()
         }
     }
 
