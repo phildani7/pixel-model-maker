@@ -1,6 +1,9 @@
 # Pixel Model Maker
 PixelModelMaker is an opensource clone of [KenShape](https://tools.kenney.nl/kenshape/) from [Kenny](https://kenney.nl/).
 
+# Downloads
+Download for [Windows](https://github.com/zaghaghi/pixel-model-maker/releases) and [MacOS](https://github.com/zaghaghi/pixel-model-maker/releases)
+
 # Features
 
 * ✅ Draw Pixels
@@ -28,13 +31,26 @@ PixelModelMaker is an opensource clone of [KenShape](https://tools.kenney.nl/ken
 # Deployment Packaging
 ## MacOS
 ```bash
-macdeployqt PixelModelMaker.app -qmldir=$PROJECT_DIR/ui/ -qmlimport=$PROJECT_DIR/ui/imports/
+macdeployqt PixelModelMaker.app -qmldir=$PROJECT_DIR/ui/ -qmlimport=$PROJECT_DIR/ui/imports/ -dmg
 ```
 
 ## Windows
 ```bash
 windeployqt --release --qmldir %PROJECT_DIR%\ui  --qmlimport %PROJECT_DIR%\ui\imports PixelModelMaker.exe
 ```
+
+# Help
+## Draw Mode Canvas
+Action      | Description
+------------|------------
+Click       | Paste Shape & Color
+Click + Shift | Paste Color Only
+Click + Ctrl  | Paste Shape Only
+RightClick  | Delete Shape & Color
+MiddleClick | Pick Shape & Color
+MiddleClick + Shift | Pick Color Only
+MiddleClick + Ctrl | Pick Shape Only
+
 # Screenshots
 
 Screen | Image
