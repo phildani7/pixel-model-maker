@@ -501,9 +501,9 @@
         "shape": null
       },
       {
-        "color": "#45444f",
+        "color": "#4b4158",
         "depth": 6,
-        "shape": "cube"
+        "shape": "roundpoint180"
       },
       {
         "color": "#6a536e",
@@ -585,7 +585,7 @@
       {
         "color": "#6a536e",
         "depth": 2,
-        "shape": "cube"
+        "shape": "roundcube270"
       },
       {
         "color": "#6a536e",
