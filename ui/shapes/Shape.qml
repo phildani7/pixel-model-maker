@@ -1,6 +1,5 @@
 import QtQuick 2.15
 import QtQuick3D 1.15
-import Qt3D.Render 2.12
 
 Node {
     required property string name

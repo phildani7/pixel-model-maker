@@ -30,6 +30,11 @@ PixelModelMaker is an opensource clone of [KenShape](https://tools.kenney.nl/ken
 ```bash
 macdeployqt PixelModelMaker.app -qmldir=$PROJECT_DIR/ui/ -qmlimport=$PROJECT_DIR/ui/imports/
 ```
+
+## Windows
+```bash
+windeployqt --release --qmldir %PROJECT_DIR%\ui  --qmlimport %PROJECT_DIR%\ui\imports PixelModelMaker.exe
+```
 # Screenshots
 
 Screen | Image

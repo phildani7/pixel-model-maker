@@ -29,3 +29,4 @@ HEADERS += \
     gltfexport.h
 
 ICON = ui/images/icon.icns
+RC_ICONS =  ui/images/icon.ico
