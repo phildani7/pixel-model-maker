@@ -69,6 +69,7 @@ Pane {
             acceptedButtons: Qt.AllButtons
 
             onClicked: parent.handleClick(mouse)
+            onPositionChanged: parent.handleDrag(mouse)
         }
 
         function handleClick(mouse) {
@@ -82,11 +83,27 @@ Pane {
             if (pixel.color === null || pixel.depth === 0)
                 return
             if (mouse.button === Qt.LeftButton) {
-                pixel.depth = Math.min(Constants.maxDepthValue, pixel.depth + 1)
-            } else {
-                pixel.depth = Math.max(1, pixel.depth - 1)
+                pixel.depth = GlobalState.selectedDepth
             }
             depthCanvas.requestPaint()
+        }
+
+        function handleDrag(mouse) {
+            const cellSize = width / GlobalState.gridWidth
+            const col = parseInt(mouse.x / cellSize)
+            const row = parseInt(mouse.y / cellSize)
+            if (col >= GlobalState.gridWidth || col < 0
+                    || row >= GlobalState.gridHeight || row < 0)
+                return
+            let pixel = GlobalState.pixelMap[row][col]
+            if (pixel.color === null || pixel.depth === 0)
+                return
+
+            if (mouse.buttons === Qt.LeftButton
+                    && pixel.depth !== GlobalState.selectedDepth) {
+                pixel.depth = GlobalState.selectedDepth
+                depthCanvas.requestPaint()
+            }
         }
     }
 

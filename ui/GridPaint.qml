@@ -140,6 +140,15 @@ Item {
             DepthCanvas {
                 id: depth
             }
+
+            DepthPalette {
+                width: 170
+                height: 120
+                anchors.top: parent.top
+                anchors.topMargin: 20
+                anchors.right: parent.right
+                anchors.rightMargin: 20
+            }
         }
 
         Item {
@@ -152,31 +161,12 @@ Item {
                 anchors.fill: parent
             }
 
-            Pane {
+            DepthPane {
                 width: 200
                 height: 40
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top: parent.top
                 anchors.topMargin: 20
-                background: Rectangle {
-                    radius: 5
-                    color: Constants.toolbarColor
-                    layer.enabled: true
-                    layer.effect: ElevationEffect {
-                        elevation: 10
-                    }
-                }
-                Slider {
-                    anchors.fill: parent
-                    from: 1
-                    to: 10
-                    stepSize: 0.5
-                    snapMode: Slider.SnapAlways
-                    value: GlobalState.depthScaleFactor
-                    onValueChanged: {
-                        GlobalState.depthScaleFactor = value
-                    }
-                }
             }
         }
 

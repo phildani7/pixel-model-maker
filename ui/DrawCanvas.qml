@@ -85,10 +85,24 @@ Pane {
             let pixel = GlobalState.pixelMap[row][col]
             if (mouse.button === Qt.LeftButton) {
                 let color = GlobalState.selectedColor
-                pixel.color = Qt.rgba(color.r, color.g, color.b, color.a)
+                if (mouse.modifiers === Qt.ShiftModifier
+                        || mouse.modifiers === Qt.NoModifier)
+                    pixel.color = Qt.rgba(color.r, color.g, color.b, color.a)
                 if (pixel.depth === 0)
                     pixel.depth = 1
-                pixel.shapeName = GlobalState.selectedShape
+                if (mouse.modifiers === Qt.ControlModifier
+                        || mouse.modifiers === Qt.NoModifier)
+                    pixel.shapeName = GlobalState.selectedShape
+            } else if (mouse.button === Qt.MiddleButton) {
+                if (mouse.modifiers === Qt.ShiftModifier
+                        || mouse.modifiers === Qt.NoModifier)
+                    GlobalState.selectedColor = Qt.rgba(pixel.color.r,
+                                                        pixel.color.g,
+                                                        pixel.color.b,
+                                                        pixel.color.a)
+                if (mouse.modifiers === Qt.ControlModifier
+                        || mouse.modifiers === Qt.NoModifier)
+                    GlobalState.selectedShape = pixel.shapeName
             } else {
                 destroyPixel(pixel)
             }
@@ -104,12 +118,17 @@ Pane {
                 return
             let pixel = GlobalState.pixelMap[row][col]
             if (mouse.buttons === Qt.LeftButton
-                    && pixel.color !== GlobalState.selectedColor) {
+                    && (pixel.color !== GlobalState.selectedColor
+                        || pixel.shapeName !== GlobalState.selectedShape)) {
                 let color = GlobalState.selectedColor
-                pixel.color = Qt.rgba(color.r, color.g, color.b, color.a)
+                if (mouse.modifiers === Qt.ShiftModifier
+                        || mouse.modifiers === Qt.NoModifier)
+                    pixel.color = Qt.rgba(color.r, color.g, color.b, color.a)
                 if (pixel.depth === 0)
                     pixel.depth = 1
-                pixel.shapeName = GlobalState.selectedShape
+                if (mouse.modifiers === Qt.ControlModifier
+                        || mouse.modifiers === Qt.NoModifier)
+                    pixel.shapeName = GlobalState.selectedShape
                 canvas.requestPaint()
             } else if (mouse.buttons === Qt.RightButton) {
                 destroyPixel(pixel)

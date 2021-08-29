@@ -34,7 +34,6 @@ Pane {
         }
         Canvas {
             id: selectedCanvas
-            property string selectedShape: GlobalState.selectedShape
             width: 20
             height: 20
             anchors.verticalCenter: parent.verticalCenter
@@ -44,16 +43,11 @@ Pane {
                 ctx.fillStyle = Qt.rgba(1, 1, 1, 1)
                 ctx.fillRect(0, 0, width, height)
 
-                ctx.strokeStyle = Qt.rgba(0.28, 0.28, 0.28, 1)
-                ctx.strokeRect(0, 0, width, height)
-
-                ctx.strokeStyle = null
-                ctx.fillStyle = Qt.rgba(0.3, 0.3, 0.3, 1)
-                ShapeCollection.shapes[GlobalState.selectedShape].draw(ctx, 2,
-                                                                       2, 16,
-                                                                       16)
+                ctx.textAlign = "center"
+                ctx.textBaseline = "middle"
+                ctx.fillStyle = Qt.rgba(0, 0, 0, 1)
+                ctx.fillText(GlobalState.selectedDepth, 10, 10)
             }
-            onSelectedShapeChanged: requestPaint()
         }
     }
 
@@ -71,7 +65,7 @@ Pane {
 
             cellWidth: 30
             cellHeight: 30
-            model: Object.keys(ShapeCollection.shapes)
+            model: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
             focus: true
             clip: true
             delegate: Item {
@@ -87,20 +81,17 @@ Pane {
                         var ctx = getContext("2d")
                         ctx.fillStyle = Qt.rgba(1, 1, 1, 1)
                         ctx.fillRect(0, 0, width, height)
-                        ctx.strokeStyle = Qt.rgba(0.28, 0.28, 0.28, 1)
-                        ctx.strokeWidth = 1
-                        ctx.rect(0, 0, width, height)
-                        ctx.stroke()
 
-                        ctx.fillStyle = Qt.rgba(0.3, 0.3, 0.3, 1)
-                        ShapeCollection.shapes[modelData].draw(ctx, 2,
-                                                               2, 16, 16)
+                        ctx.textAlign = "center"
+                        ctx.textBaseline = "middle"
+                        ctx.fillStyle = Qt.rgba(0, 0, 0, 1)
+                        ctx.fillText(modelData, 10, 10)
                     }
                 }
                 MouseArea {
                     anchors.fill: parent
                     onClicked: event => {
-                                   GlobalState.selectedShape = modelData
+                                   GlobalState.selectedDepth = modelData
                                    selectedCanvas.requestPaint()
                                }
                 }
