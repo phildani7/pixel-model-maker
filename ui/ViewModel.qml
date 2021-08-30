@@ -18,9 +18,10 @@ Item {
 
         SceneEnvironment {
             id: environment
-            antialiasingMode: SceneEnvironment.SSAA
+            antialiasingMode: SceneEnvironment.NoAA
             aoSampleRate: 4
-            aoStrength: 20
+            aoStrength: 90
+            aoDistance: 80
         }
         Node {
             id: scene

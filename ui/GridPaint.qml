@@ -301,7 +301,7 @@ Item {
 
             if (exportFileName === "")
                 return
-            viewComponents.grabToImage(function (result) {
+            view.grabToImage(function (result) {
                 try {
                     if (exportFileName.startsWith("file://")) {
                         exportFileName = exportFileName.substr(7)
