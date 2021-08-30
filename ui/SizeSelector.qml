@@ -19,112 +19,137 @@ Rectangle {
 
     property bool fileOpnedWithSuccess: false
 
-    Item {
-        id: row1
-        x: 0
+    Column {
         width: parent.width
-        height: parent.height / 2
-        anchors.top: parent.top
-        anchors.topMargin: 0
-
-        Text {
-            id: text1
-            color: Constants.titleColor
-            text: qsTr("Select Model Size")
-            anchors.bottom: parent.bottom
-            font.pixelSize: 60
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            padding: 10
-            font.styleName: "Thin"
-            anchors.bottomMargin: 0
-            anchors.horizontalCenter: parent.horizontalCenter
-            font.family: "Roboto"
-            font.weight: Font.Medium
+        height: parent.height
+        Item {
+            id: row1
+            width: parent.width
+            height: 200
+            Text {
+                id: text1
+                color: Constants.titleColor
+                text: qsTr("Select Model Size")
+                anchors.bottom: parent.bottom
+                font.pixelSize: 60
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                padding: 10
+                font.styleName: "Thin"
+                anchors.bottomMargin: 0
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.family: "Roboto"
+                font.weight: Font.Medium
+            }
         }
-    }
-    Item {
-        id: row2
-        x: 0
-        y: parent.height / 2
-        width: parent.width
-        height: parent.height / 2
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 0
+        Item {
+            id: row2
+            width: parent.width
+            height: 120
+            Row {
+                spacing: 10
+                padding: 10
+                anchors.horizontalCenter: parent.horizontalCenter
 
-        Row {
-            spacing: 10
-            padding: 10
-            anchors.horizontalCenter: parent.horizontalCenter
+                Button {
+                    id: button_16
+                    width: 100
+                    height: 100
+                    text: qsTr("16 X 16")
+                    font.styleName: "Regular"
+                    highlighted: true
+                    icon.source: "qrc:/ui/images/ic_grid_on_48px.svg"
+                    display: AbstractButton.TextUnderIcon
+                    Material.accent: Material.Red
+                }
 
-            Button {
-                id: button_16
-                width: 100
-                height: 100
-                text: qsTr("16 X 16")
-                font.styleName: "Regular"
-                highlighted: true
-                icon.source: "qrc:/ui/images/ic_grid_on_48px.svg"
-                display: AbstractButton.TextUnderIcon
-                Material.accent: Material.Red
-            }
+                Button {
+                    id: button_24
+                    width: 100
+                    height: 100
+                    text: qsTr("24 X 24")
+                    font.styleName: "Regular"
+                    highlighted: true
+                    icon.source: "qrc:/ui/images/ic_grid_on_48px.svg"
+                    display: AbstractButton.TextUnderIcon
+                    Material.accent: Material.Pink
+                }
 
-            Button {
-                id: button_24
-                width: 100
-                height: 100
-                text: qsTr("24 X 24")
-                font.styleName: "Regular"
-                highlighted: true
-                icon.source: "qrc:/ui/images/ic_grid_on_48px.svg"
-                display: AbstractButton.TextUnderIcon
-                Material.accent: Material.Pink
-            }
-
-            Button {
-                id: button_32
-                width: 100
-                height: 100
-                text: qsTr("32  X 32")
-                font.styleName: "Regular"
-                highlighted: true
-                icon.source: "qrc:/ui/images/ic_grid_on_48px.svg"
-                display: AbstractButton.TextUnderIcon
-                Material.accent: Material.Purple
-            }
-
-            Button {
-                id: button_open
-                width: 100
-                height: 100
-                text: qsTr("Open")
-                font.styleName: "Regular"
-                highlighted: true
-                icon.source: "qrc:/ui/images/open_in_browser_black_48dp.svg"
-                display: AbstractButton.TextUnderIcon
-                Material.accent: Material.BlueGrey
-
-                onClicked: {
-                    fileOpnedWithSuccess = false
-                    openFileDialog.file = ""
-                    io.reset()
-                    openFileDialog.open()
+                Button {
+                    id: button_32
+                    width: 100
+                    height: 100
+                    text: qsTr("32  X 32")
+                    font.styleName: "Regular"
+                    highlighted: true
+                    icon.source: "qrc:/ui/images/ic_grid_on_48px.svg"
+                    display: AbstractButton.TextUnderIcon
+                    Material.accent: Material.Purple
                 }
             }
-            Button {
-                id: button_import
-                width: 100
-                height: 100
-                text: qsTr("Import PNG")
-                font.styleName: "Regular"
-                highlighted: true
-                icon.source: "qrc:/ui/images/insert_photo_black_48dp.svg"
-                display: AbstractButton.TextUnderIcon
-                Material.accent: Material.BlueGrey
+        }
+        Item {
+            id: row3
+            width: parent.width
+            height: 120
+            Text {
+                id: text2
+                color: Constants.titleColor
+                text: qsTr("Or")
+                anchors.bottom: parent.bottom
+                font.pixelSize: 60
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                padding: 10
+                font.styleName: "Thin"
+                anchors.bottomMargin: 0
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.family: "Roboto"
+                font.weight: Font.Medium
+            }
+        }
+        Item {
+            id: row4
+            width: parent.width
+            height: 120
+            Row {
+                spacing: 10
+                padding: 10
+                anchors.horizontalCenter: parent.horizontalCenter
 
-                onClicked: {
-                    importPNGDialog.file = ""
-                    importPNGDialog.open()
+                Button {
+                    id: button_open
+                    width: 100
+                    height: 100
+                    text: qsTr("Open")
+                    font.styleName: "Regular"
+                    highlighted: true
+                    icon.source: "qrc:/ui/images/open_in_browser_black_48dp.svg"
+                    display: AbstractButton.TextUnderIcon
+                    Material.accent: Material.BlueGrey
+
+                    onClicked: {
+                        fileOpnedWithSuccess = false
+                        openFileDialog.file = ""
+                        io.reset()
+                        openFileDialog.open()
+                    }
+                }
+                Button {
+                    id: button_import
+                    width: 100
+                    height: 100
+                    text: qsTr("Import PNG")
+                    font.styleName: "Regular"
+                    highlighted: true
+                    icon.source: "qrc:/ui/images/insert_photo_black_48dp.svg"
+                    display: AbstractButton.TextUnderIcon
+                    Material.accent: Material.BlueGrey
+
+                    onClicked: {
+                        importPNGDialog.file = ""
+                        importPNGDialog.open()
+                    }
                 }
             }
         }
