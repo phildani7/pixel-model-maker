@@ -51,6 +51,7 @@ RightClick  | Delete Shape & Color
 MiddleClick | Pick Shape & Color
 MiddleClick + Shift | Pick Color Only
 MiddleClick + Ctrl | Pick Shape Only
+Mouse Wheel | Rotate Shape
 
 # Screenshots
 
