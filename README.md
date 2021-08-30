@@ -1,5 +1,5 @@
 # Pixel Model Maker
-PixelModelMaker is an opensource clone of [KenShape](https://tools.kenney.nl/kenshape/) from [Kenny](https://kenney.nl/).
+PixelModelMaker allows you to use simple forms to draw on a 2d canvas. You can then raise each pixel's depth and see the outcome in 3d. The image and 3d model can be exported to continue using other softwares.
 
 # Downloads
 Download for [Windows](https://github.com/zaghaghi/pixel-model-maker/releases) and [MacOS](https://github.com/zaghaghi/pixel-model-maker/releases)
