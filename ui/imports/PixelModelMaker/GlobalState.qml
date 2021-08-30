@@ -36,6 +36,39 @@ QtObject {
         return JSON.stringify(getSaveObject(), null, 2)
     }
 
+    function buildSaveStringFromPixels(width, height, pixels, palette) {
+        let jsonData = {
+            "version": "1.0",
+            "palette": palette.map(item => item.toString()),
+            "width": width,
+            "height": height,
+            "pixels": null
+        }
+
+        let pixelsFixed = []
+        if (pixels.length)
+            for (var i = 0; i < height; ++i) {
+                let row = []
+                if (i < pixels.length) {
+                    row = pixels[i]
+                }
+                let oldLength = row.length
+                row.length = width
+                row.fill(null, oldLength, width)
+                pixelsFixed.push(row)
+            }
+
+        jsonData["pixels"] = pixelsFixed.map(row => row.map(item => {
+                                                                return {
+                                                                    "color": item ? item.toString(
+                                                                                        ) : null,
+                                                                    "depth": item ? 1 : 0,
+                                                                    "shape": item ? "cube" : null
+                                                                }
+                                                            }))
+        return JSON.stringify(jsonData)
+    }
+
     function setOpenString(jsonData, fileName) {
         try {
             let data = JSON.parse(jsonData)

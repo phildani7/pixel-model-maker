@@ -1,11 +1,10 @@
-import Qt.labs.platform 1.1
-
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import PixelModelMaker 1.0
 import QtQuick3D 1.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Controls.Material.impl 2.15
+import Qt.labs.platform 1.1 as QtLabs
 
 import com.github.zaghaghi.pixelmodelmaker 1.0
 
@@ -281,18 +280,20 @@ Item {
         }
     }
 
-    FileDialog {
+    QtLabs.FileDialog {
         id: saveFileDialog
-        folder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
-        fileMode: FileDialog.SaveFile
+        folder: QtLabs.StandardPaths.writableLocation(
+                    QtLabs.StandardPaths.DocumentsLocation)
+        fileMode: QtLabs.FileDialog.SaveFile
         defaultSuffix: "json"
         nameFilters: ["JSON Files (*.json)"]
     }
 
-    FileDialog {
+    QtLabs.FileDialog {
         id: exportImageDialog
-        folder: StandardPaths.writableLocation(StandardPaths.PicturesLocation)
-        fileMode: FileDialog.SaveFile
+        folder: QtLabs.StandardPaths.writableLocation(
+                    QtLabs.StandardPaths.PicturesLocation)
+        fileMode: QtLabs.FileDialog.SaveFile
         defaultSuffix: "png"
         nameFilters: ["PNG Image Files (*.png)"]
 
@@ -321,13 +322,15 @@ Item {
         id: paletteLoader
         onLoaded: colors => {
                       Constants.defaultColorPalette = colors
+                      console.log(colors)
                   }
     }
 
-    FileDialog {
+    QtLabs.FileDialog {
         id: loadPaletteDialog
-        folder: StandardPaths.writableLocation(StandardPaths.HomeLocation)
-        fileMode: FileDialog.OpenFile
+        folder: QtLabs.StandardPaths.writableLocation(
+                    QtLabs.StandardPaths.HomeLocation)
+        fileMode: QtLabs.FileDialog.OpenFile
         defaultSuffix: "png"
         nameFilters: ["PNG Image Files (*.png)"]
 
@@ -364,10 +367,11 @@ Item {
                  }
     }
 
-    FileDialog {
+    QtLabs.FileDialog {
         id: exportModelDialog
-        folder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
-        fileMode: FileDialog.SaveFile
+        folder: QtLabs.StandardPaths.writableLocation(
+                    QtLabs.StandardPaths.DocumentsLocation)
+        fileMode: QtLabs.FileDialog.SaveFile
         defaultSuffix: "gltf"
         nameFilters: ["glTF 2.0 (*.gltf)"]
 

@@ -4,6 +4,7 @@
 
 #include "fileio.h"
 #include "gltfexport.h"
+#include "imageimport.h"
 #include "paletteloader.h"
 
 int main(int argc, char *argv[]) {
@@ -19,6 +20,9 @@ int main(int argc, char *argv[]) {
                               "GltfExport");
   qmlRegisterType<PaletteLoader>("com.github.zaghaghi.pixelmodelmaker", 1, 0,
                                  "PaletteLoader");
+  qmlRegisterType<ImageImport>("com.github.zaghaghi.pixelmodelmaker", 1, 0,
+                               "ImageImport");
+
   QQuickView view;
   view.setWidth(1200);
   view.setHeight(800);

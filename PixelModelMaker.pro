@@ -9,6 +9,7 @@ CONFIG += c++11
 SOURCES += \
         fileio.cpp \
         gltfexport.cpp \
+        imageimport.cpp \
         main.cpp \
         paletteloader.cpp
 
@@ -28,6 +29,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     fileio.h \
     gltfexport.h \
+    imageimport.h \
     paletteloader.h
 
 ICON = ui/images/icon.icns

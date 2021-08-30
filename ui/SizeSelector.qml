@@ -1,9 +1,8 @@
-import Qt.labs.platform 1.1
-
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import PixelModelMaker 1.0
 import QtQuick.Controls.Material 2.15
+import Qt.labs.platform 1.1 as QtLabs
 
 import com.github.zaghaghi.pixelmodelmaker 1.0
 
@@ -112,6 +111,22 @@ Rectangle {
                     openFileDialog.open()
                 }
             }
+            Button {
+                id: button_import
+                width: 100
+                height: 100
+                text: qsTr("Import PNG")
+                font.styleName: "Regular"
+                highlighted: true
+                icon.source: "qrc:/ui/images/insert_photo_black_48dp.svg"
+                display: AbstractButton.TextUnderIcon
+                Material.accent: Material.BlueGrey
+
+                onClicked: {
+                    importPNGDialog.file = ""
+                    importPNGDialog.open()
+                }
+            }
         }
     }
     FileIO {
@@ -124,7 +139,6 @@ Rectangle {
 
         onTextChanged: {
             if (!GlobalState.setOpenString(io.text, io.source)) {
-                // TODO: show a dialog to inform the user file is not supported
                 errorDialog.open()
                 return
             }
@@ -132,13 +146,15 @@ Rectangle {
         }
     }
 
-    FileDialog {
+    QtLabs.FileDialog {
         id: openFileDialog
-        folder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
-        fileMode: FileDialog.OpenFile
+        folder: QtLabs.StandardPaths.writableLocation(
+                    QtLabs.StandardPaths.DocumentsLocation)
+        fileMode: QtLabs.FileDialog.OpenFile
         defaultSuffix: "json"
         nameFilters: ["JSON Files (*.json)"]
     }
+
     Dialog {
         id: errorDialog
         modal: true
@@ -149,6 +165,34 @@ Rectangle {
         }
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
+    }
+
+    QtLabs.FileDialog {
+        id: importPNGDialog
+        folder: QtLabs.StandardPaths.writableLocation(
+                    QtLabs.StandardPaths.DownloadsLocation)
+        fileMode: QtLabs.FileDialog.OpenFile
+        defaultSuffix: "png"
+        nameFilters: ["PNG Image Files (*.png)"]
+
+        onFileChanged: {
+            imageImport.load(importPNGDialog.file)
+        }
+    }
+
+    ImageImport {
+        id: imageImport
+        onLoaded: (width, height, pixels, palette) => {
+                      console.log(palette)
+                      let saveString = GlobalState.buildSaveStringFromPixels(
+                          width, height, pixels, palette)
+
+                      if (!GlobalState.setOpenString(saveString, "")) {
+                          errorDialog.open()
+                          return
+                      }
+                      fileOpnedWithSuccess = true
+                  }
     }
 }
 

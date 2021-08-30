@@ -110,5 +110,6 @@
         <file>ui/DepthPane.qml</file>
         <file>ui/DepthPalette.qml</file>
         <file>ui/images/palette_black_48dp.svg</file>
+        <file>ui/images/insert_photo_black_48dp.svg</file>
     </qresource>
 </RCC>
