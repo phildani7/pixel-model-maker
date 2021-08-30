@@ -49,24 +49,7 @@ Item {
         }
 
         Row {
-            ToolButton {
-                id: saveButton
-                text: qsTr("")
-                display: AbstractButton.IconOnly
-                icon.source: "qrc:/ui/images/ic_save_48px.svg"
-
-                onClicked: {
-                    if (GlobalState.fileName === "") {
-                        saveFileDialog.open()
-                    } else {
-                        if (io.source !== GlobalState.fileName) {
-                            io.source = GlobalState.fileName
-                        } else {
-                            io.text = GlobalState.getSaveString()
-                        }
-                    }
-                }
-            }
+            anchors.right: parent.right
             ToolButton {
                 id: exportImage
 
@@ -91,7 +74,38 @@ Item {
                     exportModelDialog.open()
                 }
             }
-            anchors.right: parent.right
+
+            ToolButton {
+                id: paletteButton
+
+                text: qsTr("")
+                display: AbstractButton.IconOnly
+                icon.source: "qrc:/ui/images/palette_black_48dp.svg"
+                visible: viewMode == 0
+                onClicked: {
+                    loadPaletteDialog.file = ""
+                    loadPaletteDialog.open()
+                }
+            }
+
+            ToolButton {
+                id: saveButton
+                text: qsTr("")
+                display: AbstractButton.IconOnly
+                icon.source: "qrc:/ui/images/ic_save_48px.svg"
+
+                onClicked: {
+                    if (GlobalState.fileName === "") {
+                        saveFileDialog.open()
+                    } else {
+                        if (io.source !== GlobalState.fileName) {
+                            io.source = GlobalState.fileName
+                        } else {
+                            io.text = GlobalState.getSaveString()
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -303,6 +317,29 @@ Item {
         }
     }
 
+    PaletteLoader {
+        id: paletteLoader
+        onLoaded: colors => {
+                      Constants.defaultColorPalette = colors
+                  }
+    }
+
+    FileDialog {
+        id: loadPaletteDialog
+        folder: StandardPaths.writableLocation(StandardPaths.HomeLocation)
+        fileMode: FileDialog.OpenFile
+        defaultSuffix: "png"
+        nameFilters: ["PNG Image Files (*.png)"]
+
+        onFileChanged: {
+            let paletteFileName = loadPaletteDialog.file.toString()
+
+            if (paletteFileName === "")
+                return
+            paletteLoader.load(paletteFileName)
+        }
+    }
+
     Dialog {
         id: exportImageErrorDialog
         modal: true
@@ -362,6 +399,29 @@ Item {
         title: qsTr("Model Exported")
         Label {
             text: "Model exported successfully"
+        }
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
+    }
+
+    Dialog {
+        id: openPaletteInfoDialog
+        modal: true
+        standardButtons: Dialog.Ok
+        title: qsTr("Palette loaded")
+        Label {
+            text: "Color palette loaded successfully"
+        }
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
+    }
+    Dialog {
+        id: openPaletteErrorDialog
+        modal: true
+        standardButtons: Dialog.Ok
+        title: qsTr("Error Loading Palette")
+        Label {
+            text: "Can't load color palette right now!"
         }
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2

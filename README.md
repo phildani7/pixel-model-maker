@@ -16,12 +16,13 @@ Download for [Windows](https://github.com/zaghaghi/pixel-model-maker/releases) a
 * ✅ More Shapes
 * ✅ Depth Scale Slider
 * ✅ Depth Palette
+* ✅ Shape & Color Picker
+* ✅ Rotate Shapes
+* ✅ Custom Color Palette
 
 ## Todo
-
-* Shape & Color Picker
-* Rotate Shapes
-* Custom Color Palette
+* Undo and Redo
+* Open Image
 * Model Optimization
 * Automatic Depth
 

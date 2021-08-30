@@ -17,6 +17,7 @@ QtObject {
                                         })
     }
 
+    readonly property var shapeNames: ["cube", "tricube", "cutcube", "half", "pie", "point", "roundcube", "roundpoint", "curve"]
     readonly property var shapes: {
         "cube": {
             "create": (parent, x, y, color, depth) => createInstance("cube",
@@ -26,7 +27,8 @@ QtObject {
             "draw": (ctx, x, y, w, h) => {
                 ctx.fillRect(x, y, w, h)
             },
-            "next": "cube"
+            "next": "cube",
+            "prev": "cube"
         },
         "tricube": {
             "create": (parent, x, y, color, depth) => createInstance("tricube",
@@ -42,7 +44,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "tricube90"
+            "next": "tricube90",
+            "prev": "tricube270"
         },
         "tricube90": {
             "create": (parent, x, y, color, depth) => createInstance(
@@ -56,7 +59,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "tricube180"
+            "next": "tricube180",
+            "prev": "tricube"
         },
         "tricube180": {
             "create": (parent, x, y, color, depth) => createInstance(
@@ -70,7 +74,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "tricube270"
+            "next": "tricube270",
+            "prev": "tricube90"
         },
         "tricube270": {
             "create": (parent, x, y, color, depth) => createInstance(
@@ -84,7 +89,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "tricube"
+            "next": "tricube",
+            "prev": "tricube180"
         },
         "cutcube": {
             "create": (parent, x, y, color, depth) => createInstance("cutcube",
@@ -102,7 +108,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "cutcube90"
+            "next": "cutcube90",
+            "prev": "cutcube270"
         },
         "cutcube90": {
             "create": (parent, x, y, color, depth) => createInstance(
@@ -118,7 +125,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "cutcube180"
+            "next": "cutcube180",
+            "prev": "cutcube"
         },
         "cutcube180": {
             "create": (parent, x, y, color, depth) => createInstance(
@@ -134,7 +142,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "cutcube270"
+            "next": "cutcube270",
+            "prev": "cutcube90"
         },
         "cutcube270": {
             "create": (parent, x, y, color, depth) => createInstance(
@@ -150,7 +159,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "cutcube"
+            "next": "cutcube",
+            "prev": "cutcube180"
         },
         "half": {
             "create": (parent, x, y, color, depth) => createInstance("half",
@@ -167,7 +177,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "half90"
+            "next": "half90",
+            "prev": "half270"
         },
         "half90": {
             "create": (parent, x, y, color, depth) => createInstance("half90",
@@ -184,7 +195,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "half180"
+            "next": "half180",
+            "prev": "half"
         },
         "half180": {
             "create": (parent, x, y, color, depth) => createInstance("half180",
@@ -201,7 +213,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "half270"
+            "next": "half270",
+            "prev": "half90"
         },
         "half270": {
             "create": (parent, x, y, color, depth) => createInstance("half270",
@@ -218,7 +231,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "half"
+            "next": "half",
+            "prev": "half180"
         },
         "pie": {
             "create": (parent, x, y, color, depth) => createInstance("pie",
@@ -232,7 +246,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "pie90"
+            "next": "pie90",
+            "prev": "pie270"
         },
         "pie90": {
             "create": (parent, x, y, color, depth) => createInstance("pie90",
@@ -246,7 +261,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "pie180"
+            "next": "pie180",
+            "prev": "pie"
         },
         "pie180": {
             "create": (parent, x, y, color, depth) => createInstance("pie180",
@@ -260,7 +276,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "pie270"
+            "next": "pie270",
+            "prev": "pie90"
         },
         "pie270": {
             "create": (parent, x, y, color, depth) => createInstance("pie270",
@@ -274,7 +291,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "pie"
+            "next": "pie",
+            "prev": "pie180"
         },
         "point": {
             "create": (parent, x, y, color, depth) => createInstance("point",
@@ -291,7 +309,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "point90"
+            "next": "point90",
+            "prev": "point270"
         },
         "point90": {
             "create": (parent, x, y, color, depth) => createInstance("point90",
@@ -308,7 +327,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "point180"
+            "next": "point180",
+            "prev": "point"
         },
         "point180": {
             "create": (parent, x, y, color, depth) => createInstance(
@@ -323,7 +343,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "point270"
+            "next": "point270",
+            "prev": "point90"
         },
         "point270": {
             "create": (parent, x, y, color, depth) => createInstance(
@@ -338,7 +359,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "point"
+            "next": "point",
+            "prev": "point180"
         },
         "roundcube": {
             "create": (parent, x, y, color, depth) => createInstance(
@@ -354,7 +376,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "roundcube90"
+            "next": "roundcube90",
+            "prev": "roundcube270"
         },
         "roundcube90": {
             "create": (parent, x, y, color, depth) => createInstance(
@@ -370,7 +393,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "roundcube180"
+            "next": "roundcube180",
+            "prev": "roundcube"
         },
         "roundcube180": {
             "create": (parent, x, y, color, depth) => createInstance(
@@ -386,7 +410,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "roundcube270"
+            "next": "roundcube270",
+            "prev": "roundcube90"
         },
         "roundcube270": {
             "create": (parent, x, y, color, depth) => createInstance(
@@ -402,7 +427,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "roundcube"
+            "next": "roundcube",
+            "prev": "roundcube180"
         },
         "roundpoint": {
             "create": (parent, x, y, color, depth) => createInstance(
@@ -417,7 +443,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "roundpoint90"
+            "next": "roundpoint90",
+            "prev": "roundpoint270"
         },
         "roundpoint90": {
             "create": (parent, x, y, color, depth) => createInstance(
@@ -431,7 +458,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "roundpoint180"
+            "next": "roundpoint180",
+            "prev": "roundpoint"
         },
         "roundpoint180": {
             "create": (parent, x, y, color, depth) => createInstance(
@@ -447,7 +475,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "roundpoint270"
+            "next": "roundpoint270",
+            "prev": "roundpoint90"
         },
         "roundpoint270": {
             "create": (parent, x, y, color, depth) => createInstance(
@@ -461,7 +490,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "roundpoint"
+            "next": "roundpoint",
+            "prev": "roundpoint180"
         },
         "curve": {
             "create": (parent, x, y, color, depth) => createInstance("curve",
@@ -477,7 +507,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "curve90"
+            "next": "curve90",
+            "prev": "curve270"
         },
         "curve90": {
             "create": (parent, x, y, color, depth) => createInstance("curve90",
@@ -492,7 +523,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "curve180"
+            "next": "curve180",
+            "prev": "curve"
         },
         "curve180": {
             "create": (parent, x, y, color, depth) => createInstance(
@@ -505,7 +537,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "curve270"
+            "next": "curve270",
+            "prev": "curve90"
         },
         "curve270": {
             "create": (parent, x, y, color, depth) => createInstance(
@@ -517,7 +550,8 @@ QtObject {
                 ctx.closePath()
                 ctx.fill()
             },
-            "next": "curve"
+            "next": "curve",
+            "prev": "curve180"
         }
     }
 }

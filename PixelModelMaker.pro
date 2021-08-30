@@ -9,7 +9,8 @@ CONFIG += c++11
 SOURCES += \
         fileio.cpp \
         gltfexport.cpp \
-        main.cpp
+        main.cpp \
+        paletteloader.cpp
 
 RESOURCES += qml.qrc
 
@@ -26,7 +27,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     fileio.h \
-    gltfexport.h
+    gltfexport.h \
+    paletteloader.h
 
 ICON = ui/images/icon.icns
 RC_ICONS =  ui/images/icon.ico
