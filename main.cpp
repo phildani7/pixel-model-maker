@@ -4,6 +4,7 @@
 
 #include "fileio.h"
 #include "gltfexport.h"
+#include "paletteloader.h"
 
 int main(int argc, char *argv[]) {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -16,6 +17,8 @@ int main(int argc, char *argv[]) {
                           "FileIO");
   qmlRegisterType<GLTFExport>("com.github.zaghaghi.pixelmodelmaker", 1, 0,
                               "GltfExport");
+  qmlRegisterType<PaletteLoader>("com.github.zaghaghi.pixelmodelmaker", 1, 0,
+                                 "PaletteLoader");
   QQuickView view;
   view.setWidth(1200);
   view.setHeight(800);

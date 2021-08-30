@@ -60,6 +60,7 @@ Pane {
 
             onClicked: parent.handleClick(mouse)
             onPositionChanged: parent.handleDrag(mouse)
+            onWheel: parent.handleWheel(wheel)
         }
 
         function destroyPixel(pixel) {
@@ -134,6 +135,23 @@ Pane {
                 destroyPixel(pixel)
                 canvas.requestPaint()
             }
+        }
+
+        function handleWheel(event) {
+            const cellSize = width / GlobalState.gridWidth
+            const col = parseInt(event.x / cellSize)
+            const row = parseInt(event.y / cellSize)
+            if (col >= GlobalState.gridWidth || col < 0
+                    || row >= GlobalState.gridHeight || row < 0)
+                return
+            let pixel = GlobalState.pixelMap[row][col]
+            if (pixel.shapeName === null)
+                return
+            if (event.angleDelta.y > 0)
+                pixel.shapeName = ShapeCollection.shapes[pixel.shapeName].next
+            else
+                pixel.shapeName = ShapeCollection.shapes[pixel.shapeName].prev
+            canvas.requestPaint()
         }
     }
 

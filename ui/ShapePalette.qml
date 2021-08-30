@@ -71,7 +71,7 @@ Pane {
 
             cellWidth: 30
             cellHeight: 30
-            model: Object.keys(ShapeCollection.shapes)
+            model: ShapeCollection.shapeNames
             focus: true
             clip: true
             delegate: Item {

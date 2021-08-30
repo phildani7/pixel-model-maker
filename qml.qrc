@@ -109,5 +109,6 @@
         <file>ui/shapes/Shape.qml</file>
         <file>ui/DepthPane.qml</file>
         <file>ui/DepthPalette.qml</file>
+        <file>ui/images/palette_black_48dp.svg</file>
     </qresource>
 </RCC>
