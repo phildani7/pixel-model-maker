@@ -1,6 +1,8 @@
 # Pixel Model Maker
 PixelModelMaker allows you to use simple forms to draw on a 2d canvas. You can then raise each pixel's depth and see the outcome in 3d. The image and 3d model can be exported to continue using other softwares.
 
+<a href="https://www.producthunt.com/posts/pixel-model-maker?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-pixel-model-maker" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=310321&theme=dark" alt="Pixel Model Maker - Draw on a 2d canvas with pixels and convert to 3d model. | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+
 # Downloads
 Download for [Windows](https://github.com/zaghaghi/pixel-model-maker/releases) and [MacOS](https://github.com/zaghaghi/pixel-model-maker/releases)
 
