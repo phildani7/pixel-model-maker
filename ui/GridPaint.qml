@@ -15,7 +15,7 @@ Item {
     property alias backButton: backButton
     property int viewMode: 0
     property variant viewNames: ["Edit Mode", "Depth Mode", "View Mode"]
-    property bool helpPane: false
+    property bool helpPane: true
 
     width: 1000
     height: 600
@@ -116,6 +116,8 @@ Item {
                 display: AbstractButton.IconOnly
                 icon.source: "qrc:/ui/images/help_center_black_48dp.svg"
                 hoverEnabled: true
+                highlighted: helpPane
+                Material.accent: Material.Cyan
                 ToolTip {
                     parent: helpButton.handle
                     visible: helpButton.hovered
