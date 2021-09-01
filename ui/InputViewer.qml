@@ -4,7 +4,7 @@ import QtQuick.Controls.Material 2.15
 import QtQuick.Controls.Material.impl 2.15
 import PixelModelMaker 1.0
 
-Pane {
+Item {
     visible: GlobalState.inputSequence.length > 0
     anchors.fill: parent
     Pane {
