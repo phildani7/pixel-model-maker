@@ -3,6 +3,9 @@ PixelModelMaker allows you to use simple forms to draw on a 2d canvas. You can t
 
 <a href="https://www.producthunt.com/posts/pixel-model-maker?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-pixel-model-maker" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=310321&theme=dark" alt="Pixel Model Maker - Draw on a 2d canvas with pixels and convert to 3d model. | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 
+# Sample
+![Make Cassette](screenshots/cassette.gif)
+
 # Downloads
 Download for [Windows](https://github.com/zaghaghi/pixel-model-maker/releases) and [MacOS](https://github.com/zaghaghi/pixel-model-maker/releases)
 

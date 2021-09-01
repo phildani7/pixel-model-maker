@@ -1,0 +1,1350 @@
+{
+  "version": "1.0",
+  "palette": [
+    "#f2f0e5",
+    "#b8b5b9",
+    "#868188",
+    "#646365",
+    "#45444f",
+    "#3a3858",
+    "#212123",
+    "#352b42",
+    "#43436a",
+    "#4b80ca",
+    "#68c2d3",
+    "#a2dcc7",
+    "#ede19e",
+    "#d3a068",
+    "#b45252",
+    "#6a536e",
+    "#4b4158",
+    "#80493a",
+    "#a77b5b",
+    "#e5ceb4",
+    "#c2d368",
+    "#8ab060",
+    "#567b79",
+    "#4e584a",
+    "#7b7243",
+    "#b2b47e",
+    "#edc8c4",
+    "#cf8acb",
+    "#5f556a"
+  ],
+  "width": 16,
+  "height": 16,
+  "pixels": [
+    [
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      }
+    ],
+    [
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      }
+    ],
+    [
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      }
+    ],
+    [
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "tricube270"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "half270"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "tricube"
+      }
+    ],
+    [
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      }
+    ],
+    [
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#ede19e",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      }
+    ],
+    [
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "tricube90"
+      },
+      {
+        "color": "#f2f0e5",
+        "depth": 1,
+        "shape": "half90"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "tricube180"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#80493a",
+        "depth": 1,
+        "shape": "cutcube"
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": "#80493a",
+        "depth": 1,
+        "shape": "cutcube270"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "tricube90"
+      },
+      {
+        "color": "#f2f0e5",
+        "depth": 1,
+        "shape": "half90"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "tricube180"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      }
+    ],
+    [
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#f2f0e5",
+        "depth": 1,
+        "shape": "half"
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": "#f2f0e5",
+        "depth": 1,
+        "shape": "half180"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#80493a",
+        "depth": 1,
+        "shape": "cube"
+      },
+      {
+        "color": "#80493a",
+        "depth": 1,
+        "shape": "half"
+      },
+      {
+        "color": "#80493a",
+        "depth": 1,
+        "shape": "half180"
+      },
+      {
+        "color": "#80493a",
+        "depth": 1,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#f2f0e5",
+        "depth": 1,
+        "shape": "half"
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": "#f2f0e5",
+        "depth": 1,
+        "shape": "half180"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      }
+    ],
+    [
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "tricube"
+      },
+      {
+        "color": "#f2f0e5",
+        "depth": 1,
+        "shape": "half270"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "tricube270"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#80493a",
+        "depth": 1,
+        "shape": "cutcube90"
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": "#80493a",
+        "depth": 1,
+        "shape": "cutcube180"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "tricube"
+      },
+      {
+        "color": "#f2f0e5",
+        "depth": 1,
+        "shape": "half270"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "tricube270"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      }
+    ],
+    [
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#4b80ca",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#4b80ca",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#4b80ca",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#4b80ca",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#4b80ca",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#4b80ca",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#4b80ca",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#4b80ca",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#4b80ca",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#4b80ca",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#4b80ca",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#4b80ca",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#4b80ca",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#4b80ca",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      }
+    ],
+    [
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#68c2d3",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#68c2d3",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#68c2d3",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#f2f0e5",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#f2f0e5",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#f2f0e5",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#f2f0e5",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#f2f0e5",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#f2f0e5",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#f2f0e5",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#f2f0e5",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#68c2d3",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#68c2d3",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#68c2d3",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      }
+    ],
+    [
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#45444f",
+        "depth": 1,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#45444f",
+        "depth": 3,
+        "shape": "cube"
+      },
+      {
+        "color": "#45444f",
+        "depth": 3,
+        "shape": "cube"
+      },
+      {
+        "color": "#45444f",
+        "depth": 3,
+        "shape": "cube"
+      },
+      {
+        "color": "#45444f",
+        "depth": 3,
+        "shape": "cube"
+      },
+      {
+        "color": "#45444f",
+        "depth": 3,
+        "shape": "cube"
+      },
+      {
+        "color": "#45444f",
+        "depth": 3,
+        "shape": "cube"
+      },
+      {
+        "color": "#45444f",
+        "depth": 3,
+        "shape": "cube"
+      },
+      {
+        "color": "#45444f",
+        "depth": 3,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#45444f",
+        "depth": 1,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      }
+    ],
+    [
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#45444f",
+        "depth": 3,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 3,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 3,
+        "shape": "cutcube90"
+      },
+      {
+        "color": "#646365",
+        "depth": 3,
+        "shape": "half90"
+      },
+      {
+        "color": "#646365",
+        "depth": 3,
+        "shape": "half90"
+      },
+      {
+        "color": "#646365",
+        "depth": 3,
+        "shape": "half90"
+      },
+      {
+        "color": "#646365",
+        "depth": 3,
+        "shape": "half90"
+      },
+      {
+        "color": "#646365",
+        "depth": 3,
+        "shape": "cutcube180"
+      },
+      {
+        "color": "#646365",
+        "depth": 3,
+        "shape": "cube"
+      },
+      {
+        "color": "#45444f",
+        "depth": 3,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      },
+      {
+        "color": "#646365",
+        "depth": 2,
+        "shape": "cube"
+      }
+    ],
+    [
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      }
+    ],
+    [
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      }
+    ],
+    [
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      },
+      {
+        "color": null,
+        "depth": 0,
+        "shape": null
+      }
+    ]
+  ]
+}
