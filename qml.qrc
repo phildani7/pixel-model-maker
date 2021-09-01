@@ -111,5 +111,8 @@
         <file>ui/DepthPalette.qml</file>
         <file>ui/images/palette_black_48dp.svg</file>
         <file>ui/images/insert_photo_black_48dp.svg</file>
+        <file>ui/InputViewer.qml</file>
+        <file>ui/images/help_center_black_48dp.svg</file>
+        <file>ui/HelpView.qml</file>
     </qresource>
 </RCC>

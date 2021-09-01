@@ -22,6 +22,7 @@ Download for [Windows](https://github.com/zaghaghi/pixel-model-maker/releases) a
 * ✅ Rotate Shapes
 * ✅ Custom Color Palette
 * ✅ Open Image
+* ✅ Help Pane
 
 ## Todo
 * Undo and Redo
@@ -64,3 +65,10 @@ Draw   | ![draw-mode](screenshots/draw-mode.png)
 Depth  | ![depth-mode](screenshots/depth-mode.png)
 3D View| ![view-mode](screenshots/3d-view-mode.png)
 Exported to Blender| ![view-mode](screenshots/export-blender.png)
+
+# Input Viewer
+If you want to enable input viewer to show the mouse actions pass `-input-pane` as command line argument.
+
+# License
+PixelModelMaker uses Qt6 Open-source license, so its license is LGPL. 
+Contents that is created with this tool is not copy righted. 

@@ -69,10 +69,12 @@ Pane {
             if (pixel.shape) {
                 pixel.shape.destroy()
                 pixel.shape = null
+                pixel.shapeName = null
             }
             if (pixel.miniShape) {
                 pixel.miniShape.destroy()
                 pixel.miniShape = null
+                pixel.shapeName = null
             }
         }
 
@@ -86,6 +88,8 @@ Pane {
             let pixel = GlobalState.pixelMap[row][col]
             if (mouse.button === Qt.LeftButton) {
                 let color = GlobalState.selectedColor
+                if (mouse.modifiers !== Qt.NoModifier && pixel.depth === 0)
+                    return
                 if (mouse.modifiers === Qt.ShiftModifier
                         || mouse.modifiers === Qt.NoModifier)
                     pixel.color = Qt.rgba(color.r, color.g, color.b, color.a)
@@ -107,6 +111,7 @@ Pane {
             } else {
                 destroyPixel(pixel)
             }
+            GlobalState.setInputSequenceFromMouse(mouse, "Mouse Click")
             canvas.requestPaint()
         }
 
@@ -121,6 +126,9 @@ Pane {
             if (mouse.buttons === Qt.LeftButton
                     && (pixel.color !== GlobalState.selectedColor
                         || pixel.shapeName !== GlobalState.selectedShape)) {
+                if (mouse.modifiers !== Qt.NoModifier && pixel.depth === 0)
+                    return
+
                 let color = GlobalState.selectedColor
                 if (mouse.modifiers === Qt.ShiftModifier
                         || mouse.modifiers === Qt.NoModifier)
@@ -130,9 +138,11 @@ Pane {
                 if (mouse.modifiers === Qt.ControlModifier
                         || mouse.modifiers === Qt.NoModifier)
                     pixel.shapeName = GlobalState.selectedShape
+                GlobalState.setInputSequenceFromMouse(mouse, "Mouse Drag")
                 canvas.requestPaint()
             } else if (mouse.buttons === Qt.RightButton) {
                 destroyPixel(pixel)
+                GlobalState.setInputSequenceFromMouse(mouse, "Mouse Drag")
                 canvas.requestPaint()
             }
         }
@@ -151,6 +161,7 @@ Pane {
                 pixel.shapeName = ShapeCollection.shapes[pixel.shapeName].next
             else
                 pixel.shapeName = ShapeCollection.shapes[pixel.shapeName].prev
+            GlobalState.setInputSequenceFromMouse(event, "Mouse Wheel")
             canvas.requestPaint()
         }
     }

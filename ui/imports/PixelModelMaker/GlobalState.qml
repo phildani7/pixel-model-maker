@@ -13,6 +13,44 @@ QtObject {
     property int selectedDepth: 1
     property double depthScaleFactor: 1.0
 
+    property string inputSequence: ""
+    property var timer: Timer {
+        id: inputSequenceClearTimer
+        interval: 1000
+        running: false
+        onTriggered: {
+            inputSequence = ""
+        }
+    }
+    function setInputSequenceFromMouse(mouseEvent, text) {
+        let inputSeqText = []
+        if (mouseEvent.modifiers === Qt.ControlModifier) {
+            inputSeqText.push("Ctrl")
+        }
+        if (mouseEvent.modifiers === Qt.ShiftModifier) {
+            inputSeqText.push("Shift")
+        }
+        if (mouseEvent.modifiers === Qt.AltModifier) {
+            inputSeqText.push("Alt")
+        }
+
+        if (mouseEvent.buttons === Qt.LeftButton
+                || mouseEvent.button === Qt.LeftButton) {
+            inputSeqText.push("Left")
+        }
+        if (mouseEvent.buttons === Qt.RightButton
+                || mouseEvent.button === Qt.RightButton) {
+            inputSeqText.push("Right")
+        }
+        if (mouseEvent.buttons === Qt.MiddleButton
+                || mouseEvent.button === Qt.MiddleButton) {
+            inputSeqText.push("Middle")
+        }
+        inputSequence = inputSeqText.join(
+                    " + ") + " " + text + "|" + mouseEvent.x + mouseEvent.y
+        inputSequenceClearTimer.restart()
+    }
+
     property string fileName: ''
 
     function getSaveObject() {

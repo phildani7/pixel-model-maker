@@ -14,7 +14,8 @@ Item {
     property alias depth: depth
     property alias backButton: backButton
     property int viewMode: 0
-    property variant viewNames: ["Edit Mode", "Depth Mode", "View Mode", "Export"]
+    property variant viewNames: ["Edit Mode", "Depth Mode", "View Mode"]
+    property bool helpPane: false
 
     width: 1000
     height: 600
@@ -55,6 +56,14 @@ Item {
                 text: qsTr("")
                 display: AbstractButton.IconOnly
                 icon.source: "qrc:/ui/images/camera_black_48dp.svg"
+                hoverEnabled: true
+
+                ToolTip {
+                    parent: exportImage.handle
+                    visible: exportImage.hovered
+                    text: qsTr("Export Current View")
+                }
+
                 visible: viewMode == 2
                 onClicked: {
                     exportImageDialog.file = ""
@@ -67,6 +76,13 @@ Item {
                 text: qsTr("")
                 display: AbstractButton.IconOnly
                 icon.source: "qrc:/ui/images/ic_file_download_48px.svg"
+                hoverEnabled: true
+                ToolTip {
+                    parent: export3d.handle
+                    visible: export3d.hovered
+                    text: qsTr("Export 3D Model (glTF 2.0)")
+                }
+
                 visible: viewMode == 2
                 onClicked: {
                     exportModelDialog.file = ""
@@ -80,6 +96,13 @@ Item {
                 text: qsTr("")
                 display: AbstractButton.IconOnly
                 icon.source: "qrc:/ui/images/palette_black_48dp.svg"
+                hoverEnabled: true
+                ToolTip {
+                    parent: paletteButton.handle
+                    visible: paletteButton.hovered
+                    text: qsTr("Open Image For Palette")
+                }
+
                 visible: viewMode == 0
                 onClicked: {
                     loadPaletteDialog.file = ""
@@ -88,10 +111,31 @@ Item {
             }
 
             ToolButton {
+                id: helpButton
+                text: qsTr("")
+                display: AbstractButton.IconOnly
+                icon.source: "qrc:/ui/images/help_center_black_48dp.svg"
+                hoverEnabled: true
+                ToolTip {
+                    parent: helpButton.handle
+                    visible: helpButton.hovered
+                    text: qsTr("Toggle Help Pane")
+                }
+
+                onClicked: helpPane = !helpPane
+            }
+
+            ToolButton {
                 id: saveButton
                 text: qsTr("")
                 display: AbstractButton.IconOnly
                 icon.source: "qrc:/ui/images/ic_save_48px.svg"
+                hoverEnabled: true
+                ToolTip {
+                    parent: saveButton.handle
+                    visible: saveButton.hovered
+                    text: qsTr("Save")
+                }
 
                 onClicked: {
                     if (GlobalState.fileName === "") {
@@ -184,8 +228,25 @@ Item {
         }
 
         Item {
+            id: helpComponent
+            visible: helpPane
+            anchors.fill: parent
+
+            HelpView {
+                id: help
+                width: 250
+                height: 300
+                helpMode: viewMode
+                anchors.left: parent.left
+                anchors.leftMargin: 20
+                anchors.top: parent.top
+                anchors.topMargin: 20
+            }
+        }
+
+        Item {
             id: miniViewComponent
-            visible: viewMode != 2
+            visible: viewMode < 2
             anchors.fill: parent
             MiniViewModel {
                 id: miniView
@@ -196,6 +257,13 @@ Item {
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: 20
             }
+        }
+
+        Item {
+            id: inputViewer
+            visible: InputPane
+            anchors.fill: parent
+            InputViewer {}
         }
     }
 
@@ -321,8 +389,8 @@ Item {
     PaletteLoader {
         id: paletteLoader
         onLoaded: colors => {
-                      Constants.defaultColorPalette = colors
-                      console.log(colors)
+                      Constants.defaultColorPalette = colors.map(
+                          color => color.toString())
                   }
     }
 

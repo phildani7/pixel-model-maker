@@ -70,6 +70,7 @@ Pane {
 
             onClicked: parent.handleClick(mouse)
             onPositionChanged: parent.handleDrag(mouse)
+            onWheel: parent.handleWheel(wheel)
         }
 
         function handleClick(mouse) {
@@ -84,8 +85,9 @@ Pane {
                 return
             if (mouse.button === Qt.LeftButton) {
                 pixel.depth = GlobalState.selectedDepth
+                GlobalState.setInputSequenceFromMouse(mouse, "Mouse Click")
+                depthCanvas.requestPaint()
             }
-            depthCanvas.requestPaint()
         }
 
         function handleDrag(mouse) {
@@ -102,8 +104,27 @@ Pane {
             if (mouse.buttons === Qt.LeftButton
                     && pixel.depth !== GlobalState.selectedDepth) {
                 pixel.depth = GlobalState.selectedDepth
+                GlobalState.setInputSequenceFromMouse(mouse, "Mouse Drag")
                 depthCanvas.requestPaint()
             }
+        }
+
+        function handleWheel(event) {
+            const cellSize = width / GlobalState.gridWidth
+            const col = parseInt(event.x / cellSize)
+            const row = parseInt(event.y / cellSize)
+            if (col >= GlobalState.gridWidth || col < 0
+                    || row >= GlobalState.gridHeight || row < 0)
+                return
+            let pixel = GlobalState.pixelMap[row][col]
+            if (pixel.color === null || pixel.depth === 0)
+                return
+            if (event.angleDelta.y > 0)
+                pixel.depth = Math.max(1, pixel.depth - 1)
+            else
+                pixel.depth = Math.min(10, pixel.depth + 1)
+            GlobalState.setInputSequenceFromMouse(event, "Mouse Wheel")
+            depthCanvas.requestPaint()
         }
     }
 

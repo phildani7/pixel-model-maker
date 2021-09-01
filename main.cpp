@@ -13,6 +13,8 @@ int main(int argc, char *argv[]) {
 #endif
 
   QGuiApplication app(argc, argv);
+  QStringList args = app.arguments();
+  bool inputPane = args.contains("-input-pane");
 
   qmlRegisterType<FileIO>("com.github.zaghaghi.pixelmodelmaker", 1, 0,
                           "FileIO");
@@ -29,6 +31,7 @@ int main(int argc, char *argv[]) {
   view.setResizeMode(QQuickView::SizeRootObjectToView);
   view.setTitle("Pixel Model Maker");
   view.engine()->addImportPath("qrc:/ui/imports");
+  view.engine()->rootContext()->setContextProperty("InputPane", inputPane);
   view.setSource(QUrl("qrc:/ui/PixelModelMaker.qml"));
   if (!view.errors().isEmpty()) {
     qDebug() << view.errors();
