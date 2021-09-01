@@ -6,6 +6,9 @@ PixelModelMaker allows you to use simple forms to draw on a 2d canvas. You can t
 # Downloads
 Download for [Windows](https://github.com/zaghaghi/pixel-model-maker/releases) and [MacOS](https://github.com/zaghaghi/pixel-model-maker/releases)
 
+# Known Issues
+If you get a blank screen on Windows, try .vbs files for different graphic drivers and find the best one works for you.
+
 # Features
 
 * ✅ Draw Pixels
