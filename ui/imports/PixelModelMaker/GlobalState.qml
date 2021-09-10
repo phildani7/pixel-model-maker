@@ -13,6 +13,8 @@ QtObject {
     property int selectedDepth: 1
     property double depthScaleFactor: 1.0
 
+    property int depthAlign: 0
+
     property string inputSequence: ""
     property var timer: Timer {
         id: inputSequenceClearTimer
@@ -59,6 +61,7 @@ QtObject {
             "palette": Constants.defaultColorPalette,
             "width": gridWidth,
             "height": gridHeight,
+            "align": depthAlign,
             "pixels": pixelMap.map(row => row.map(item => {
                                                       return {
                                                           "color": item.color ? item.color.toString(
@@ -80,6 +83,7 @@ QtObject {
             "palette": palette.map(item => item.toString()),
             "width": width,
             "height": height,
+            "align": 0,
             "pixels": null
         }
 
@@ -117,6 +121,7 @@ QtObject {
             destroyPixelMap()
             gridWidth = data.width
             gridHeight = data.height
+            depthAlign = data.align || 0
             Constants.defaultColorPalette = data.palette
             selectedColor = Constants.defaultColorPalette[0]
             pixelMap = data.pixels.map(row => row.map(item => {

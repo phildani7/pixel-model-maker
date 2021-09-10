@@ -29,6 +29,7 @@ If you get a blank screen on Windows, try .vbs files for different graphic drive
 * ✅ Custom Color Palette
 * ✅ Open Image
 * ✅ Help Pane
+* ✅ Depth Alignment
 
 ## Todo
 * Undo and Redo

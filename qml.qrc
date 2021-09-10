@@ -114,5 +114,8 @@
         <file>ui/InputViewer.qml</file>
         <file>ui/images/help_center_black_48dp.svg</file>
         <file>ui/HelpView.qml</file>
+        <file>ui/images/align_horizontal_right_black_48dp.svg</file>
+        <file>ui/images/align_horizontal_center_black_48dp.svg</file>
+        <file>ui/images/align_horizontal_left_black_48dp.svg</file>
     </qresource>
 </RCC>

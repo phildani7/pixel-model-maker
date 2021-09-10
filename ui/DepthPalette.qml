@@ -23,7 +23,7 @@ Pane {
         anchors.rightMargin: 0
         anchors.leftMargin: 0
         Text {
-            text: "Shape"
+            text: "Depth"
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             font.pointSize: 14

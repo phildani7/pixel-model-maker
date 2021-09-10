@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick3D 1.15
+import PixelModelMaker 1.0
 
 Node {
     required property string name
@@ -9,6 +10,7 @@ Node {
     Model {
         source: `qrc:/ui/shapes/meshes/${name}.mesh`
         scale: Qt.vector3d(25, 25, 25 * depth)
+        position: Qt.vector3d(0, 0, GlobalState.depthAlign * 25 * depth)
         materials: [
             DefaultMaterial {
                 diffuseColor: Qt.rgba(shapeColor.x, shapeColor.y,

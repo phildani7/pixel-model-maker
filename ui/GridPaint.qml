@@ -222,7 +222,7 @@ Item {
 
             DepthPane {
                 width: 200
-                height: 40
+                height: 100
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top: parent.top
                 anchors.topMargin: 20

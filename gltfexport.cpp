@@ -24,7 +24,7 @@ void GLTFExport::write(QUrl fileName, QJsonObject data) {
   }
 
   QJsonArray pixelMap = data.take("pixels").toArray();
-
+  int depthAlign = data.take("align").toInt(0);
   QVector<Node> nodes;
   QVector<QString> shapes, colors;
   QVector<QPair<int, int>> meshes;
@@ -35,7 +35,7 @@ void GLTFExport::write(QUrl fileName, QJsonObject data) {
 
   insertInfo(exportModel);
   insertScene(exportModel, nodes.size());
-  insertNodes(exportModel, nodes, height);
+  insertNodes(exportModel, nodes, height, depthAlign);
   insertMeshes(exportModel, meshes);
   insertMaterials(exportModel, colors);
   if (!insertShapeData(exportModel, shapes)) {
@@ -159,17 +159,19 @@ void GLTFExport::insertScene(QJsonObject &exportModel, int numNodes) {
 }
 
 void GLTFExport::insertNodes(QJsonObject &exportModel,
-                             const QVector<GLTFExport::Node> &nodes,
-                             int height) {
+                             const QVector<GLTFExport::Node> &nodes, int height,
+                             int depthAlign) {
   // insert all the nodes with ids related to other part of the gltf
   QJsonArray nodesDef;
   for (int i = 0; i < nodes.size(); ++i) {
+    float depth = 2 * nodes[i].depth - 1;
     QJsonObject nodeDef{
+
         {"mesh", nodes[i].mesh},
-        {"translation",
-         QJsonArray{nodes[i].row * 2 + 1, nodes[i].col * 2 + 1, 0}},
+        {"translation", QJsonArray{nodes[i].row * 2 + 1, nodes[i].col * 2 + 1,
+                                   depthAlign * depth}},
         {"rotation", QJsonArray{0, 0, 0.7071068286895752, 0.7071068286895752}},
-        {"scale", QJsonArray{1, 1, 2 * nodes[i].depth - 1}}};
+        {"scale", QJsonArray{1, 1, depth}}};
     nodesDef.append(nodeDef);
   }
 

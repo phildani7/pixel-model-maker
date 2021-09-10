@@ -35,7 +35,8 @@ class GLTFExport : public QObject {
   void insertInfo(QJsonObject &exportModel);
   void insertScene(QJsonObject &exportModel, int numNodes);
   void insertNodes(QJsonObject &exportModel,
-                   const QVector<GLTFExport::Node> &nodes, int height);
+                   const QVector<GLTFExport::Node> &nodes, int height,
+                   int depthAlign);
   void insertMeshes(QJsonObject &exportModel,
                     const QVector<QPair<int, int>> meshes);
   void insertMaterials(QJsonObject &exportModel,
