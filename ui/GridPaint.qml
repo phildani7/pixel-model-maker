@@ -143,7 +143,7 @@ Item {
                     if (GlobalState.fileName === "") {
                         saveFileDialog.open()
                     } else {
-                        if (io.source !== GlobalState.fileName) {
+                        if (io.source.toString() !== GlobalState.fileName) {
                             io.source = GlobalState.fileName
                         } else {
                             io.text = GlobalState.getSaveString()
