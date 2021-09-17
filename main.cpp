@@ -6,6 +6,7 @@
 #include "gltfexport.h"
 #include "imageimport.h"
 #include "paletteloader.h"
+#include "solana.h"
 
 int main(int argc, char *argv[]) {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -25,6 +26,8 @@ int main(int argc, char *argv[]) {
   qmlRegisterType<ImageImport>("com.github.zaghaghi.pixelmodelmaker", 1, 0,
                                "ImageImport");
 
+  qmlRegisterType<Solana>("com.github.zaghaghi.pixelmodelmaker", 1, 0,
+                          "Solana");
   QQuickView view;
   view.setWidth(1200);
   view.setHeight(800);

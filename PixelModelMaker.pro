@@ -10,8 +10,19 @@ SOURCES += \
         fileio.cpp \
         gltfexport.cpp \
         imageimport.cpp \
+        libs/ed25519/src/add_scalar.c \
+        libs/ed25519/src/fe.c \
+        libs/ed25519/src/ge.c \
+        libs/ed25519/src/key_exchange.c \
+        libs/ed25519/src/keypair.c \
+        libs/ed25519/src/sc.c \
+        libs/ed25519/src/seed.c \
+        libs/ed25519/src/sha512.c \
+        libs/ed25519/src/sign.c \
+        libs/ed25519/src/verify.c \
         main.cpp \
-        paletteloader.cpp
+        paletteloader.cpp \
+        solana.cpp
 
 RESOURCES += qml.qrc
 
@@ -30,7 +41,15 @@ HEADERS += \
     fileio.h \
     gltfexport.h \
     imageimport.h \
-    paletteloader.h
+    libs/ed25519/src/ed25519.h \
+    libs/ed25519/src/fe.h \
+    libs/ed25519/src/fixedint.h \
+    libs/ed25519/src/ge.h \
+    libs/ed25519/src/precomp_data.h \
+    libs/ed25519/src/sc.h \
+    libs/ed25519/src/sha512.h \
+    paletteloader.h \
+    solana.h
 
 ICON = ui/images/icon.icns
 RC_ICONS =  ui/images/icon.ico
