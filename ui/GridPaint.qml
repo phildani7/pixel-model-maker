@@ -14,8 +14,8 @@ Item {
     property alias depth: depth
     property alias backButton: backButton
     property int viewMode: 0
-    property variant viewNames: ["Edit Mode", "Depth Mode", "View Mode"]
-    property bool helpPane: true
+    property variant viewNames: ["Edit Mode", "Depth Mode", "View Mode", "NFT"]
+    property bool helpPane: false
 
     width: 1000
     height: 600
@@ -230,6 +230,16 @@ Item {
         }
 
         Item {
+            id: nftComponents
+            visible: viewMode == 3
+            anchors.fill: parent
+
+            NFTView {
+                id: nftView
+            }
+        }
+
+        Item {
             id: helpComponent
             visible: helpPane
             anchors.fill: parent
@@ -329,6 +339,22 @@ Item {
                 Material.accent: Material.Cyan
                 onClicked: {
                     viewMode = 2
+                }
+            }
+
+            Button {
+                id: nftButton
+                width: viewBar.buttonSize
+                height: viewBar.buttonSize
+                text: qsTr("NFT")
+                flat: viewMode != 3
+                font.styleName: "Regular"
+                highlighted: viewMode == 3
+                icon.source: "qrc:/ui/images/view_in_ar_black_48dp.svg"
+                display: AbstractButton.TextUnderIcon
+                Material.accent: Material.Cyan
+                onClicked: {
+                    viewMode = 3
                 }
             }
         }

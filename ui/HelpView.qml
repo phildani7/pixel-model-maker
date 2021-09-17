@@ -37,7 +37,9 @@ You could also use the mouse wheel to change the depth of a pixel.
 Using the mouse drag you could rotate the 3d model. Depth slider is for changing the depth scale of the mdoel.
 "
 
-    readonly property var helpList: [drawHelp, depthHelp, viewHelp]
+    readonly property string nftHelp: ""
+
+    readonly property var helpList: [drawHelp, depthHelp, viewHelp, nftHelp]
     id: palettePane
     padding: 10
     background: Rectangle {
