@@ -14,7 +14,7 @@ inline static constexpr const uint8_t base58map[] = {
     'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'm',
     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
-Solana::Solana(QObject* /*parent*/) : m_public_key("") { readWallet(); }
+Solana::Solana(QObject * /*parent*/) : m_public_key("") { readWallet(); }
 
 Solana::~Solana() {}
 
@@ -40,18 +40,17 @@ QString Solana::encodeBase58(uint8_t data[], size_t data_size) {
 }
 
 QString Solana::newKeypair() {
+  uint8_t secret_key[64] = {0};
   if (ed25519_create_seed(seed)) {
     emit error("error while generating seed");
     return "";
   }
 
-  ed25519_create_keypair(public_key, private_key, seed);
-  qDebug() << "WALLET:"
-           << QVector<uint32_t>(private_key, private_key + 32) +
-                  QVector<uint32_t>(public_key, public_key + 32);
+  ed25519_create_keypair(public_key, secret_key, seed);
   m_public_key = encodeBase58(public_key, 32);
   writeWallet();
   emit publicKeyChanged();
+
   return m_public_key;
 }
 
@@ -89,7 +88,7 @@ void Solana::readWallet() {
   }
 
   for (int i = 0; i < 32; ++i) {
-    private_key[i] = (uint8_t)keypair[i].toInt();
+    seed[i] = (uint8_t)keypair[i].toInt();
   }
 
   for (int i = 32; i < 64; ++i) {
@@ -101,6 +100,8 @@ void Solana::readWallet() {
 }
 
 void Solana::writeWallet() {
+  // What to save as a wallet:
+  //   https://blog.mozilla.org/warner/2011/11/29/ed25519-keys/
   QFile walletFile(Solana::walletFilename());
   qDebug() << "write wallet to" << walletFile.fileName();
   if (walletFile.exists()) {
@@ -109,7 +110,7 @@ void Solana::writeWallet() {
   }
   QJsonArray keypair;
   for (int i = 0; i < 32; ++i) {
-    keypair.append(private_key[i]);
+    keypair.append(seed[i]);
   }
 
   for (int i = 0; i < 32; ++i) {
@@ -127,6 +128,6 @@ void Solana::writeWallet() {
 
 QString Solana::publicKey() { return m_public_key; }
 
-void Solana::setPublicKey(const QString& publicKey) {
+void Solana::setPublicKey(const QString &publicKey) {
   m_public_key = publicKey;
 }

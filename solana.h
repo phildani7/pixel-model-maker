@@ -22,7 +22,7 @@ class Solana : public QObject {
 
  private:
   QString m_public_key;
-  uint8_t seed[32], public_key[32], private_key[64];
+  uint8_t seed[32], public_key[32];
   QString encodeBase58(uint8_t data[], size_t date_size);
   void readWallet();
   void writeWallet();

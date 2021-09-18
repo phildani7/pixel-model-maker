@@ -350,7 +350,7 @@ Item {
                 flat: viewMode != 3
                 font.styleName: "Regular"
                 highlighted: viewMode == 3
-                icon.source: "qrc:/ui/images/view_in_ar_black_48dp.svg"
+                icon.source: "qrc:/ui/images/storefront_black_48dp.svg"
                 display: AbstractButton.TextUnderIcon
                 Material.accent: Material.Cyan
                 onClicked: {
