@@ -8,23 +8,33 @@ GLTFExport::GLTFExport(QObject *) {}
 
 GLTFExport::~GLTFExport() {}
 
-void GLTFExport::write(QUrl fileName, QJsonObject data) {
-  QString version = data.take("version").toString();
+void GLTFExport::write(const QUrl &fileName, const QJsonObject &data) {
   QString localFileName = fileName.toLocalFile();
-  if (version != "1.0") {
-    emit error(localFileName,
-               "Invalid version number [1.0 != " + version + "]");
+  QJsonValue exportModel = model(data);
+  if (exportModel.isNull()) return;
+  if (!writeModel(exportModel.toObject(), localFileName)) {
+    emit error(localFileName, "Can't write to file!");
     return;
   }
-  int width = data.take("width").toInt();
-  int height = data.take("height").toInt();
-  if (width != height) {
-    emit error(localFileName, "invalid size");
-    return;
+  emit exported(localFileName);
+}
+
+QJsonValue GLTFExport::model(const QJsonObject &data) {
+  QString version = data.value("version").toString();
+  if (version != "1.0") {
+    emit error(":memory:", "Invalid version number [1.0 != " + version + "]");
+    return QJsonValue();
   }
 
-  QJsonArray pixelMap = data.take("pixels").toArray();
-  int depthAlign = data.take("align").toInt(0);
+  int width = data.value("width").toInt();
+  int height = data.value("height").toInt();
+  if (width != height) {
+    emit error(":memory:", "invalid size");
+    return QJsonValue();
+  }
+
+  QJsonArray pixelMap = data.value("pixels").toArray();
+  int depthAlign = data.value("align").toInt(0);
   QVector<Node> nodes;
   QVector<QString> shapes, colors;
   QVector<QPair<int, int>> meshes;
@@ -39,15 +49,10 @@ void GLTFExport::write(QUrl fileName, QJsonObject data) {
   insertMeshes(exportModel, meshes);
   insertMaterials(exportModel, colors);
   if (!insertShapeData(exportModel, shapes)) {
-    emit error(localFileName, "Can't find or open shape files");
-    return;
+    emit error(":memory:", "Can't find or open shape files");
+    return QJsonValue();
   }
-
-  if (!writeModel(exportModel, localFileName)) {
-    emit error(localFileName, "Can't write to file!");
-    return;
-  }
-  emit exported(localFileName);
+  return exportModel;
 }
 
 void GLTFExport::buildUniqueVectors(const QJsonArray &pixelMap,

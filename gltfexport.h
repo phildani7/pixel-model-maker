@@ -11,7 +11,8 @@ class GLTFExport : public QObject {
   GLTFExport(QObject *parent = 0);
   ~GLTFExport();
 
-  Q_INVOKABLE void write(QUrl fileName, QJsonObject data);
+  Q_INVOKABLE void write(const QUrl &fileName, const QJsonObject &data);
+  Q_INVOKABLE QJsonValue model(const QJsonObject &data);
 
  signals:
   void exported(QString fileName);
