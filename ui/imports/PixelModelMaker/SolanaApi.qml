@@ -5,7 +5,20 @@ import PixelModelMaker 1.0
 
 QtObject {
     property string url: "https://api.devnet.solana.com/"
+    property string network: "devnet"
+
     function noop() {}
+
+    function updateNetwork(network) {
+        let networkMap = {
+            "mainnet-beta": "https://api.mainnet-beta.solana.com/",
+            "devnet": "https://api.devnet.solana.com/",
+            "testnet": "https://api.testnet.solana.com/"
+        }
+        SolanaApi.network = network
+        SolanaApi.url = networkMap[network]
+    }
+
     function rpcRequest(method, params, success, error, commitment) {
         commitment = commitment || "confirmed"
         var client = new XMLHttpRequest()
