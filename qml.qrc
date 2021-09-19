@@ -120,5 +120,6 @@
         <file>ui/NFTView.qml</file>
         <file>ui/imports/PixelModelMaker/SolanaApi.qml</file>
         <file>ui/images/storefront_black_48dp.svg</file>
+        <file>ui/images/content_copy_black_48dp.svg</file>
     </qresource>
 </RCC>

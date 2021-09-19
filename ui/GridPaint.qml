@@ -236,6 +236,95 @@ Item {
 
             NFTView {
                 id: nftView
+                uploadNft.onClicked: {
+                    view.grabToImage(function (result) {
+                        let options = {
+                            "assets": GlobalState.fileName + "-assets",
+                            "network": SolanaApi.network,
+                            "cachename": GlobalState.fileName,
+                            "name": "kishpil",
+                            "symbol": "KSH",
+                            "description": "descr",
+                            "attributes": [{
+                                    "trait_type": "creator",
+                                    "value": "Pixel Model Maker"
+                                }],
+                            "collection": {
+                                "name": "collection name",
+                                "family": "collection family"
+                            },
+                            "creators": [{
+                                    "address": solana.publicKey,
+                                    "share": 100
+                                }]
+                        }
+                        solana.upload(result.image,
+                                      GlobalState.getSaveObject(), options)
+                    })
+                }
+                solana.onUploadFinished: (data, code, status) => {
+                                             console.log(
+                                                 "upload finished, start verifying")
+                                             let options = {
+                                                 "network": SolanaApi.network,
+                                                 "cachename": GlobalState.fileName
+                                             }
+
+                                             if (code === 0)
+                                             solana.verify(options)
+                                         }
+                solana.onVerifyFinished: (data, code, status) => {
+                                             console.log(
+                                                 "verify finished, start candy machine")
+                                             let options = {
+                                                 "network": SolanaApi.network,
+                                                 "cachename": GlobalState.fileName,
+                                                 "price": 1
+                                             }
+
+                                             if (code === 0)
+                                             solana.create(options)
+                                         }
+                solana.onCreateFinished: (data, code, status) => {
+                                             console.log(
+                                                 "candy machine created, update start date")
+                                             let options = {
+                                                 "network": SolanaApi.network,
+                                                 "cachename": GlobalState.fileName,
+                                                 "date": "01 Sep 2021 00:12:00 GMT"
+                                             }
+
+                                             if (code === 0)
+                                             solana.update(options)
+                                         }
+                solana.onUpdateFinished: (data, code, status) => {
+                                             console.log(
+                                                 "candy machine updated, start minting")
+                                             let options = {
+                                                 "network": SolanaApi.network,
+                                                 "cachename": GlobalState.fileName
+                                             }
+
+                                             if (code === 0)
+                                             solana.mint(options)
+                                         }
+                solana.onMintFinished: (data, code, status) => {
+                                           console.log(
+                                               "token minted, start signing")
+                                           let options = {
+                                               "network": SolanaApi.network,
+                                               "cachename": GlobalState.fileName
+                                           }
+                                           if (code === 0)
+                                           solana.sign(options)
+                                       }
+                solana.onSignFinished: (data, code, status) => {
+                                           console.log(
+                                               "candy machine created, update start date")
+                                           if (code === 0)
+                                           console.log(
+                                               "Your NFT are ready in your account")
+                                       }
             }
         }
 
