@@ -438,5 +438,5 @@ void Solana::signFinishedSlot(int exitCode, QProcess::ExitStatus exitStatus) {
   qDebug() << exitCode << error << output;
   delete metaplex;
   metaplex = nullptr;
-  emit mintFinished(output, exitCode, exitStatus);
+  emit signFinished(output, exitCode, exitStatus);
 }
