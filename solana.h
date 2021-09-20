@@ -38,7 +38,7 @@ class Solana : public QObject {
   uint8_t seed[32], public_key[32];
   QProcess *metaplex;
   QString encodeBase58(uint8_t data[], size_t date_size);
-  void readWallet();
+  void readWallet(bool createIfNotExists = false);
   void writeWallet();
   inline static QString walletFilename();
   void setMetaplexProgramName();

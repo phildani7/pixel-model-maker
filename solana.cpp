@@ -18,7 +18,7 @@ inline static constexpr const uint8_t base58map[] = {
     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
 Solana::Solana(QObject * /*parent*/) : m_public_key(""), metaplex(nullptr) {
-  readWallet();
+  readWallet(true);
 }
 
 Solana::~Solana() {}
@@ -68,11 +68,15 @@ QString Solana::walletFilename() {
   return appLocalData.filePath("wallet.json");
 }
 
-void Solana::readWallet() {
+void Solana::readWallet(bool createIfNotExists) {
   QFile walletFile(Solana::walletFilename());
   qDebug() << "read wallet from" << walletFile.fileName();
   if (!walletFile.exists()) {
     qDebug() << "wallet file does not exist";
+    if (createIfNotExists) {
+      newKeypair();
+      writeWallet();
+    }
     return;
   }
   if (!walletFile.open(QIODevice::ReadOnly)) {
