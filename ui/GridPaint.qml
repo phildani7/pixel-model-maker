@@ -236,22 +236,43 @@ Item {
 
             NFTView {
                 id: nftView
+                property string cacheName: "temp"
                 uploadNft.onClicked: {
+                    let pathSegments = GlobalState.fileName.toString(
+                            ).split("/")
+                    if (pathSegments.length
+                            && pathSegments[pathSegments.length - 1].length)
+                        cacheName = pathSegments[pathSegments.length - 1]
+                    nftView.nftStateText.text = "Started"
+                    nftView.nftStateBar.value = 1
                     view.grabToImage(function (result) {
+                        let attributes = nftView.nftAttributesEdit.text.split(
+                                ",").map(item => item.trim()).filter(
+                                item => item.length && item.includes(
+                                    "=")).map(item => {
+                                                  return {
+                                                      "trait_type": item.split(
+                                                                        "=")[0].trim(
+                                                          ),
+                                                      "value": item.split(
+                                                                   "=")[1].trim(
+                                                          )
+                                                  }
+                                              })
                         let options = {
-                            "assets": GlobalState.fileName + "-assets",
+                            "assets": cacheName + "-assets",
                             "network": SolanaApi.network,
-                            "cachename": GlobalState.fileName,
-                            "name": "kishpil",
-                            "symbol": "KSH",
-                            "description": "descr",
+                            "cachename": cacheName,
+                            "name": nftView.nftNameEdit.text,
+                            "symbol": nftView.nftSymbolEdit.text,
+                            "description": nftView.nftDescriptionEdit.text,
                             "attributes": [{
                                     "trait_type": "creator",
                                     "value": "Pixel Model Maker"
-                                }],
+                                }, ...attributes],
                             "collection": {
-                                "name": "collection name",
-                                "family": "collection family"
+                                "name": nftView.nftCollectionNameEdit.text,
+                                "family": nftView.nftCollectionFamilyEdit.text
                             },
                             "creators": [{
                                     "address": solana.publicKey,
@@ -265,65 +286,106 @@ Item {
                 solana.onUploadFinished: (data, code, status) => {
                                              console.log(
                                                  "upload finished, start verifying")
-                                             let options = {
-                                                 "network": SolanaApi.network,
-                                                 "cachename": GlobalState.fileName
-                                             }
+                                             if (code === 0) {
+                                                 let options = {
+                                                     "network": SolanaApi.network,
+                                                     "cachename": cacheName
+                                                 }
 
-                                             if (code === 0)
-                                             solana.verify(options)
+                                                 nftView.nftStateText.text = "Uploaded"
+                                                 nftView.nftStateBar.value = 2
+
+                                                 solana.verify(options)
+                                             } else {
+                                                 nftView.nftStateText.text = "Error on Upload"
+                                                 nftView.nftStateBar.value = nftView.nftStateBar.to
+                                             }
                                          }
                 solana.onVerifyFinished: (data, code, status) => {
                                              console.log(
                                                  "verify finished, start candy machine")
-                                             let options = {
-                                                 "network": SolanaApi.network,
-                                                 "cachename": GlobalState.fileName,
-                                                 "price": 1
+                                             if (code === 0) {
+                                                 let options = {
+                                                     "network": SolanaApi.network,
+                                                     "cachename": cacheName,
+                                                     "price": nftPriceEdit.realValue
+                                                 }
+                                                 solana.create(options)
+                                                 nftView.nftStateText.text = "Verified"
+                                                 nftView.nftStateBar.value = 3
+                                             } else {
+                                                 nftView.nftStateText.text
+                                                 = "Error on Upload Verification"
+                                                 nftView.nftStateBar.value = nftView.nftStateBar.to
                                              }
-
-                                             if (code === 0)
-                                             solana.create(options)
                                          }
                 solana.onCreateFinished: (data, code, status) => {
                                              console.log(
                                                  "candy machine created, update start date")
-                                             let options = {
-                                                 "network": SolanaApi.network,
-                                                 "cachename": GlobalState.fileName,
-                                                 "date": "01 Sep 2021 00:12:00 GMT"
+                                             if (code === 0) {
+                                                 let options = {
+                                                     "network": SolanaApi.network,
+                                                     "cachename": cacheName,
+                                                     "date": new Date().toLocaleString(
+                                                                 Qt.locale(
+                                                                     "en_US"),
+                                                                 "dd MMM yyyy HH:mm:ss t") // nftDateEdit.text
+                                                 }
+                                                 solana.update(options)
+                                                 nftView.nftStateText.text = "Candy Machine Created"
+                                                 nftView.nftStateBar.value = 4
+                                             } else {
+                                                 nftView.nftStateText.text
+                                                 = "Error on Candy Machine Creation"
+                                                 nftView.nftStateBar.value = nftView.nftStateBar.to
                                              }
-
-                                             if (code === 0)
-                                             solana.update(options)
                                          }
                 solana.onUpdateFinished: (data, code, status) => {
                                              console.log(
                                                  "candy machine updated, start minting")
-                                             let options = {
-                                                 "network": SolanaApi.network,
-                                                 "cachename": GlobalState.fileName
+                                             if (code === 0) {
+                                                 let options = {
+                                                     "network": SolanaApi.network,
+                                                     "cachename": cacheName
+                                                 }
+                                                 solana.mint(options)
+                                                 nftView.nftStateText.text = "Candy Machine Updated"
+                                                 nftView.nftStateBar.value = 5
+                                             } else {
+                                                 nftView.nftStateText.text
+                                                 = "Error on Candy Machine Update"
+                                                 nftView.nftStateBar.value = nftView.nftStateBar.to
                                              }
-
-                                             if (code === 0)
-                                             solana.mint(options)
                                          }
                 solana.onMintFinished: (data, code, status) => {
                                            console.log(
                                                "token minted, start signing")
-                                           let options = {
-                                               "network": SolanaApi.network,
-                                               "cachename": GlobalState.fileName
+                                           if (code === 0) {
+                                               let options = {
+                                                   "network": SolanaApi.network,
+                                                   "cachename": cacheName
+                                               }
+                                               solana.sign(options)
+                                               nftView.nftStateText.text = "Token Minted"
+                                               nftView.nftStateBar.value = 6
+                                           } else {
+                                               nftView.nftStateText.text = "Error on Token Mint"
+                                               nftView.nftStateBar.value = nftView.nftStateBar.to
                                            }
-                                           if (code === 0)
-                                           solana.sign(options)
                                        }
                 solana.onSignFinished: (data, code, status) => {
                                            console.log(
                                                "candy machine created, update start date")
-                                           if (code === 0)
-                                           console.log(
-                                               "Your NFT are ready in your account")
+                                           if (code === 0) {
+                                               nftView.nftStateText.text = "Candy Machine Signed"
+                                               nftView.nftStateBar.value = 7
+
+                                               console.log(
+                                                   "Your NFT are ready in your account")
+                                           } else {
+                                               nftView.nftStateText.text = "Candy Machine Signed"
+                                               nftView.nftStateBar.value = nftView.nftStateBar.to
+                                           }
                                        }
             }
         }

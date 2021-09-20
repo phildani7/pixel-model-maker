@@ -9,6 +9,18 @@ import com.github.zaghaghi.pixelmodelmaker 1.0
 Item {
     property alias uploadNft: uploadButton
     property alias solana: solana
+
+    property alias nftNameEdit: nftNameEdit
+    property alias nftSymbolEdit: nftSymbolEdit
+    property alias nftDescriptionEdit: nftDescriptionEdit
+    property alias nftAttributesEdit: nftAttributesEdit
+    property alias nftCollectionNameEdit: nftCollectionNameEdit
+    property alias nftCollectionFamilyEdit: nftCollectionFamilyEdit
+    property alias nftPriceEdit: nftPriceEdit
+    property alias nftDateEdit: nftDateEdit
+    property alias nftStateText: nftStateText
+    property alias nftStateBar: nftStateBar
+
     anchors.fill: parent
     Text {
         text: qsTr("Powered by Metaplex")
@@ -21,6 +33,7 @@ Item {
     Pane {
         id: walletPane
         padding: 10
+        topPadding: 20
         Material.background: Constants.toolbarColor
         width: 200
         height: 250
@@ -139,10 +152,11 @@ Item {
                 id: solanaNetwork
                 padding: 10
                 width: parent.width
-                Material.background: Constants.toolbarColor
                 Material.accent: Material.Cyan
+                anchors.topMargin: 10
                 textRole: "key"
                 currentIndex: 1
+                enabled: nftStateBar.value === nftStateBar.to
                 model: ListModel {
                     id: model
                     ListElement {
@@ -174,10 +188,10 @@ Item {
     }
     Pane {
         id: inputPane
-        padding: 10
+        padding: 20
         Material.background: Constants.toolbarColor
         width: Constants.canvasSize + padding * 2
-        height: Constants.canvasSize + padding * 2
+        height: 420 + padding * 2
         anchors.top: parent.top
         anchors.topMargin: 20
         anchors.horizontalCenter: parent.horizontalCenter
@@ -190,56 +204,167 @@ Item {
             }
         }
 
-        Item {
+        Column {
             anchors.fill: parent
+            height: parent.height
+            Button {
+                text: "Create Wallet"
+                visible: solana.publicKey.length === 0
+                onClicked: {
+                    console.log(solana.newKeypair())
+                }
+            }
+            Text {
+                text: qsTr("Information")
+                color: Constants.titleColor
+                font.pointSize: 20
+                font.bold: true
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
 
-            Column {
-                Button {
-                    text: "create wallet"
-                    visible: solana.publicKey.length === 0
-                    onClicked: {
-                        console.log(solana.newKeypair())
+            Row {
+                width: parent.width
+                spacing: 10
+                TextField {
+                    id: nftNameEdit
+                    width: parent.width / 2 - 5
+                    placeholderText: "Name"
+                    Material.accent: Material.Cyan
+                    selectByMouse: true
+                }
+
+                TextField {
+                    id: nftSymbolEdit
+                    width: parent.width / 2 - 5
+                    placeholderText: "Symbol"
+                    Material.accent: Material.Cyan
+                    selectByMouse: true
+                }
+            }
+            TextField {
+                id: nftDescriptionEdit
+                width: parent.width
+                placeholderText: "Description"
+                Material.accent: Material.Cyan
+                selectByMouse: true
+            }
+            TextField {
+                id: nftAttributesEdit
+                width: parent.width
+                placeholderText: "Attributes [attribute1=value1, attribute2=value2]"
+                Material.accent: Material.Cyan
+                selectByMouse: true
+            }
+
+            GroupBox {
+                topPadding: 50
+
+                label: Text {
+                    topPadding: 15
+                    text: "Collection"
+                    color: Constants.titleColor
+                }
+                width: parent.width
+                Row {
+                    width: parent.width
+                    spacing: 10
+                    TextField {
+                        id: nftCollectionNameEdit
+                        width: parent.width / 2 - 5
+                        placeholderText: "Name"
+                        Material.accent: Material.Cyan
+                        selectByMouse: true
+                    }
+
+                    TextField {
+                        id: nftCollectionFamilyEdit
+                        width: parent.width / 2 - 5
+                        placeholderText: "Family"
+                        Material.accent: Material.Cyan
+                        selectByMouse: true
                     }
                 }
+            }
+            Item {
+                width: parent.width
+                height: 10
+            }
 
-                Button {
-                    text: "airdrop"
-                    visible: solana.publicKey.length > 0
-                    onClicked: {
-                        SolanaApi.requestAirdrop(solana.publicKey,
-                                                 1000000000, () => {
-                                                     console.log("OK")
-                                                 }, req => {
-                                                     console.log("ERR",
-                                                                 req.status)
-                                                 })
-                    }
+            SpinBox {
+                id: nftPriceEdit
+                property int decimals: 4
+                property int multiplyer: 10000 // 10 ** decimals
+                property real realValue: value / multiplyer
+                from: 0
+                value: multiplyer
+                to: 100 * multiplyer
+                stepSize: 100
+                width: parent.width
+                editable: true
+                Material.accent: Material.Cyan
+                validator: DoubleValidator {
+                    bottom: Math.min(nftPriceEdit.from, nftPriceEdit.to)
+                    top: Math.max(nftPriceEdit.from, nftPriceEdit.to)
                 }
 
-                Button {
-                    text: "balance"
-                    visible: solana.publicKey.length > 0
-                    onClicked: {
-                        SolanaApi.getBalance(solana.publicKey,
-                                             (balance, req) => {
-                                                 console.log("OK, Balance=",
-                                                             balance, req)
-                                             }, req => {
-                                                 console.log("ERR", req.status)
-                                             })
-                    }
+                textFromValue: function (value, locale) {
+                    return Number(value / multiplyer).toLocaleString(
+                                locale, "f", nftPriceEdit.decimals) + " SOL"
                 }
 
-                Button {
-                    id: uploadButton
-                    text: "Upload"
+                valueFromText: function (text, locale) {
+                    text = text.split(" ")[0]
+                    return Number.fromLocaleString(locale, text) * multiplyer
                 }
+            }
 
-                Text {
-                    id: publicKey
-                    text: solana.publicKey
-                    color: "white"
-                }
+            TextField {
+                id: nftDateEdit
+                topPadding: 10
+                text: new Date().toLocaleString(Qt.locale("en_US"),
+                                                "dd MMM yyyy HH:mm:ss t")
+                width: parent.width
+                inputMethodHints: Qt.ImhDate
+                placeholderText: "Start [01 Jan 2021 00:00:00 GMT]"
+                Material.accent: Material.Cyan
+                visible: false
+            }
+            Item {
+                width: parent.width
+                height: 20
+            }
+            Text {
+                id: nftStateText
+                text: qsTr("Not Started")
+                color: Constants.titleColor
+                font.pointSize: 10
+                font.bold: true
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+
+            ProgressBar {
+                id: nftStateBar
+                from: 0
+                to: 7
+                value: 7
+                width: parent.width
+                anchors.horizontalCenter: parent.horizontalCenter
+                Material.accent: Material.Cyan
+            }
+            Item {
+                width: parent.width
+                height: 20
+            }
+
+            Button {
+                id: uploadButton
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: "Start"
+                Material.accent: Material.Cyan
+                enabled: nftNameEdit.text.length && nftSymbolEdit.text.length
+                         && nftDescriptionEdit.text.length
+                         && nftPriceEdit.value > 0 && nftDateEdit.text.length
+                         && nftStateBar.value === nftStateBar.to
             }
         }
 
